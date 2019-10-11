@@ -1,21 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:rankprof/pages/register.dart';
+import 'package:rankprof/routes.dart';
+import 'package:rankprof/theme.dart';
 
-void main() => runApp(new MyApp());
+void main() => runApp(new TodoApp());
 
 class TodoApp extends StatefulWidget{
   @override
-  State<StatefulWidget> createState()
-  {
+  State<StatefulWidget> createState() => _TodoAppState();
 
-  }
 }
 
 
 class _TodoAppState extends State<TodoApp> {
+
+  Widget rootPage = RegisterPage();
+
+
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    return null;
+
+     return MaterialApp(
+       title: 'Todos app',
+       home:  rootPage,
+       routes: buildAppRoutes(),
+       theme: buildAppTheme(),
+     );
   }
 
 }
