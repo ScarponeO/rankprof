@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rankprof/pages/login.dart';
 import 'package:rankprof/pages/register.dart';
 import 'package:rankprof/routes.dart';
 import 'package:rankprof/theme.dart';
@@ -14,7 +15,7 @@ class TodoApp extends StatefulWidget{
 
 class _TodoAppState extends State<TodoApp> {
 
-  Widget rootPage = RegisterPage();
+  Widget rootPage = LoginPage();
 
 
   @override
