@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "977778062720",
+    "firebase_url": "https://rankprof-53a4b.firebaseio.com",
+    "project_id": "rankprof-53a4b",
+    "storage_bucket": "rankprof-53a4b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:977778062720:android:34768890144aef339e7d65",
+        "android_client_info": {
+          "package_name": "com.unimet.rankprof"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "977778062720-ph4hhtab013no2ifrb2b04nb3cauipfj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAPwZbrNWFC7RNeFvxdbOifFNGuONg_OVY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "977778062720-ph4hhtab013no2ifrb2b04nb3cauipfj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
