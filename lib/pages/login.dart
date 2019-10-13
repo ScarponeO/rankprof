@@ -54,7 +54,7 @@ class _LoginPageState extends State<LoginPage> {
       ) ,
       persistentFooterButtons: <Widget>[
         FlatButton(onPressed: (){
-          Navigator.of(context).pushNamed('/register');
+          Navigator.of(context).pushNamed('/home');
         }, child: Text('No tengo una cuenta') ,)
       ],
     );
