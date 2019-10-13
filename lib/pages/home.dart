@@ -22,7 +22,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    PageController _controller;
+    /*PageController _controller;
 
   @override
   void initState() {
@@ -31,7 +31,7 @@ class _HomePageState extends State<HomePage> {
     _controller = PageController(
 
     );
-  }
+  }*/
 
 
     return Scaffold(
@@ -55,14 +55,13 @@ class _HomePageState extends State<HomePage> {
     return SafeArea(
       child: Column(
         children: <Widget>[
-          _selector(),
         ],
       ),
     );
   }
 
 
-  Widget _selector(){
+ /* Widget _selector(){
     return SizedBox.fromSize(
       size: Size.fromHeight(20),
       child: PageView(
@@ -73,5 +72,5 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
     );
-  }
+  }*/
 }
