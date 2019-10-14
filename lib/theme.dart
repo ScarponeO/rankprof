@@ -1,3 +1,3 @@
 import 'package:flutter/material.dart';
 
-ThemeData buildAppTheme() => ThemeData.dark();
+ThemeData buildAppTheme() => ThemeData.light();
