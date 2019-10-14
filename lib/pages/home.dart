@@ -135,6 +135,7 @@ Widget _pageItem(String name, int position) {
     return SizedBox.fromSize(
       size: Size.fromHeight(70.0),
       child: PageView(
+<<<<<<< HEAD
 
         onPageChanged: (newPage) {
           setState(() {
@@ -147,6 +148,9 @@ Widget _pageItem(String name, int position) {
         },
 
         controller: _controller,
+=======
+        //controller: _controller,
+>>>>>>> 21465334ba0eb867a72ff74457a27e61afd2c212
         children: <Widget>[
           _pageItem("Dpto. Matematicas",0),
           _pageItem("Dpto. Fisica",1),
