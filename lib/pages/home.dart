@@ -65,7 +65,7 @@ class _HomePageState extends State<HomePage> {
     return SizedBox.fromSize(
       size: Size.fromHeight(20),
       child: PageView(
-        controller: _controller,
+        //controller: _controller,
         children: <Widget>[
           Text("Matematicas"),
           Text("Fisica"),
