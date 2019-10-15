@@ -16,16 +16,6 @@ class Department extends StatefulWidget {
           map[document['materia']] = document['name'];
           return map;
         }),
-    // prof = documents.fold({}, (Map<String, String> map, document) {
-           
-    //       if (map.containsKey(document['professor'])) {
-          
-    //       }
-
-    //       map[document['professor']] = document['prosessor'];
-    //       return map;
-    //     }),
-
   super(key: key);
 
   @override
@@ -70,26 +60,27 @@ class _DepartmentState extends State<Department> {
       ),
       trailing: Container(
         decoration: BoxDecoration(
-          color: Colors.blueAccent.withOpacity(0.2),
+          color: Colors.white.withOpacity(0.2),
           borderRadius: BorderRadius.circular(5.0),
         ),
         child: Padding(
           padding: const EdgeInsets.all(8.0),
-          child: Text("Rankear",
-            style: TextStyle(
-              color: Colors.blueAccent,
-              fontWeight: FontWeight.w500,
-              fontSize: 16.0,
+          child: RaisedButton(
+            child:  Text("Rankear",
+              style: TextStyle(
+                color: Colors.blueAccent,
+                fontWeight: FontWeight.w500,
+                fontSize: 16.0,
+              ),
             ),
+              onPressed: () {
+                Navigator.of(context).pushNamed('/profesor');
+              }
           ),
         ),
       ),
     );
   }
-
-
-
-
 
 
   Widget _list() {

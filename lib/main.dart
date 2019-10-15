@@ -8,25 +8,19 @@ import 'package:rankprof/routes.dart';
 import 'package:rankprof/theme.dart';
 
 
+
 void main() => runApp(new TodoApp());
 
 class TodoApp extends StatefulWidget{
   @override
   State<StatefulWidget> createState() => _TodoAppState();
-
 }
 
-
 class _TodoAppState extends State<TodoApp> {
-
-  Widget rootPage = StarFeedback();  //Coloque esta pagina para que salga de una vez el ranking, cambienla para el boton que tiene kalen en su vista
-
-
-
+  Widget rootPage = LoginPage();  //---> Vista de arranque de la aplicacion
 
   @override
   Widget build(BuildContext context) {
-
      return MaterialApp(
        title: 'Todos app',
        home:  rootPage,
@@ -34,6 +28,5 @@ class _TodoAppState extends State<TodoApp> {
        theme: buildAppTheme(),
      );
   }
-
 }
 
