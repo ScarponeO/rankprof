@@ -40,7 +40,7 @@ class Profesor extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.all(2), //---> Nombre del Profesor
                   child: Text(
-                    'Mirna Guevara',
+                    'Luis Rojas',
                     textAlign
                         : TextAlign.center,
                     style: TextStyle(

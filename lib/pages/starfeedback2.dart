@@ -119,7 +119,7 @@ class _StarFeedback2State extends State<StarFeedback2> {
                             Padding(padding: const EdgeInsets.all(8.0),
 
                               child: Text(
-                                  'Práctica educativa o método de enseñanza' ,style: TextStyle(color: Color.fromARGB(255, 200, 200, 200))),
+                                  'Práctica educativa o método de enseñanza' ,style: TextStyle(color: Colors.black)),
                             ) ,
 
 

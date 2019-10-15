@@ -121,7 +121,7 @@ class _StarFeedbackState extends State<StarFeedback> {
                             Padding(padding: const EdgeInsets.all(8.0),
 
                               child: Text(
-                                  'Organizado al escribir en la pizarra y  en el material que se ofrece' ,style: TextStyle(color: Color.fromARGB(255, 200, 200, 200))),
+                                  'Organizado al escribir en la pizarra y  en el material que se ofrece' ,style: TextStyle(color: Colors.black)),
                             ) ,
 
                             Padding(

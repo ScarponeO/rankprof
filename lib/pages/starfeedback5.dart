@@ -120,7 +120,7 @@ class _StarFeedback5State extends State<StarFeedback5> {
                             Padding(padding: const EdgeInsets.all(8.0),
 
                               child: Text(
-                                  'El profesor ofrece horas de consulta o tiempo dirigido para resolver dudas' ,style: TextStyle(color: Color.fromARGB(255, 200, 200, 200))),
+                                  'El profesor ofrece horas de consulta o tiempo dirigido para resolver dudas' ,style: TextStyle(color: Colors.black)),
                             ) ,
 
                             Padding(

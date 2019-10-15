@@ -40,7 +40,7 @@ class Profesor extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.all(2), //---> Nombre del Profesor
                   child: Text(
-                    'Mirna Guevara',
+                    'Jose Areas',
                     textAlign
                         : TextAlign.center,
                     style: TextStyle(
@@ -53,7 +53,7 @@ class Profesor extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.all(10),//---> Materia
                   child: Text(
-                    'Fisica 2',
+                    'Fisica 1',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 18,

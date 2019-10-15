@@ -119,7 +119,7 @@ class _StarFeedback4State extends State<StarFeedback4> {
                             Padding(padding: const EdgeInsets.all(8.0),
 
                               child: Text(
-                                  'Forma de dirigirse con el estudiante' ,style: TextStyle(color: Color.fromARGB(255, 200, 200, 200))),
+                                  'Forma de dirigirse con el estudiante' ,style: TextStyle(color: Colors.black)),
                             ) ,
 
                             Padding(

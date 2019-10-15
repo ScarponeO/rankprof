@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rankprof/pages/department.dart';
 import 'package:rankprof/pages/forgotPassword.dart';
 import 'package:rankprof/pages/login.dart';
 import 'package:rankprof/pages/mainTabs.dart';
@@ -18,6 +19,7 @@ Map<String, WidgetBuilder> buildAppRoutes() {
     '/forgotpassword': (BuildContext context) =>  ForgotPasswordPage(),
     '/home': (BuildContext context) =>  HomePage(),
     '/profesor': (BuildContext context) =>  Profesor(),
+    '/department': (BuildContext context) =>  Department(),
     '/maintabs': (BuildContext context) =>  MainTabsPage(),
     '/starfeedback': (BuildContext context) => StarFeedback(),
     '/starfeedback2': (BuildContext context) => StarFeedback2(),

@@ -118,7 +118,7 @@ class _StarFeedback3State extends State<StarFeedback3> {
                             Padding(padding: const EdgeInsets.all(8.0),
 
                               child: Text(
-                                  'Pide a los estudiantes hacer lo mejor posible en cada actividad' ,style: TextStyle(color: Color.fromARGB(255, 200, 200, 200))),
+                                  'Pide a los estudiantes hacer lo mejor posible en cada actividad' ,style: TextStyle(color: Colors.black)),
                             ) ,
 
                             Padding(
