@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:rankprof/behaviors/hiddenScrollBehavior.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:rankprof/pages/department.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:rankprof/pages/department.dart';
 
 class HomePage extends StatefulWidget{
   @override
@@ -10,7 +12,31 @@ class HomePage extends StatefulWidget{
 
 class _HomePageState extends State<HomePage> {
 
-   Widget _bottomAction(IconData icon) {
+
+   PageController _controller;
+   int currentPage  = 1;
+   Stream<QuerySnapshot> _query;
+
+
+
+ @override
+  void initState() {
+    super.initState(); 
+
+    _query = Firestore.instance
+      .collection('Departamentos')
+      .where("number", isEqualTo: currentPage + 1)
+      .snapshots();
+
+
+
+    _controller = PageController(
+      initialPage: 0,
+      viewportFraction: 0.5,
+    );
+  }
+
+Widget _bottomAction(IconData icon) {
     return InkWell(
       child: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -22,18 +48,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    /*PageController _controller;
-
-  @override
-  void initState() {
-    super.initState();
-
-    _controller = PageController(
-
-    );
-  }*/
-
-
+  
     return Scaffold(
       bottomNavigationBar: BottomAppBar(
         notchMargin: 8.0,
@@ -42,7 +57,7 @@ class _HomePageState extends State<HomePage> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
             _bottomAction(FontAwesomeIcons.history),
-            _bottomAction(FontAwesomeIcons.shoePrints),
+            _bottomAction(FontAwesomeIcons.search),
             _bottomAction(Icons.settings),
           ],
         ),
@@ -55,22 +70,97 @@ class _HomePageState extends State<HomePage> {
     return SafeArea(
       child: Column(
         children: <Widget>[
+          _selector(),
+
+
+
+          StreamBuilder<QuerySnapshot>(
+            stream: _query,
+            builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> data) {
+              if (data.hasData) {
+                return Department(
+                  documents: data.data.documents);
+              }
+              return Center(
+                child: CircularProgressIndicator(),
+              );
+            },
+          ),
+
+
+
+
+
+
+
+          
         ],
       ),
     );
   }
 
+Widget _pageItem(String name, int position) {
+    var _alignment;
 
- /* Widget _selector(){
+    final selected = TextStyle(
+      fontSize: 20.0,
+      fontWeight: FontWeight.bold,
+      color: Colors.blueGrey,
+    );
+    final unselected = TextStyle(
+      fontSize: 20.0,
+      fontWeight: FontWeight.normal,
+      color: Colors.blueGrey.withOpacity(0.4),
+    );
+
+
+
+    if (position == currentPage) {
+      _alignment = Alignment.center;
+    } else if (position > currentPage) {
+      _alignment = Alignment.center;
+    } else {
+      _alignment = Alignment.center;
+    }
+    return Align(
+      alignment: _alignment,
+      child: Text(name,
+        style: position == currentPage ? selected : unselected,
+      ),
+    );
+
+}
+
+  Widget _selector(){
     return SizedBox.fromSize(
-      size: Size.fromHeight(20),
+      size: Size.fromHeight(70.0),
       child: PageView(
+<<<<<<< HEAD
+
+        onPageChanged: (newPage) {
+          setState(() {
+            currentPage = newPage;
+            _query = Firestore.instance
+              .collection('Departamentos')
+              .where("number", isEqualTo: currentPage + 1)
+              .snapshots();
+          });
+        },
+
+        controller: _controller,
+=======
         //controller: _controller,
+>>>>>>> 21465334ba0eb867a72ff74457a27e61afd2c212
         children: <Widget>[
-          Text("Matematicas"),
-          Text("Fisica"),
+          _pageItem("Dpto. Matematicas",0),
+          _pageItem("Dpto. Fisica",1),
+          _pageItem("Dpto. Quimica",2),
+          _pageItem("Dpto. Idiomas",3),
+          _pageItem("Dpto. Humanidades",4),
         ],
       ),
     );
-  }*/
+  }
 }
+
+
