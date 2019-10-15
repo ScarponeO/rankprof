@@ -4,31 +4,24 @@ import 'package:rankprof/pages/department.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:rankprof/pages/department.dart';
 
-class HomePage extends StatefulWidget{
+class HomePage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => _HomePageState();
-
 }
 
 class _HomePageState extends State<HomePage> {
+  PageController _controller;
+  int currentPage = 1;
+  Stream<QuerySnapshot> _query;
 
-
-   PageController _controller;
-   int currentPage  = 1;
-   Stream<QuerySnapshot> _query;
-
-
-
- @override
+  @override
   void initState() {
-    super.initState(); 
+    super.initState();
 
     _query = Firestore.instance
-      .collection('Departamentos')
-      .where("number", isEqualTo: currentPage + 1)
-      .snapshots();
-
-
+        .collection('Departamentos')
+        .where("number", isEqualTo: currentPage + 1)
+        .snapshots();
 
     _controller = PageController(
       initialPage: 0,
@@ -36,7 +29,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-Widget _bottomAction(IconData icon) {
+  Widget _bottomAction(IconData icon) {
     return InkWell(
       child: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -48,7 +41,6 @@ Widget _bottomAction(IconData icon) {
 
   @override
   Widget build(BuildContext context) {
-  
     return Scaffold(
       bottomNavigationBar: BottomAppBar(
         notchMargin: 8.0,
@@ -71,35 +63,23 @@ Widget _bottomAction(IconData icon) {
       child: Column(
         children: <Widget>[
           _selector(),
-
-
-
           StreamBuilder<QuerySnapshot>(
             stream: _query,
             builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> data) {
               if (data.hasData) {
-                return Department(
-                  documents: data.data.documents);
+                return Department(documents: data.data.documents);
               }
               return Center(
                 child: CircularProgressIndicator(),
               );
             },
           ),
-
-
-
-
-
-
-
-          
         ],
       ),
     );
   }
 
-Widget _pageItem(String name, int position) {
+  Widget _pageItem(String name, int position) {
     var _alignment;
 
     final selected = TextStyle(
@@ -113,8 +93,6 @@ Widget _pageItem(String name, int position) {
       color: Colors.blueGrey.withOpacity(0.4),
     );
 
-
-
     if (position == currentPage) {
       _alignment = Alignment.center;
     } else if (position > currentPage) {
@@ -124,43 +102,36 @@ Widget _pageItem(String name, int position) {
     }
     return Align(
       alignment: _alignment,
-      child: Text(name,
+      child: Text(
+        name,
         style: position == currentPage ? selected : unselected,
       ),
     );
+  }
 
-}
-
-  Widget _selector(){
+  Widget _selector() {
     return SizedBox.fromSize(
       size: Size.fromHeight(70.0),
       child: PageView(
-<<<<<<< HEAD
-
         onPageChanged: (newPage) {
           setState(() {
             currentPage = newPage;
             _query = Firestore.instance
-              .collection('Departamentos')
-              .where("number", isEqualTo: currentPage + 1)
-              .snapshots();
+                .collection('Departamentos')
+                .where("number", isEqualTo: currentPage + 1)
+                .snapshots();
           });
         },
-
         controller: _controller,
-=======
         //controller: _controller,
->>>>>>> 21465334ba0eb867a72ff74457a27e61afd2c212
         children: <Widget>[
-          _pageItem("Dpto. Matematicas",0),
-          _pageItem("Dpto. Fisica",1),
-          _pageItem("Dpto. Quimica",2),
-          _pageItem("Dpto. Idiomas",3),
-          _pageItem("Dpto. Humanidades",4),
+          _pageItem("Dpto. Matematicas", 0),
+          _pageItem("Dpto. Fisica", 1),
+          _pageItem("Dpto. Quimica", 2),
+          _pageItem("Dpto. Idiomas", 3),
+          _pageItem("Dpto. Humanidades", 4),
         ],
       ),
     );
   }
 }
-
-
