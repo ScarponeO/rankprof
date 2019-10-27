@@ -29,7 +29,7 @@ class Profesor extends StatelessWidget {
           SizedBox(height: 50),
           Container(
             padding: EdgeInsets.all(30), //Este es el padding que afecta a toda la caja
-            height: 550,
+            height: 500,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.all(Radius.circular(9)),
               color: Colors.indigo,
@@ -102,7 +102,7 @@ class Profesor extends StatelessWidget {
                     textAlign: TextAlign.left,
                     style: TextStyle(
                       color: Colors.white,
-                      fontSize: 14,
+                      fontSize: 10,
                       fontWeight: FontWeight.bold,
                     ),
                   ),

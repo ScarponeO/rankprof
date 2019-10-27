@@ -19,7 +19,7 @@ class _LoginPageState extends State<LoginPage> {
   bool _isLogginIn = false;
 
   _login() async {
-    //Navigator.of(context).pushNamed('/home');
+
     if(_isLogginIn) return;
     setState(() {
       _isLogginIn = true;
@@ -28,7 +28,7 @@ class _LoginPageState extends State<LoginPage> {
     _scaffoldKey.currentState.showSnackBar(SnackBar(
       content: Text('Logeando usuario') ,
     ));
-
+    Navigator.of(context).pushNamed('/home');
     final form = _formKey.currentState;
 
 

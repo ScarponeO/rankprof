@@ -11,7 +11,7 @@ class Department extends StatefulWidget {
   
     materias = documents.fold({}, (Map<String, String> map, document) {
           if (!map.containsKey(document['materia'])) {
-            map[document['materia']] = 'professor';
+            map[document['materia']] = '';
           }
           map[document['materia']] = document['name'];
           return map;

@@ -42,7 +42,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: BottomAppBar(
+     /* bottomNavigationBar: BottomAppBar(
         notchMargin: 8.0,
         child: Row(
           mainAxisSize: MainAxisSize.max,
@@ -53,7 +53,7 @@ class _HomePageState extends State<HomePage> {
             _bottomAction(Icons.settings),
           ],
         ),
-      ),
+      ), */
       body: _body(),
     );
   }
