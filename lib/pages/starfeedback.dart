@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+
+
+
 class StarFeedback extends StatefulWidget {
   @override
   _StarFeedbackState createState() => _StarFeedbackState();
 }
+
+
+
 
 class _StarFeedbackState extends State<StarFeedback> {
   var sliderValue = 0.0;
@@ -12,6 +18,10 @@ class _StarFeedbackState extends State<StarFeedback> {
       myFeedback4= FontAwesomeIcons.star,myFeedback5 = FontAwesomeIcons.star;
   Color myFeedbackColor1 = Colors.grey,myFeedbackColor2 = Colors.grey,myFeedbackColor3 = Colors.grey,
       myFeedbackColor4 = Colors.grey,myFeedbackColor5 = Colors.grey;
+
+
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +35,7 @@ class _StarFeedbackState extends State<StarFeedback> {
               children: <Widget>[
                 Container(child:Padding(
                   padding: const EdgeInsets.all(16.0),
-                  child: Container(child: Text("1. Orden",
+                  child: Container(child: Text("1. Disponibilidad",       //--------------> Titulo de la aptitud
                     style: TextStyle(color: Colors.black, fontSize: 22.0,fontWeight:FontWeight.bold),)),
                 ),),
                 SizedBox(height:30.0),
@@ -51,14 +61,14 @@ class _StarFeedbackState extends State<StarFeedback> {
                             ),
                             Padding(
                               padding: const EdgeInsets.all(8.0),
-                              child: Container(child: Slider(
+                              child: Container(child: Slider(    //------> Slider para rankear
                                 min: 0.0,
                                 max: 5.0,
                                 divisions: 5,
                                 value: sliderValue,
                                 inactiveColor: Colors.blueGrey,
                                 onChanged: (newValue) {
-                                  setState(() {
+                                  setState(() {                   //--------------> A partir de aqui se encuentran las condiciones para que las estrellas se marquen
                                     sliderValue = newValue;
                                     if (sliderValue == 1.0 ) {
                                       myFeedback1 = FontAwesomeIcons.solidStar;
@@ -120,21 +130,21 @@ class _StarFeedbackState extends State<StarFeedback> {
 
                             Padding(padding: const EdgeInsets.all(8.0),
 
-                              child: Text(
-                                  'Organizado al escribir en la pizarra y  en el material que se ofrece' ,style: TextStyle(color: Colors.black)),
+                              child: Text(               //--------------------------------> Descripcion de la aptitud
+                                  'El profesor ofrece horas de consulta o tiempo dirigido para resolver dudas' ,style: TextStyle(color: Colors.black)),
                             ) ,
 
                             Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Container(child: Align(
-                                alignment: Alignment.bottomCenter,
+                                alignment: Alignment.bottomCenter,        //---------------------------> Boton para seguir adelante en el ranking
                                 child: RaisedButton(
                                   shape:RoundedRectangleBorder(borderRadius: new BorderRadius.circular(30.0)),
                                   color: Color(0x802196F3),
                                   child: Text('Siguiente',
                                     style: TextStyle(color: Color(0xffffffff)),),
                                   onPressed: () {
-                                    Navigator.of(context).pushNamed('/starfeedback2');
+                                    Navigator.of(context).pushNamed('/starfeedback2');      //-----------------------> Ruta a donde lleva el boton
 
                                   },
                                 ),

@@ -28,7 +28,7 @@ class _LoginPageState extends State<LoginPage> {
     _scaffoldKey.currentState.showSnackBar(SnackBar(
       content: Text('Logeando usuario') ,
     ));
-    Navigator.of(context).pushNamed('/home');
+    Navigator.of(context).pushNamed('/home');    //------------> Ruta siguiente
     final form = _formKey.currentState;
 
 
@@ -44,7 +44,7 @@ class _LoginPageState extends State<LoginPage> {
 
     form.save();
     try{
-      await FirebaseAuth.instance.signInWithEmailAndPassword(email: _email, password: _password);
+      await FirebaseAuth.instance.signInWithEmailAndPassword(email: _email, password: _password);  //-----> Autenticacion de usuario
       Navigator.of(context).pushNamed('/home');
     } catch(e){
       _scaffoldKey.currentState.hideCurrentSnackBar();
@@ -144,7 +144,7 @@ class _LoginPageState extends State<LoginPage> {
       ) ,
       persistentFooterButtons: <Widget>[
         FlatButton(onPressed: (){
-          Navigator.of(context).pushNamed('/register');
+          Navigator.of(context).pushNamed('/starfeedback2');
         }, child: Text('No tengo una cuenta') ,)
       ],
     );

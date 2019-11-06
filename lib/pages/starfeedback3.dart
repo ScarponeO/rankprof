@@ -13,6 +13,14 @@ class _StarFeedback3State extends State<StarFeedback3> {
   Color myFeedbackColor1 = Colors.grey,myFeedbackColor2 = Colors.grey,myFeedbackColor3 = Colors.grey,
       myFeedbackColor4 = Colors.grey,myFeedbackColor5 = Colors.grey;
 
+
+
+
+
+
+
+
+
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -25,7 +33,7 @@ class _StarFeedback3State extends State<StarFeedback3> {
               children: <Widget>[
                 Container(child:Padding(
                   padding: const EdgeInsets.all(16.0),
-                  child: Container(child: Text("3. Exigencia acedemica",
+                  child: Container(child: Text("3. Exigencia acedemica",       //---------------> Titulo de aptitud
                     style: TextStyle(color: Colors.black, fontSize: 22.0,fontWeight:FontWeight.bold),)),
                 ),),
                 SizedBox(height:30.0),
@@ -51,7 +59,7 @@ class _StarFeedback3State extends State<StarFeedback3> {
                             ),
                             Padding(
                               padding: const EdgeInsets.all(8.0),
-                              child: Container(child: Slider(
+                              child: Container(child: Slider(             //--------------> A partir de aqui se encuentran las condiciones para que las estrellas se marquen
                                 min: 0.0,
                                 max: 5.0,
                                 divisions: 5,
@@ -117,21 +125,21 @@ class _StarFeedback3State extends State<StarFeedback3> {
                             ),
                             Padding(padding: const EdgeInsets.all(8.0),
 
-                              child: Text(
+                              child: Text(            //--------> Descripcion de las aptitudes
                                   'Pide a los estudiantes hacer lo mejor posible en cada actividad' ,style: TextStyle(color: Colors.black)),
                             ) ,
 
                             Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Container(child: Align(
-                                alignment: Alignment.bottomCenter,
+                                alignment: Alignment.bottomCenter,       //-----------------> Boton para continuar el ranking
                                 child: RaisedButton(
                                   shape:RoundedRectangleBorder(borderRadius: new BorderRadius.circular(30.0)),
                                   color: Color(0x802196F3),
                                   child: Text('Siguiente',
                                     style: TextStyle(color: Color(0xffffffff)),),
                                   onPressed: () {
-                                    Navigator.of(context).pushNamed('/starfeedback4');
+                                    Navigator.of(context).pushNamed('/starfeedback4');     //---------> Ruta siguiente
 
                                   },
                                 ),

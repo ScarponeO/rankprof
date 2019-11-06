@@ -38,8 +38,6 @@ class _TodoAppState extends State<TodoApp> {
   }
   Widget rootPage = LoginPage();  //---> Vista de arranque de la aplicacion
 
-
-
   @override
   Widget build(BuildContext context) {
      return MaterialApp(

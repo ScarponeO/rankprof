@@ -13,6 +13,12 @@ class _StarFeedback5State extends State<StarFeedback5> {
   Color myFeedbackColor1 = Colors.grey,myFeedbackColor2 = Colors.grey,myFeedbackColor3 = Colors.grey,
       myFeedbackColor4 = Colors.grey,myFeedbackColor5 = Colors.grey;
 
+
+
+
+
+
+
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -25,7 +31,7 @@ class _StarFeedback5State extends State<StarFeedback5> {
               children: <Widget>[
                 Container(child:Padding(
                   padding: const EdgeInsets.all(16.0),
-                  child: Container(child: Text("5. Disponibilidad",
+                  child: Container(child: Text("5. Disponibilidad",      //--------> Titulo de la aptitud
                     style: TextStyle(color: Colors.black, fontSize: 22.0,fontWeight:FontWeight.bold),)),
                 ),),
                 SizedBox(height:30.0),
@@ -51,14 +57,14 @@ class _StarFeedback5State extends State<StarFeedback5> {
                             ),
                             Padding(
                               padding: const EdgeInsets.all(8.0),
-                              child: Container(child: Slider(
+                              child: Container(child: Slider(      //--------> Slider
                                 min: 0.0,
                                 max: 5.0,
                                 divisions: 5,
                                 value: sliderValue,
                                 inactiveColor: Colors.blueGrey,
                                 onChanged: (newValue) {
-                                  setState(() {
+                                  setState(() {             //--------------> A partir de aqui se encuentran las condiciones para que las estrellas se marquen
                                     sliderValue = newValue;
                                     if (sliderValue == 1.0 ) {
                                       myFeedback1 = FontAwesomeIcons.solidStar;
@@ -112,28 +118,28 @@ class _StarFeedback5State extends State<StarFeedback5> {
                             ),
                             Padding(
                               padding: const EdgeInsets.all(16.0),
-                              child: Container(child: Text("Puntuacion : $sliderValue",
+                              child: Container(child: Text("Puntuacion : $sliderValue",    //------> Puntuacion del ranking
                                 style: TextStyle(color: Colors.black, fontSize: 22.0,fontWeight:FontWeight.bold),)),
                             ),
 
 
                             Padding(padding: const EdgeInsets.all(8.0),
 
-                              child: Text(
+                              child: Text(      //---------> Descripcion de la aptitud
                                   'El profesor ofrece horas de consulta o tiempo dirigido para resolver dudas' ,style: TextStyle(color: Colors.black)),
                             ) ,
 
                             Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Container(child: Align(
-                                alignment: Alignment.bottomCenter,
+                                alignment: Alignment.bottomCenter,    //---------> Boton para finalizar ranking
                                 child: RaisedButton(
                                   shape:RoundedRectangleBorder(borderRadius: new BorderRadius.circular(30.0)),
                                   color: Color(0x802196F3),
                                   child: Text('Enviar',
                                     style: TextStyle(color: Color(0xffffffff)),),
                                   onPressed: () {
-                                    Navigator.of(context).pushNamed('/home');
+                                    Navigator.of(context).pushNamed('/home');   //------------> Ruta Siguiente
 
                                   },
                                 ),

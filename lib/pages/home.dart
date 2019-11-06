@@ -109,7 +109,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget _selector() {
+  Widget _selector() {                      //-----------------------------> Barra de navegacion de los departamentos
     return SizedBox.fromSize(
       size: Size.fromHeight(70.0),
       child: PageView(

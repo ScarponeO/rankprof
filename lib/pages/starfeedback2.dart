@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:rankprof/behaviors/hiddenScrollBehavior.dart';
+
 
 class StarFeedback2 extends StatefulWidget {
   @override
@@ -7,213 +9,575 @@ class StarFeedback2 extends StatefulWidget {
 }
 
 class _StarFeedback2State extends State<StarFeedback2> {
-  var sliderValue = 0.0;
-  IconData myFeedback1= FontAwesomeIcons.star,myFeedback2= FontAwesomeIcons.star,myFeedback3= FontAwesomeIcons.star,
-      myFeedback4= FontAwesomeIcons.star,myFeedback5 = FontAwesomeIcons.star;
-  Color myFeedbackColor1 = Colors.grey,myFeedbackColor2 = Colors.grey,myFeedbackColor3 = Colors.grey,
-      myFeedbackColor4 = Colors.grey,myFeedbackColor5 = Colors.grey;
 
-  @override
-  Widget build(BuildContext context) {
-    return new Scaffold(
-      body: Column(
-        children: <Widget>[
-          _myAppBar(),
-          Container(
-            color: Color(0xffE5E5E5),
-            child: Column(
-              children: <Widget>[
-                Container(child:Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Container(child: Text("2. Pedagogia",
-                    style: TextStyle(color: Colors.black, fontSize: 22.0,fontWeight:FontWeight.bold),)),
-                ),),
-                SizedBox(height:30.0),
-                Container(
-                  child: Align(
-                    child: Material(
-                      color: Colors.white,
-                      elevation: 14.0,
-                      borderRadius: BorderRadius.circular(24.0),
-                      shadowColor: Color(0x802196F3),
-                      child: Container(
-                          width: 350.0,
-                          height: 350.0,
-                          child: Column(children: <Widget>[
-                            Padding(
-                              padding: const EdgeInsets.all(16.0),
-                              child: Container(
-                                child:Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                  children: StarWidget(),
-                                ),
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Container(child: Slider(
-                                min: 0.0,
-                                max: 5.0,
-                                divisions: 5,
-                                value: sliderValue,
-                                inactiveColor: Colors.blueGrey,
-                                onChanged: (newValue) {
-                                  setState(() {
-                                    sliderValue = newValue;
-                                    if (sliderValue == 1.0 ) {
-                                      myFeedback1 = FontAwesomeIcons.solidStar;
-                                      myFeedbackColor1 = Colors.yellow;
-                                    }
-                                    else if (sliderValue < 1.0 ){
-                                      myFeedback1 = FontAwesomeIcons.star;
-                                      myFeedbackColor1 = Colors.grey;
-
-                                    }
-                                    if (sliderValue == 2.0 ) {
-                                      myFeedback2 = FontAwesomeIcons.solidStar;
-                                      myFeedbackColor2= Colors.yellow;
-                                    }
-                                    else if (sliderValue < 2.0 ){
-                                      myFeedback2 = FontAwesomeIcons.star;
-                                      myFeedbackColor2 = Colors.grey;
-
-                                    }
-                                    if (sliderValue == 3.0 ) {
-                                      myFeedback3 = FontAwesomeIcons.solidStar;
-                                      myFeedbackColor3 = Colors.yellow;
-                                    }
-                                    else if (sliderValue < 3.0 ){
-                                      myFeedback3 = FontAwesomeIcons.star;
-                                      myFeedbackColor3 = Colors.grey;
-
-                                    }
-                                    if (sliderValue == 4.0 ) {
-                                      myFeedback4 = FontAwesomeIcons.solidStar;
-                                      myFeedbackColor4 = Colors.yellow;
-                                    }
-                                    else if (sliderValue < 4.0 ){
-                                      myFeedback4 = FontAwesomeIcons.star;
-                                      myFeedbackColor4 = Colors.grey;
-
-                                    }
-                                    if (sliderValue == 5.0 ) {
-                                      myFeedback5 = FontAwesomeIcons.solidStar;
-                                      myFeedbackColor5 = Colors.yellow;
-                                    }
-                                    else if (sliderValue < 5.0 ){
-                                      myFeedback5 = FontAwesomeIcons.star;
-                                      myFeedbackColor5 = Colors.grey;
-
-                                    }
-
-                                  });
-                                },
-                              ),),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(16.0),
-                              child: Container(child: Text("Puntuacion : $sliderValue",
-                                style: TextStyle(color: Colors.black, fontSize: 22.0,fontWeight:FontWeight.bold),)),
-                            ),
-
-                            Padding(padding: const EdgeInsets.all(8.0),
-
-                              child: Text(
-                                  'Práctica educativa o método de enseñanza' ,style: TextStyle(color: Colors.black)),
-                            ) ,
-
-
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Container(child: Align(
-                                alignment: Alignment.bottomCenter,
-                                child: RaisedButton(
-                                  shape:RoundedRectangleBorder(borderRadius: new BorderRadius.circular(30.0)),
-                                  color: Color(0x802196F3),
-                                  child: Text('Siguiente',
-                                    style: TextStyle(color: Color(0xffffffff)),),
-                                  onPressed: () {
-                                    Navigator.of(context).pushNamed('/starfeedback3');
-
-                                  },
-                                ),
-                              )),
-                            ),
-
-                          ],)
-                      ),
-                    ),
-                  ),
-                ),
-              ],
+  void _showDialog() {
+    // flutter defined function
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        // return object of type Dialog
+        return AlertDialog(
+          title: new Text("Alert Dialog title"),
+          content: new Text(instruccion),
+          actions: <Widget>[
+            // usually buttons at the bottom of the dialog
+            new FlatButton(
+              child: new Text("Close"),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
             ),
-          ),
-        ],
-      ),
+          ],
+        );
+      },
     );
   }
 
 
+  //VARIABLES PARA LA PRIMERA APTITUD
+
+  IconData myFeedback = FontAwesomeIcons.sadTear;
+  Color myFeedbackColor =Color(0xff00008b);
+  var myFeedbackText = "Rankea a tu profesor";
+  var instruccion = "Desliza el slider para rankear";
+  var sliderValue = 0.0;
+
+  //VARIABLES PARA LA SEGUNDA APTITUD
 
 
+  IconData myFeedback2 = FontAwesomeIcons.sadTear;
+  Color myFeedbackColor2 = Color(0xff00008b);
+  var myFeedbackText2 = "Rankea a tu profesor";
+  var instruccion2 = "Desliza el slider para rankear";
+  var sliderValue2 = 0.0;
+
+  //VARIABLES PARA LA TERCERA APTITUD
 
 
+  IconData myFeedback3 = FontAwesomeIcons.sadTear;
+  Color myFeedbackColor3 = Color(0xff00008b);
+  var myFeedbackText3 = "Rankea a tu profesor";
+  var instruccion3 = "Desliza el slider para rankear";
+  var sliderValue3 = 0.0;
 
-  List<Widget> StarWidget(){
-    List<Widget> myContainer = new List();
-    myContainer.add(Container(child: Icon(
-      myFeedback1, color: myFeedbackColor1, size: 50.0,)));
-    myContainer.add(Container(child: Icon(
-      myFeedback2, color: myFeedbackColor2, size: 50.0,)));
-    myContainer.add(Container(child: Icon(
-      myFeedback3, color: myFeedbackColor3, size: 50.0,)));
-    myContainer.add(Container(child: Icon(
-      myFeedback4, color: myFeedbackColor4, size: 50.0,)));
-    myContainer.add(Container(child: Icon(
-      myFeedback5, color: myFeedbackColor5, size: 50.0,)));
-    return myContainer;
-  }
+  //VARIABLES PARA LA CUARTA APTITUD
 
 
+  IconData myFeedback4 = FontAwesomeIcons.sadTear;
+  Color myFeedbackColor4 =Color(0xff00008b);
+  var myFeedbackText4 = "Rankea a tu profesor";
+  var instruccion4 = "Desliza el slider para rankear";
+  var sliderValue4 = 0.0;
+
+  //VARIABLES PARA LA QUINTA APTITUD
 
 
+  IconData myFeedback5 = FontAwesomeIcons.sadTear;
+  Color myFeedbackColor5 = Color(0xff00008b);
+  var myFeedbackText5 = "Rankea a tu profesor";
+  var instruccion5 = "Desliza el slider para rankear";
+  var sliderValue5 = 0.0;
 
 
-  Widget _myAppBar() {
-    return Container(
-      height: 70.0,
-      width: MediaQuery
-          .of(context)
-          .size
-          .width,
-
-      decoration: BoxDecoration(
-        gradient: new LinearGradient(
-          colors: [
-            const Color(0x802196F3),
-            const Color(0x802196FF),
-          ],
-          begin: Alignment.centerRight,
-          end: new Alignment(-1.0, -1.0),
-        ),
+  @override
+  Widget build(BuildContext context) {
+    return new Scaffold(
+      appBar: AppBar(
+          backgroundColor: Color(0xff00008b),
+        leading: IconButton(icon: Icon(Icons.arrow_back), onPressed: () {
+          Navigator.pop(context);
+          //
+        }),
+        title: Text("RankProf"),
+        actions: <Widget>[],
       ),
-      child: Padding(
-        padding: const EdgeInsets.only(top: 16.0),
-        child: Center(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                Expanded(
-                  flex: 5,
-                  child:Container(child:Text('       RankProf', style:
-                  TextStyle(
+      body: Container(
 
-                      color: Colors.white,
-                      fontWeight: FontWeight.w600,
-                      fontSize: 22.0
-                  ),),),),
-              ],)
+          color: Color(0xff00008b),
+
+          child: ScrollConfiguration(
+          behavior: HiddenScrollBehavior(),
+
+
+        child: ListView(
+          children: <Widget>[
+
+            //CONTAINER PARA LA PRIMERA APTITUD
+            Container(
+              margin: const EdgeInsets.only(top: 15.0, right:0),
+              child: Align(
+                child: Material(
+                  color: Colors.white,
+                  elevation: 14.0,
+
+                  borderRadius: BorderRadius.circular(25.0),
+                  child: Container(
+                      width: 350.0,
+                      height: 450.0,
+                      child: Column(children: <Widget>[
+                        Padding(
+                          padding: const EdgeInsets.all(16.0),
+                          child: Container(child: Text("1. Disponibilidad",
+                            style: TextStyle(color: Colors.black, fontSize: 22.0,fontWeight:FontWeight.bold),)),
+                        ),
+                        Padding(padding: const EdgeInsets.all(8.0),
+
+                          child: Text(            //--------> Descripcion de las aptitudes
+                              'El profesor ofrece horas de consulta o tiempo dirigido para resolver dudas.' ,
+                              textAlign: TextAlign.center,
+                              style: TextStyle(color: Colors.black, fontSize: 20.0 )),
+                        ) ,
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(child: Text(myFeedbackText,
+                            style: TextStyle(color: Colors.black, fontSize: 22.0),)),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(child: Icon(
+                            myFeedback, color: myFeedbackColor, size: 100.0,)),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(child: Slider(
+                            min: 0.0,
+                            max: 10.0,
+                            divisions: 5,
+                            value: sliderValue,
+                            activeColor: Color(0xff00008b),
+                            inactiveColor: Colors.blueGrey,
+                            onChanged: (newValue) {
+                              setState(() {
+                                sliderValue = newValue;
+                                if (sliderValue >= 0.0 && sliderValue <= 2.0) {
+                                  myFeedback = FontAwesomeIcons.sadTear;
+                                  myFeedbackColor = Colors.red;
+                                  myFeedbackText = "Puntuación: 1";
+                                  instruccion = " ";
+                                }
+                                if (sliderValue >= 2.1 && sliderValue <= 4.0) {
+                                  myFeedback = FontAwesomeIcons.frown;
+                                  myFeedbackColor = Colors.amber;
+                                  myFeedbackText = "Puntuación: 2";
+                                }
+                                if (sliderValue >= 4.1 && sliderValue <= 6.0) {
+                                  myFeedback = FontAwesomeIcons.meh;
+                                  myFeedbackColor = Colors.yellow;
+                                  myFeedbackText = "Puntuación: 3";
+                                }
+                                if (sliderValue >= 6.1 && sliderValue <= 8.0) {
+                                  myFeedback = FontAwesomeIcons.smile;
+                                  myFeedbackColor = Colors.lightGreenAccent;
+                                  myFeedbackText = "Puntuación: 4";
+                                }
+                                if (sliderValue >= 8.1 && sliderValue <= 10.0) {
+                                  myFeedback = FontAwesomeIcons.laugh;
+                                  myFeedbackColor = Colors.green;
+                                  myFeedbackText = "Puntuación: 5";
+                                }
+                              });
+                            },
+                          ),),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(child: Text(instruccion,
+                            style: TextStyle(color: Colors.black, fontSize: 12.0),)),
+                        ),
+                      ],)
+                  ),
+                ),
+              ),
+            ),
+
+
+
+            //CONTAINER PARA LA SEGUNDA APTITUD
+            Container(
+              margin: const EdgeInsets.only(top: 15.0, right:0),
+              child: Align(
+                child: Material(
+                  color: Colors.white,
+                  elevation: 14.0,
+
+                  borderRadius: BorderRadius.circular(25.0),
+                  child: Container(
+                      width: 350.0,
+                      height: 450.0,
+                      child: Column(children: <Widget>[
+                        Padding(
+                          padding: const EdgeInsets.all(16.0),
+                          child: Container(child: Text("2. Exigencia académica",
+                            style: TextStyle(color: Colors.black, fontSize: 22.0,fontWeight:FontWeight.bold),)),
+                        ),
+                        Padding(padding: const EdgeInsets.all(8.0),
+
+                          child: Text(            //--------> Descripcion de las aptitudes
+                              'Pide a los estudiantes hacer lo mejor posible en cada actividad.' ,
+                              textAlign: TextAlign.center,
+                              style: TextStyle(color: Colors.black, fontSize: 20.0 )),
+                        ) ,
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(child: Text(myFeedbackText2,
+                            style: TextStyle(color: Colors.black, fontSize: 22.0),)),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(child: Icon(
+                            myFeedback2, color: myFeedbackColor2, size: 100.0,)),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(child: Slider(
+                            min: 0.0,
+                            max: 10.0,
+                            divisions: 5,
+                            value: sliderValue2,
+                            activeColor: Color(0xff00008b),
+                            inactiveColor: Colors.blueGrey,
+                            onChanged: (newValue) {
+                              setState(() {
+                                sliderValue2 = newValue;
+                                if (sliderValue2 >= 0.0 && sliderValue2 <= 2.0) {
+                                  myFeedback2 = FontAwesomeIcons.sadTear;
+                                  myFeedbackColor2 = Colors.red;
+                                  myFeedbackText2 = "Puntuación: 1";
+                                  instruccion2 = " ";
+                                }
+                                if (sliderValue2 >= 2.1 && sliderValue2 <= 4.0) {
+                                  myFeedback2 = FontAwesomeIcons.frown;
+                                  myFeedbackColor2 = Colors.amber;
+                                  myFeedbackText2 = "Puntuación: 2";
+                                }
+                                if (sliderValue2 >= 4.1 && sliderValue2 <= 6.0) {
+                                  myFeedback2 = FontAwesomeIcons.meh;
+                                  myFeedbackColor2 = Colors.yellow;
+                                  myFeedbackText2 = "Puntuación: 3";
+                                }
+                                if (sliderValue2 >= 6.1 && sliderValue2 <= 8.0) {
+                                  myFeedback2 = FontAwesomeIcons.smile;
+                                  myFeedbackColor2 = Colors.lightGreenAccent;
+                                  myFeedbackText2 = "Puntuación: 4";
+                                }
+                                if (sliderValue2 >= 8.1 && sliderValue2 <= 10.0) {
+                                  myFeedback2 = FontAwesomeIcons.laugh;
+                                  myFeedbackColor2 = Colors.green;
+                                  myFeedbackText2 = "Puntuación: 5";
+                                }
+                              });
+                            },
+                          ),),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(child: Text(instruccion2,
+                            style: TextStyle(color: Colors.black, fontSize: 12.0),)),
+                        ),
+                      ],)
+                  ),
+                ),
+              ),
+            ),
+
+
+
+            //CONTAINER PARA LA TERCERA APTITUD
+            Container(
+              margin: const EdgeInsets.only(top: 15.0, right:0),
+              child: Align(
+                child: Material(
+                  color: Colors.white,
+                  elevation: 14.0,
+
+                  borderRadius: BorderRadius.circular(25.0),
+                  child: Container(
+                      width: 350.0,
+                      height: 450.0,
+                      child: Column(children: <Widget>[
+                        Padding(
+                          padding: const EdgeInsets.all(16.0),
+                          child: Container(child: Text("3. Interacción con el estudiante",
+                            style: TextStyle(color: Colors.black, fontSize: 22.0,fontWeight:FontWeight.bold),)),
+                        ),
+                        Padding(padding: const EdgeInsets.all(8.0),
+
+                          child: Text(            //--------> Descripcion de las aptitudes
+                              'Forma de dirigirse con el estudiante, amabilidad del profesor, lenguaje con el que se expresa en clases.' ,
+                              textAlign: TextAlign.center,
+                              style: TextStyle(color: Colors.black, fontSize: 20.0 )),
+                        ) ,
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(child: Text(myFeedbackText3,
+                            style: TextStyle(color: Colors.black, fontSize: 22.0),)),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(child: Icon(
+                            myFeedback3, color: myFeedbackColor3, size: 100.0,)),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(child: Slider(
+                            min: 0.0,
+                            max: 10.0,
+                            divisions: 5,
+                            value: sliderValue3,
+                            activeColor: Color(0xff00008b),
+                            inactiveColor: Colors.blueGrey,
+                            onChanged: (newValue) {
+                              setState(() {
+                                sliderValue3 = newValue;
+                                if (sliderValue3 >= 0.0 && sliderValue3 <= 2.0) {
+                                  myFeedback3 = FontAwesomeIcons.sadTear;
+                                  myFeedbackColor3 = Colors.red;
+                                  myFeedbackText3 = "Puntuación: 1";
+                                  instruccion3 = " ";
+                                }
+                                if (sliderValue3 >= 2.1 && sliderValue3 <= 4.0) {
+                                  myFeedback3 = FontAwesomeIcons.frown;
+                                  myFeedbackColor3 = Colors.amber;
+                                  myFeedbackText3 = "Puntuación: 2";
+                                }
+                                if (sliderValue3 >= 4.1 && sliderValue3 <= 6.0) {
+                                  myFeedback3 = FontAwesomeIcons.meh;
+                                  myFeedbackColor3 = Colors.yellow;
+                                  myFeedbackText3 = "Puntuación: 3";
+                                }
+                                if (sliderValue3 >= 6.1 && sliderValue3 <= 8.0) {
+                                  myFeedback3 = FontAwesomeIcons.smile;
+                                  myFeedbackColor3 = Colors.lightGreenAccent;
+                                  myFeedbackText3 = "Puntuación: 4";
+                                }
+                                if (sliderValue3 >= 8.1 && sliderValue3 <= 10.0) {
+                                  myFeedback3 = FontAwesomeIcons.laugh;
+                                  myFeedbackColor3 = Colors.green;
+                                  myFeedbackText3 = "Puntuación: 5";
+                                }
+                              });
+                            },
+                          ),),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(child: Text(instruccion3,
+                            style: TextStyle(color: Colors.black, fontSize: 12.0),)),
+                        ),
+                      ],)
+                  ),
+                ),
+              ),
+            ),
+
+
+
+
+            //CONTAINER PARA LA CUARTA APTITUD
+            Container(
+              margin: const EdgeInsets.only(top: 15.0, right:0),
+              child: Align(
+                child: Material(
+                  color: Colors.white,
+                  elevation: 14.0,
+
+                  borderRadius: BorderRadius.circular(25.0),
+                  child: Container(
+                      width: 350.0,
+                      height: 450.0,
+                      child: Column(children: <Widget>[
+                        Padding(
+                          padding: const EdgeInsets.all(16.0),
+                          child: Container(child: Text("4. Pedagogía",
+                            style: TextStyle(color: Colors.black, fontSize: 22.0,fontWeight:FontWeight.bold),)),
+                        ),
+                        Padding(padding: const EdgeInsets.all(8.0),
+
+                          child: Text(            //--------> Descripcion de las aptitudes
+                              'Práctica educativa o método de enseñanza, claridad con la que expresa sus ideas a la clase.' ,
+                              textAlign: TextAlign.center,
+                              style: TextStyle(color: Colors.black, fontSize: 20.0 )),
+                        ) ,
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(child: Text(myFeedbackText4,
+                            style: TextStyle(color: Colors.black, fontSize: 22.0),)),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(child: Icon(
+                            myFeedback4, color: myFeedbackColor4, size: 100.0,)),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(child: Slider(
+                            min: 0.0,
+                            max: 10.0,
+                            divisions: 5,
+                            value: sliderValue4,
+                            activeColor: Color(0xff00008b),
+                            inactiveColor: Colors.blueGrey,
+                            onChanged: (newValue) {
+                              setState(() {
+                                sliderValue4 = newValue;
+                                if (sliderValue4 >= 0.0 && sliderValue4 <= 2.0) {
+                                  myFeedback4 = FontAwesomeIcons.sadTear;
+                                  myFeedbackColor4 = Colors.red;
+                                  myFeedbackText4 = "Puntuación: 1";
+                                  instruccion4 = " ";
+                                }
+                                if (sliderValue4 >= 2.1 && sliderValue4 <= 4.0) {
+                                  myFeedback4 = FontAwesomeIcons.frown;
+                                  myFeedbackColor4 = Colors.amber;
+                                  myFeedbackText4 = "Puntuación: 2";
+                                }
+                                if (sliderValue4 >= 4.1 && sliderValue4 <= 6.0) {
+                                  myFeedback4 = FontAwesomeIcons.meh;
+                                  myFeedbackColor4 = Colors.yellow;
+                                  myFeedbackText4 = "Puntuación: 3";
+                                }
+                                if (sliderValue4 >= 6.1 && sliderValue4 <= 8.0) {
+                                  myFeedback4 = FontAwesomeIcons.smile;
+                                  myFeedbackColor4 = Colors.lightGreenAccent;
+                                  myFeedbackText4 = "Puntuación: 4";
+                                }
+                                if (sliderValue4 >= 8.1 && sliderValue4 <= 10.0) {
+                                  myFeedback4 = FontAwesomeIcons.laugh;
+                                  myFeedbackColor4 = Colors.green;
+                                  myFeedbackText4 = "Puntuación: 5";
+                                }
+                              });
+                            },
+                          ),),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(child: Text(instruccion4,
+                            style: TextStyle(color: Colors.black, fontSize: 12.0),)),
+                        ),
+                      ],)
+                  ),
+                ),
+              ),
+            ),
+
+
+
+            //CONTAINER PARA LA QUINTA APTITUD
+            Container(
+              margin: const EdgeInsets.only(top: 15.0, right:0),
+              child: Align(
+                child: Material(
+                  color: Colors.white,
+                  elevation: 14.0,
+
+                  borderRadius: BorderRadius.circular(25.0),
+                  child: Container(
+                      width: 350.0,
+                      height: 450.0,
+                      child: Column(children: <Widget>[
+                        Padding(
+                          padding: const EdgeInsets.all(16.0),
+                          child: Container(child: Text("5. Responsabilidad ",
+                            style: TextStyle(color: Colors.black, fontSize: 22.0,fontWeight:FontWeight.bold),)),
+                        ),
+                        Padding(padding: const EdgeInsets.all(8.0),
+
+                          child: Text(            //--------> Descripcion de las aptitudes
+                              'Puntualidad a la hora de clases, en la entrega de notas y de material académico.' ,
+                              textAlign: TextAlign.center,
+                              style: TextStyle(color: Colors.black, fontSize: 20.0 )),
+                        ) ,
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(child: Text(myFeedbackText5,
+                            style: TextStyle(color: Colors.black, fontSize: 22.0),)),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(child: Icon(
+                            myFeedback5, color: myFeedbackColor5, size: 100.0,)),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(child: Slider(
+                            min: 0.0,
+                            max: 10.0,
+                            divisions: 5,
+                            value: sliderValue5,
+                            activeColor: Color(0xff00008b),
+                            inactiveColor: Colors.blueGrey,
+                            onChanged: (newValue) {
+                              setState(() {
+                                sliderValue5 = newValue;
+                                if (sliderValue5 >= 0.0 && sliderValue5 <= 2.0) {
+                                  myFeedback5 = FontAwesomeIcons.sadTear;
+                                  myFeedbackColor5 = Colors.red;
+                                  myFeedbackText5 = "Puntuación: 1";
+                                  instruccion5 = " ";
+                                }
+                                if (sliderValue5 >= 2.1 && sliderValue5 <= 4.0) {
+                                  myFeedback5 = FontAwesomeIcons.frown;
+                                  myFeedbackColor5 = Colors.amber;
+                                  myFeedbackText5 = "Puntuación: 2";
+                                }
+                                if (sliderValue5 >= 4.1 && sliderValue5 <= 6.0) {
+                                  myFeedback5 = FontAwesomeIcons.meh;
+                                  myFeedbackColor5 = Colors.yellow;
+                                  myFeedbackText5 = "Puntuación: 3";
+                                }
+                                if (sliderValue5 >= 6.1 && sliderValue5 <= 8.0) {
+                                  myFeedback5 = FontAwesomeIcons.smile;
+                                  myFeedbackColor5 = Colors.lightGreenAccent;
+                                  myFeedbackText5 = "Puntuación: 4";
+                                }
+                                if (sliderValue5 >= 8.1 && sliderValue5 <= 10.0) {
+                                  myFeedback5 = FontAwesomeIcons.laugh;
+                                  myFeedbackColor5 = Colors.green;
+                                  myFeedbackText5 = "Puntuación: 5";
+                                }
+                              });
+                            },
+                          ),),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(child: Text(instruccion5,
+                            style: TextStyle(color: Colors.black, fontSize: 12.0),)),
+                        ),
+                      ],)
+                  ),
+                ),
+              ),
+            ),
+
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Container(child: Align(
+                alignment: Alignment.bottomCenter,
+                child: RaisedButton(
+                  shape:RoundedRectangleBorder(borderRadius: new BorderRadius.circular(30.0)),
+                  color: Color(0xff0000be),
+                  child: Text('           Enviar ranking           ',
+                    style: TextStyle(color: Color(0xffffffff),fontSize: 18.0),),
+                  onPressed: () {
+
+                    _showDialog();
+
+                  },
+                ),
+              )),
+            ),
+
+
+
+          ],
         ),
+
+    ),
+
+
+
       ),
     );
   }
