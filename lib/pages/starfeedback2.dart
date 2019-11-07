@@ -18,7 +18,7 @@ class _StarFeedback2State extends State<StarFeedback2> {
         // return object of type Dialog
         return AlertDialog(
           title: new Text("Alert Dialog title"),
-          content: new Text(instruccion),
+          content: new Text(myFeedbackText),
           actions: <Widget>[
             // usually buttons at the bottom of the dialog
             new FlatButton(
@@ -33,6 +33,11 @@ class _StarFeedback2State extends State<StarFeedback2> {
     );
   }
 
+  void promedio()
+  {
+    puntuacionTotal=(valorAptitud1+valorAptitud2+valorAptitud3+valorAptitud4+valorAptitud5)/5;
+  }
+
 
   //VARIABLES PARA LA PRIMERA APTITUD
 
@@ -41,6 +46,7 @@ class _StarFeedback2State extends State<StarFeedback2> {
   var myFeedbackText = "Rankea a tu profesor";
   var instruccion = "Desliza el slider para rankear";
   var sliderValue = 0.0;
+  double valorAptitud1 = 0.0;
 
   //VARIABLES PARA LA SEGUNDA APTITUD
 
@@ -50,6 +56,7 @@ class _StarFeedback2State extends State<StarFeedback2> {
   var myFeedbackText2 = "Rankea a tu profesor";
   var instruccion2 = "Desliza el slider para rankear";
   var sliderValue2 = 0.0;
+  double valorAptitud2 = 0.0;
 
   //VARIABLES PARA LA TERCERA APTITUD
 
@@ -59,7 +66,7 @@ class _StarFeedback2State extends State<StarFeedback2> {
   var myFeedbackText3 = "Rankea a tu profesor";
   var instruccion3 = "Desliza el slider para rankear";
   var sliderValue3 = 0.0;
-
+  double valorAptitud3 = 0.0;
   //VARIABLES PARA LA CUARTA APTITUD
 
 
@@ -68,7 +75,7 @@ class _StarFeedback2State extends State<StarFeedback2> {
   var myFeedbackText4 = "Rankea a tu profesor";
   var instruccion4 = "Desliza el slider para rankear";
   var sliderValue4 = 0.0;
-
+  double valorAptitud4 = 0.0;
   //VARIABLES PARA LA QUINTA APTITUD
 
 
@@ -77,6 +84,9 @@ class _StarFeedback2State extends State<StarFeedback2> {
   var myFeedbackText5 = "Rankea a tu profesor";
   var instruccion5 = "Desliza el slider para rankear";
   var sliderValue5 = 0.0;
+  double valorAptitud5 = 0.0;
+
+  double puntuacionTotal = 0.0;
 
 
   @override
@@ -113,19 +123,19 @@ class _StarFeedback2State extends State<StarFeedback2> {
                   borderRadius: BorderRadius.circular(25.0),
                   child: Container(
                       width: 350.0,
-                      height: 450.0,
+                      height: 350.0,
                       child: Column(children: <Widget>[
                         Padding(
                           padding: const EdgeInsets.all(16.0),
                           child: Container(child: Text("1. Disponibilidad",
-                            style: TextStyle(color: Colors.black, fontSize: 22.0,fontWeight:FontWeight.bold),)),
+                            style: TextStyle(color: Colors.black, fontSize: 16.0,fontWeight:FontWeight.bold),)),
                         ),
                         Padding(padding: const EdgeInsets.all(8.0),
 
                           child: Text(            //--------> Descripcion de las aptitudes
                               'El profesor ofrece horas de consulta o tiempo dirigido para resolver dudas.' ,
                               textAlign: TextAlign.center,
-                              style: TextStyle(color: Colors.black, fontSize: 20.0 )),
+                              style: TextStyle(color: Colors.black, fontSize: 14.0 )),
                         ) ,
                         Padding(
                           padding: const EdgeInsets.all(8.0),
@@ -135,7 +145,7 @@ class _StarFeedback2State extends State<StarFeedback2> {
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Container(child: Icon(
-                            myFeedback, color: myFeedbackColor, size: 100.0,)),
+                            myFeedback, color: myFeedbackColor, size: 80.0,)),
                         ),
                         Padding(
                           padding: const EdgeInsets.all(8.0),
@@ -154,26 +164,31 @@ class _StarFeedback2State extends State<StarFeedback2> {
                                   myFeedbackColor = Colors.red;
                                   myFeedbackText = "Puntuación: 1";
                                   instruccion = " ";
+                                  valorAptitud1 = 1;
                                 }
                                 if (sliderValue >= 2.1 && sliderValue <= 4.0) {
                                   myFeedback = FontAwesomeIcons.frown;
                                   myFeedbackColor = Colors.amber;
                                   myFeedbackText = "Puntuación: 2";
+                                  valorAptitud1 = 2;
                                 }
                                 if (sliderValue >= 4.1 && sliderValue <= 6.0) {
                                   myFeedback = FontAwesomeIcons.meh;
                                   myFeedbackColor = Colors.yellow;
                                   myFeedbackText = "Puntuación: 3";
+                                  valorAptitud1 = 3;
                                 }
                                 if (sliderValue >= 6.1 && sliderValue <= 8.0) {
                                   myFeedback = FontAwesomeIcons.smile;
                                   myFeedbackColor = Colors.lightGreenAccent;
                                   myFeedbackText = "Puntuación: 4";
+                                  valorAptitud1 = 4;
                                 }
                                 if (sliderValue >= 8.1 && sliderValue <= 10.0) {
                                   myFeedback = FontAwesomeIcons.laugh;
                                   myFeedbackColor = Colors.green;
                                   myFeedbackText = "Puntuación: 5";
+                                  valorAptitud1 = 5;
                                 }
                               });
                             },
@@ -203,19 +218,19 @@ class _StarFeedback2State extends State<StarFeedback2> {
                   borderRadius: BorderRadius.circular(25.0),
                   child: Container(
                       width: 350.0,
-                      height: 450.0,
+                      height: 350.0,
                       child: Column(children: <Widget>[
                         Padding(
                           padding: const EdgeInsets.all(16.0),
                           child: Container(child: Text("2. Exigencia académica",
-                            style: TextStyle(color: Colors.black, fontSize: 22.0,fontWeight:FontWeight.bold),)),
+                            style: TextStyle(color: Colors.black, fontSize: 18.0,fontWeight:FontWeight.bold),)),
                         ),
                         Padding(padding: const EdgeInsets.all(8.0),
 
                           child: Text(            //--------> Descripcion de las aptitudes
                               'Pide a los estudiantes hacer lo mejor posible en cada actividad.' ,
                               textAlign: TextAlign.center,
-                              style: TextStyle(color: Colors.black, fontSize: 20.0 )),
+                              style: TextStyle(color: Colors.black, fontSize: 16.0 )),
                         ) ,
                         Padding(
                           padding: const EdgeInsets.all(8.0),
@@ -225,7 +240,7 @@ class _StarFeedback2State extends State<StarFeedback2> {
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Container(child: Icon(
-                            myFeedback2, color: myFeedbackColor2, size: 100.0,)),
+                            myFeedback2, color: myFeedbackColor2, size: 80.0,)),
                         ),
                         Padding(
                           padding: const EdgeInsets.all(8.0),
@@ -244,26 +259,31 @@ class _StarFeedback2State extends State<StarFeedback2> {
                                   myFeedbackColor2 = Colors.red;
                                   myFeedbackText2 = "Puntuación: 1";
                                   instruccion2 = " ";
+                                  valorAptitud2 = 1;
                                 }
                                 if (sliderValue2 >= 2.1 && sliderValue2 <= 4.0) {
                                   myFeedback2 = FontAwesomeIcons.frown;
                                   myFeedbackColor2 = Colors.amber;
                                   myFeedbackText2 = "Puntuación: 2";
+                                  valorAptitud2 = 2;
                                 }
                                 if (sliderValue2 >= 4.1 && sliderValue2 <= 6.0) {
                                   myFeedback2 = FontAwesomeIcons.meh;
                                   myFeedbackColor2 = Colors.yellow;
                                   myFeedbackText2 = "Puntuación: 3";
+                                  valorAptitud2 = 3;
                                 }
                                 if (sliderValue2 >= 6.1 && sliderValue2 <= 8.0) {
                                   myFeedback2 = FontAwesomeIcons.smile;
                                   myFeedbackColor2 = Colors.lightGreenAccent;
                                   myFeedbackText2 = "Puntuación: 4";
+                                  valorAptitud2 = 4;
                                 }
                                 if (sliderValue2 >= 8.1 && sliderValue2 <= 10.0) {
                                   myFeedback2 = FontAwesomeIcons.laugh;
                                   myFeedbackColor2 = Colors.green;
                                   myFeedbackText2 = "Puntuación: 5";
+                                  valorAptitud2 = 5;
                                 }
                               });
                             },
@@ -293,19 +313,19 @@ class _StarFeedback2State extends State<StarFeedback2> {
                   borderRadius: BorderRadius.circular(25.0),
                   child: Container(
                       width: 350.0,
-                      height: 450.0,
+                      height: 360.0,
                       child: Column(children: <Widget>[
                         Padding(
                           padding: const EdgeInsets.all(16.0),
                           child: Container(child: Text("3. Interacción con el estudiante",
-                            style: TextStyle(color: Colors.black, fontSize: 22.0,fontWeight:FontWeight.bold),)),
+                            style: TextStyle(color: Colors.black, fontSize: 18.0,fontWeight:FontWeight.bold),)),
                         ),
                         Padding(padding: const EdgeInsets.all(8.0),
 
                           child: Text(            //--------> Descripcion de las aptitudes
                               'Forma de dirigirse con el estudiante, amabilidad del profesor, lenguaje con el que se expresa en clases.' ,
                               textAlign: TextAlign.center,
-                              style: TextStyle(color: Colors.black, fontSize: 20.0 )),
+                              style: TextStyle(color: Colors.black, fontSize: 16.0 )),
                         ) ,
                         Padding(
                           padding: const EdgeInsets.all(8.0),
@@ -315,7 +335,7 @@ class _StarFeedback2State extends State<StarFeedback2> {
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Container(child: Icon(
-                            myFeedback3, color: myFeedbackColor3, size: 100.0,)),
+                            myFeedback3, color: myFeedbackColor3, size: 80.0,)),
                         ),
                         Padding(
                           padding: const EdgeInsets.all(8.0),
@@ -334,26 +354,31 @@ class _StarFeedback2State extends State<StarFeedback2> {
                                   myFeedbackColor3 = Colors.red;
                                   myFeedbackText3 = "Puntuación: 1";
                                   instruccion3 = " ";
+                                  valorAptitud3 = 1;
                                 }
                                 if (sliderValue3 >= 2.1 && sliderValue3 <= 4.0) {
                                   myFeedback3 = FontAwesomeIcons.frown;
                                   myFeedbackColor3 = Colors.amber;
                                   myFeedbackText3 = "Puntuación: 2";
+                                  valorAptitud3 = 2;
                                 }
                                 if (sliderValue3 >= 4.1 && sliderValue3 <= 6.0) {
                                   myFeedback3 = FontAwesomeIcons.meh;
                                   myFeedbackColor3 = Colors.yellow;
                                   myFeedbackText3 = "Puntuación: 3";
+                                  valorAptitud3 = 3;
                                 }
                                 if (sliderValue3 >= 6.1 && sliderValue3 <= 8.0) {
                                   myFeedback3 = FontAwesomeIcons.smile;
                                   myFeedbackColor3 = Colors.lightGreenAccent;
                                   myFeedbackText3 = "Puntuación: 4";
+                                  valorAptitud3 = 4;
                                 }
                                 if (sliderValue3 >= 8.1 && sliderValue3 <= 10.0) {
                                   myFeedback3 = FontAwesomeIcons.laugh;
                                   myFeedbackColor3 = Colors.green;
                                   myFeedbackText3 = "Puntuación: 5";
+                                  valorAptitud3 = 5;
                                 }
                               });
                             },
@@ -384,19 +409,19 @@ class _StarFeedback2State extends State<StarFeedback2> {
                   borderRadius: BorderRadius.circular(25.0),
                   child: Container(
                       width: 350.0,
-                      height: 450.0,
+                      height: 360.0,
                       child: Column(children: <Widget>[
                         Padding(
                           padding: const EdgeInsets.all(16.0),
                           child: Container(child: Text("4. Pedagogía",
-                            style: TextStyle(color: Colors.black, fontSize: 22.0,fontWeight:FontWeight.bold),)),
+                            style: TextStyle(color: Colors.black, fontSize: 18.0,fontWeight:FontWeight.bold),)),
                         ),
                         Padding(padding: const EdgeInsets.all(8.0),
 
                           child: Text(            //--------> Descripcion de las aptitudes
                               'Práctica educativa o método de enseñanza, claridad con la que expresa sus ideas a la clase.' ,
                               textAlign: TextAlign.center,
-                              style: TextStyle(color: Colors.black, fontSize: 20.0 )),
+                              style: TextStyle(color: Colors.black, fontSize: 16.0 )),
                         ) ,
                         Padding(
                           padding: const EdgeInsets.all(8.0),
@@ -406,7 +431,7 @@ class _StarFeedback2State extends State<StarFeedback2> {
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Container(child: Icon(
-                            myFeedback4, color: myFeedbackColor4, size: 100.0,)),
+                            myFeedback4, color: myFeedbackColor4, size: 80.0,)),
                         ),
                         Padding(
                           padding: const EdgeInsets.all(8.0),
@@ -425,26 +450,31 @@ class _StarFeedback2State extends State<StarFeedback2> {
                                   myFeedbackColor4 = Colors.red;
                                   myFeedbackText4 = "Puntuación: 1";
                                   instruccion4 = " ";
+                                  valorAptitud4 = 1;
                                 }
                                 if (sliderValue4 >= 2.1 && sliderValue4 <= 4.0) {
                                   myFeedback4 = FontAwesomeIcons.frown;
                                   myFeedbackColor4 = Colors.amber;
                                   myFeedbackText4 = "Puntuación: 2";
+                                  valorAptitud4 = 2;
                                 }
                                 if (sliderValue4 >= 4.1 && sliderValue4 <= 6.0) {
                                   myFeedback4 = FontAwesomeIcons.meh;
                                   myFeedbackColor4 = Colors.yellow;
                                   myFeedbackText4 = "Puntuación: 3";
+                                  valorAptitud4 = 3;
                                 }
                                 if (sliderValue4 >= 6.1 && sliderValue4 <= 8.0) {
                                   myFeedback4 = FontAwesomeIcons.smile;
                                   myFeedbackColor4 = Colors.lightGreenAccent;
                                   myFeedbackText4 = "Puntuación: 4";
+                                  valorAptitud4 = 4;
                                 }
                                 if (sliderValue4 >= 8.1 && sliderValue4 <= 10.0) {
                                   myFeedback4 = FontAwesomeIcons.laugh;
                                   myFeedbackColor4 = Colors.green;
                                   myFeedbackText4 = "Puntuación: 5";
+                                  valorAptitud4 = 5;
                                 }
                               });
                             },
@@ -474,19 +504,19 @@ class _StarFeedback2State extends State<StarFeedback2> {
                   borderRadius: BorderRadius.circular(25.0),
                   child: Container(
                       width: 350.0,
-                      height: 450.0,
+                      height: 360.0,
                       child: Column(children: <Widget>[
                         Padding(
                           padding: const EdgeInsets.all(16.0),
                           child: Container(child: Text("5. Responsabilidad ",
-                            style: TextStyle(color: Colors.black, fontSize: 22.0,fontWeight:FontWeight.bold),)),
+                            style: TextStyle(color: Colors.black, fontSize: 18.0,fontWeight:FontWeight.bold),)),
                         ),
                         Padding(padding: const EdgeInsets.all(8.0),
 
                           child: Text(            //--------> Descripcion de las aptitudes
                               'Puntualidad a la hora de clases, en la entrega de notas y de material académico.' ,
                               textAlign: TextAlign.center,
-                              style: TextStyle(color: Colors.black, fontSize: 20.0 )),
+                              style: TextStyle(color: Colors.black, fontSize: 16.0 )),
                         ) ,
                         Padding(
                           padding: const EdgeInsets.all(8.0),
@@ -496,7 +526,7 @@ class _StarFeedback2State extends State<StarFeedback2> {
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Container(child: Icon(
-                            myFeedback5, color: myFeedbackColor5, size: 100.0,)),
+                            myFeedback5, color: myFeedbackColor5, size: 80.0,)),
                         ),
                         Padding(
                           padding: const EdgeInsets.all(8.0),
@@ -515,26 +545,31 @@ class _StarFeedback2State extends State<StarFeedback2> {
                                   myFeedbackColor5 = Colors.red;
                                   myFeedbackText5 = "Puntuación: 1";
                                   instruccion5 = " ";
+                                  valorAptitud5 = 1;
                                 }
                                 if (sliderValue5 >= 2.1 && sliderValue5 <= 4.0) {
                                   myFeedback5 = FontAwesomeIcons.frown;
                                   myFeedbackColor5 = Colors.amber;
                                   myFeedbackText5 = "Puntuación: 2";
+                                  valorAptitud5 = 2;
                                 }
                                 if (sliderValue5 >= 4.1 && sliderValue5 <= 6.0) {
                                   myFeedback5 = FontAwesomeIcons.meh;
                                   myFeedbackColor5 = Colors.yellow;
                                   myFeedbackText5 = "Puntuación: 3";
+                                  valorAptitud5 = 3;
                                 }
                                 if (sliderValue5 >= 6.1 && sliderValue5 <= 8.0) {
                                   myFeedback5 = FontAwesomeIcons.smile;
                                   myFeedbackColor5 = Colors.lightGreenAccent;
                                   myFeedbackText5 = "Puntuación: 4";
+                                  valorAptitud5 = 4;
                                 }
                                 if (sliderValue5 >= 8.1 && sliderValue5 <= 10.0) {
                                   myFeedback5 = FontAwesomeIcons.laugh;
                                   myFeedbackColor5 = Colors.green;
                                   myFeedbackText5 = "Puntuación: 5";
+                                  valorAptitud5 = 5;
                                 }
                               });
                             },
@@ -551,7 +586,11 @@ class _StarFeedback2State extends State<StarFeedback2> {
               ),
             ),
 
+
+
+
             Padding(
+
               padding: const EdgeInsets.all(20.0),
               child: Container(child: Align(
                 alignment: Alignment.bottomCenter,
@@ -561,8 +600,10 @@ class _StarFeedback2State extends State<StarFeedback2> {
                   child: Text('           Enviar ranking           ',
                     style: TextStyle(color: Color(0xffffffff),fontSize: 18.0),),
                   onPressed: () {
-
+                    promedio();
                     _showDialog();
+                    print(puntuacionTotal);
+
 
                   },
                 ),
