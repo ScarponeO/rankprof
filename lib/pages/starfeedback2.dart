@@ -15,20 +15,44 @@ class _StarFeedback2State extends State<StarFeedback2> {
     showDialog(
       context: context,
       builder: (BuildContext context) {
-        // return object of type Dialog
-        return AlertDialog(
-          title: new Text("Alert Dialog title"),
-          content: new Text(myFeedbackText),
-          actions: <Widget>[
-            // usually buttons at the bottom of the dialog
-            new FlatButton(
-              child: new Text("Close"),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-          ],
-        );
+
+          //IF para evitar que el usuario deje alguna aptitud sin ranquear.
+          if(sliderValue == 0.0 || sliderValue2 == 0.0 || sliderValue3 == 0.0 || sliderValue4 == 0.0 || sliderValue5 == 0.0  )
+            {
+              return AlertDialog(
+                title: new Text("Debes llenar todas las aptitudes"),
+                actions: <Widget>[
+                  // usually buttons at the bottom of the dialog
+                  new FlatButton(
+                    child: new Text("Aceptar"),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                  ),
+                ],
+              );
+            } else
+              {
+                return AlertDialog(
+                  title: new Text("Seguro que deseas enviar el ranking?"),
+                  content: new Text(""),
+                  actions: <Widget>[
+                    // usually buttons at the bottom of the dialog
+                    new FlatButton(
+                      child: new Text("Close"),
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                    ),
+                    new FlatButton(
+                        child: new Text("Enviar"),
+                        onPressed: () {
+                          Navigator.of(context).pushNamed('/login');
+                        }
+                    ),
+                  ],
+                );
+              }
       },
     );
   }
@@ -126,8 +150,8 @@ class _StarFeedback2State extends State<StarFeedback2> {
                       height: 350.0,
                       child: Column(children: <Widget>[
                         Padding(
-                          padding: const EdgeInsets.all(16.0),
-                          child: Container(child: Text("1. Disponibilidad",
+                          padding: const EdgeInsets.all(18.0),
+                          child: Container(child: Text("Disponibilidad",
                             style: TextStyle(color: Colors.black, fontSize: 16.0,fontWeight:FontWeight.bold),)),
                         ),
                         Padding(padding: const EdgeInsets.all(8.0),
@@ -135,7 +159,7 @@ class _StarFeedback2State extends State<StarFeedback2> {
                           child: Text(            //--------> Descripcion de las aptitudes
                               'El profesor ofrece horas de consulta o tiempo dirigido para resolver dudas.' ,
                               textAlign: TextAlign.center,
-                              style: TextStyle(color: Colors.black, fontSize: 14.0 )),
+                              style: TextStyle(color: Colors.black, fontSize: 16.0 )),
                         ) ,
                         Padding(
                           padding: const EdgeInsets.all(8.0),
@@ -159,7 +183,14 @@ class _StarFeedback2State extends State<StarFeedback2> {
                             onChanged: (newValue) {
                               setState(() {
                                 sliderValue = newValue;
-                                if (sliderValue >= 0.0 && sliderValue <= 2.0) {
+                                if (sliderValue == 0.0) {
+                                  myFeedback = FontAwesomeIcons.sadTear;
+                                  myFeedbackColor =Color(0xff00008b);
+                                  myFeedbackText = "Puntuación: 0";
+                                  instruccion = "Recuerda que debes rankear";
+                                  valorAptitud1 = 0;
+                                }
+                                if (sliderValue > 0.0 && sliderValue <= 2.0) {
                                   myFeedback = FontAwesomeIcons.sadTear;
                                   myFeedbackColor = Colors.red;
                                   myFeedbackText = "Puntuación: 1";
@@ -222,7 +253,7 @@ class _StarFeedback2State extends State<StarFeedback2> {
                       child: Column(children: <Widget>[
                         Padding(
                           padding: const EdgeInsets.all(16.0),
-                          child: Container(child: Text("2. Exigencia académica",
+                          child: Container(child: Text("Exigencia académica",
                             style: TextStyle(color: Colors.black, fontSize: 18.0,fontWeight:FontWeight.bold),)),
                         ),
                         Padding(padding: const EdgeInsets.all(8.0),
@@ -254,7 +285,14 @@ class _StarFeedback2State extends State<StarFeedback2> {
                             onChanged: (newValue) {
                               setState(() {
                                 sliderValue2 = newValue;
-                                if (sliderValue2 >= 0.0 && sliderValue2 <= 2.0) {
+                                if (sliderValue2 == 0.0) {
+                                  myFeedback2 = FontAwesomeIcons.sadTear;
+                                  myFeedbackColor2 =Color(0xff00008b);
+                                  myFeedbackText2 = "Puntuación: 0";
+                                  instruccion2 = "Recuerda que debes rankear";
+                                  valorAptitud2 = 0;
+                                }
+                                if (sliderValue2 > 0.0 && sliderValue2 <= 2.0) {
                                   myFeedback2 = FontAwesomeIcons.sadTear;
                                   myFeedbackColor2 = Colors.red;
                                   myFeedbackText2 = "Puntuación: 1";
@@ -317,7 +355,7 @@ class _StarFeedback2State extends State<StarFeedback2> {
                       child: Column(children: <Widget>[
                         Padding(
                           padding: const EdgeInsets.all(16.0),
-                          child: Container(child: Text("3. Interacción con el estudiante",
+                          child: Container(child: Text("Interacción con el estudiante",
                             style: TextStyle(color: Colors.black, fontSize: 18.0,fontWeight:FontWeight.bold),)),
                         ),
                         Padding(padding: const EdgeInsets.all(8.0),
@@ -349,7 +387,14 @@ class _StarFeedback2State extends State<StarFeedback2> {
                             onChanged: (newValue) {
                               setState(() {
                                 sliderValue3 = newValue;
-                                if (sliderValue3 >= 0.0 && sliderValue3 <= 2.0) {
+                                if (sliderValue3 == 0.0) {
+                                  myFeedback3 = FontAwesomeIcons.sadTear;
+                                  myFeedbackColor3 =Color(0xff00008b);
+                                  myFeedbackText3 = "Puntuación: 0";
+                                  instruccion3 = "Recuerda que debes rankear";
+                                  valorAptitud3 = 0;
+                                }
+                                if (sliderValue3 > 0.0 && sliderValue3 <= 2.0) {
                                   myFeedback3 = FontAwesomeIcons.sadTear;
                                   myFeedbackColor3 = Colors.red;
                                   myFeedbackText3 = "Puntuación: 1";
@@ -413,7 +458,7 @@ class _StarFeedback2State extends State<StarFeedback2> {
                       child: Column(children: <Widget>[
                         Padding(
                           padding: const EdgeInsets.all(16.0),
-                          child: Container(child: Text("4. Pedagogía",
+                          child: Container(child: Text("Pedagogía",
                             style: TextStyle(color: Colors.black, fontSize: 18.0,fontWeight:FontWeight.bold),)),
                         ),
                         Padding(padding: const EdgeInsets.all(8.0),
@@ -445,7 +490,14 @@ class _StarFeedback2State extends State<StarFeedback2> {
                             onChanged: (newValue) {
                               setState(() {
                                 sliderValue4 = newValue;
-                                if (sliderValue4 >= 0.0 && sliderValue4 <= 2.0) {
+                                if (sliderValue4 == 0.0) {
+                                  myFeedback4 = FontAwesomeIcons.sadTear;
+                                  myFeedbackColor4 =Color(0xff00008b);
+                                  myFeedbackText4 = "Puntuación: 0";
+                                  instruccion4 = "Recuerda que debes rankear";
+                                  valorAptitud4 = 0;
+                                }
+                                if (sliderValue4 > 0.0 && sliderValue4 <= 2.0) {
                                   myFeedback4 = FontAwesomeIcons.sadTear;
                                   myFeedbackColor4 = Colors.red;
                                   myFeedbackText4 = "Puntuación: 1";
@@ -508,7 +560,7 @@ class _StarFeedback2State extends State<StarFeedback2> {
                       child: Column(children: <Widget>[
                         Padding(
                           padding: const EdgeInsets.all(16.0),
-                          child: Container(child: Text("5. Responsabilidad ",
+                          child: Container(child: Text("Responsabilidad ",
                             style: TextStyle(color: Colors.black, fontSize: 18.0,fontWeight:FontWeight.bold),)),
                         ),
                         Padding(padding: const EdgeInsets.all(8.0),
@@ -540,7 +592,14 @@ class _StarFeedback2State extends State<StarFeedback2> {
                             onChanged: (newValue) {
                               setState(() {
                                 sliderValue5 = newValue;
-                                if (sliderValue5 >= 0.0 && sliderValue5 <= 2.0) {
+                                if (sliderValue5 == 0.0) {
+                                  myFeedback5 = FontAwesomeIcons.sadTear;
+                                  myFeedbackColor5 =Color(0xff00008b);
+                                  myFeedbackText5 = "Puntuación: 0";
+                                  instruccion5 = "Recuerda que debes rankear";
+                                  valorAptitud5 = 0;
+                                }
+                                if (sliderValue5 > 0.0 && sliderValue5 <= 2.0) {
                                   myFeedback5 = FontAwesomeIcons.sadTear;
                                   myFeedbackColor5 = Colors.red;
                                   myFeedbackText5 = "Puntuación: 1";
