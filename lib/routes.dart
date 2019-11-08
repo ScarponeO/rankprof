@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rankprof/pages/department.dart';
 import 'package:rankprof/pages/forgotPassword.dart';
-import 'package:rankprof/pages/listMateria.dart';
+
 import 'package:rankprof/pages/login.dart';
 import 'package:rankprof/pages/mainTabs.dart';
 import 'package:rankprof/pages/profesor.dart';
@@ -19,7 +19,6 @@ Map<String, WidgetBuilder> buildAppRoutes() {
     '/department': (BuildContext context) =>  Department(),
     '/maintabs': (BuildContext context) =>  MainTabsPage(),
     '/starfeedback2': (BuildContext context) => StarFeedback2(),
-    '/starfeedback2': (BuildContext context) => ListMateriaPage(),
 
   } ;
 }
