@@ -2,8 +2,12 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:rankprof/pages/custom_raised_button.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:rankprof/services/auth.dart';
+
 
 class SignInPage extends StatefulWidget {
+  SignInPage({@required this.auth});
+  final AuthBase auth;
   @override
   State<StatefulWidget> createState() {
     return _SignInPageState();
@@ -18,25 +22,15 @@ class _SignInPageState extends State<SignInPage> {
     scopes: ['email'],
   );
 
-  final FirebaseAuth _firebaseAuth= FirebaseAuth.instance;
+  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
 
-  _login() async {
+  Future<void> _signInWithGoogle() async {
     try {
-      await _googleSignIn.signIn();
-      setState(() {
-        _isLoggedIn = true;
-      });
-      Navigator.of(context).pushNamed('/home');
-    } catch (err) {
-      print(err);
+      await widget.auth.signInWithGoogle();
     }
-  }
-
-  _logout() async {
-    _googleSignIn.signOut();
-    setState(() {
-      _isLoggedIn = false;
-    });
+    catch (e) {
+      print(e.toString());
+    }
   }
 
   Widget build(BuildContext context) {
@@ -89,7 +83,7 @@ class _SignInPageState extends State<SignInPage> {
               color: Colors.white,
               radius: 2,
               onPressed: () {
-                _login();
+                _signInWithGoogle();
               },
               height: 50,
             ),

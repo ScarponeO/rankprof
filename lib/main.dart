@@ -1,9 +1,7 @@
-import 'package:firebase_auth/firebase_auth.dart';
+
 import 'package:flutter/material.dart';
-import 'package:rankprof/pages/login.dart';
-import 'package:rankprof/pages/mainTabs.dart';
-import 'package:rankprof/pages/register.dart';
 import 'package:rankprof/routes.dart';
+import 'package:rankprof/services/auth.dart';
 import 'package:rankprof/src/providers/push_notificacions_provider.dart';
 import 'package:rankprof/theme.dart';
 import 'package:rankprof/pages/sign_in.dart';
@@ -36,7 +34,7 @@ class _TodoAppState extends State<TodoApp> {
       navigatorKey.currentState.pushNamed('/home', arguments: data );
     });
   }
-  Widget rootPage = SignInPage();  //---> Vista de arranque de la aplicacion
+  Widget rootPage = SignInPage(auth: Auth(),);  //---> Vista de arranque de la aplicacion
 
   @override
   Widget build(BuildContext context) {
