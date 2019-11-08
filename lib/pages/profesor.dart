@@ -23,12 +23,12 @@ class Profesor extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.all(25.0),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,//--> este codigo perimte que la caja se etire lo mas que pueda,
+        crossAxisAlignment: CrossAxisAlignment.stretch,//--> este codigo permite que la caja se retire lo mas que pueda
         mainAxisAlignment: MainAxisAlignment.start,//------> por lo que no hay necesidad de width.
         children: <Widget>[
           SizedBox(height: 50),
           Container(
-            padding: EdgeInsets.all(30), //Este es el padding que afecta a toda la caja
+            padding: EdgeInsets.all(30), //---------->Este es el padding que afecta a toda la caja
             height: 500,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.all(Radius.circular(9)),
@@ -38,7 +38,7 @@ class Profesor extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Padding(
-                  padding: EdgeInsets.all(2), //---> Nombre del Profesor
+                  padding: EdgeInsets.all(2), //------------------> Nombre del Profesor
                   child: Text(
                     'Mirna Guevara',
                     textAlign
@@ -51,7 +51,7 @@ class Profesor extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.all(10),//---> Materia
+                  padding: EdgeInsets.all(10),//-----------------> Materia
                   child: Text(
                     'Fisica 2',
                     textAlign: TextAlign.center,
@@ -63,7 +63,7 @@ class Profesor extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.all(10),//---> Estrellas
+                  padding: EdgeInsets.all(10),//-----------------> Estrellas
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -91,7 +91,7 @@ class Profesor extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.all(10),//--------------> Biografia como tal
+                  padding: EdgeInsets.all(10),//--------------> Biografia del profesor
                   child: Text(
                     'Lorem ipsum dolor sit amet, consectetur '
                         'adipiscing elit. Maecenas venenatis est consectetur '
@@ -118,7 +118,7 @@ class Profesor extends StatelessWidget {
                     ),
                   ),
                   onPressed: () {
-                    Navigator.of(context).pushNamed('/starfeedback');
+                    Navigator.of(context).pushNamed('/starfeedback2');
                   },
                 ),
               ],

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:rankprof/pages/login.dart';
 import 'package:rankprof/pages/mainTabs.dart';
 import 'package:rankprof/pages/register.dart';
-import 'package:rankprof/pages/starfeedback.dart';
 import 'package:rankprof/routes.dart';
 import 'package:rankprof/src/providers/push_notificacions_provider.dart';
 import 'package:rankprof/theme.dart';
@@ -38,8 +37,6 @@ class _TodoAppState extends State<TodoApp> {
     });
   }
   Widget rootPage = SignInPage();  //---> Vista de arranque de la aplicacion
-
-
 
   @override
   Widget build(BuildContext context) {
