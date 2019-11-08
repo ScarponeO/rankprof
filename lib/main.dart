@@ -7,6 +7,7 @@ import 'package:rankprof/pages/starfeedback.dart';
 import 'package:rankprof/routes.dart';
 import 'package:rankprof/src/providers/push_notificacions_provider.dart';
 import 'package:rankprof/theme.dart';
+import 'package:rankprof/pages/sign_in.dart';
 
 
 
@@ -36,7 +37,7 @@ class _TodoAppState extends State<TodoApp> {
       navigatorKey.currentState.pushNamed('/home', arguments: data );
     });
   }
-  Widget rootPage = LoginPage();  //---> Vista de arranque de la aplicacion
+  Widget rootPage = SignInPage();  //---> Vista de arranque de la aplicacion
 
 
 

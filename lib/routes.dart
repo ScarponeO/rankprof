@@ -6,6 +6,7 @@ import 'package:rankprof/pages/mainTabs.dart';
 import 'package:rankprof/pages/profesor.dart';
 import 'package:rankprof/pages/register.dart';
 import 'package:rankprof/pages/home.dart';
+import 'package:rankprof/pages/sign_in.dart';
 import 'package:rankprof/pages/starfeedback.dart';
 import 'package:rankprof/pages/starfeedback2.dart';
 import 'package:rankprof/pages/starfeedback3.dart';
@@ -26,6 +27,7 @@ Map<String, WidgetBuilder> buildAppRoutes() {
     '/starfeedback3': (BuildContext context) => StarFeedback3(),
     '/starfeedback4': (BuildContext context) => StarFeedback4(),
     '/starfeedback5': (BuildContext context) => StarFeedback5(),
+    '/signin': (BuildContext context) => SignInPage()
 
   } ;
 }
