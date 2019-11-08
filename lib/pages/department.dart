@@ -1,47 +1,45 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-
-
+ 
+ 
 class Department extends StatefulWidget {
   final List<DocumentSnapshot> documents;
   final Map<String, String> departamentos;
   //final Map<String, String> prof;
-
-  Department({Key key, this.documents}):
-
-        departamentos = documents.fold({}, (Map<String, String> map, document) {
-          if (!map.containsKey(document['name'])) {
-            map[document['name']] = '';
-          }
-          map[document['name']] = document[''];
-          return map;
-        }),
-        super(key: key);
-
+  
+  Department({Key key, this.documents}): 
+  
+    departamentos = documents.fold({}, (Map<String, String> map, document) {
+      if (!map.containsKey(document['name'])) {
+        map[document['name']] = '';
+      }
+        map[document['name']] = document[''];
+      return map;
+    }),
+  super(key: key);
+ 
   @override
   _DepartmentState createState() => _DepartmentState();
 }
-
+ 
 class _DepartmentState extends State<Department> {
   var key;
   @override
-
+ 
   // Aqui se estan "llamando las cosas"
   Widget build(BuildContext context) {
     return Expanded(
-      child: Column(
-        children: <Widget>[
-          _searchBar(),
-          _list(),
-        ],
-      ),
+    child: Column(
+      children: <Widget>[
+        _searchBar(),
+        _list(),
+      ],
+    ),
     );
   }
-
-
+ 
+ 
 // fUTURA barra de busqueda (POR AHORA SOLO LA CUESTION DE ARRIBA)
   Widget _searchBar() {
     return Container(
@@ -63,8 +61,8 @@ class _DepartmentState extends State<Department> {
       ),
     );
   }
-
-
+ 
+ 
 // Forma cada iten de la lista
   Widget _item(IconData icon, String name) {
     return ListTile(
@@ -83,13 +81,13 @@ class _DepartmentState extends State<Department> {
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: RaisedButton(
-              child:  Text("Profesores",
-                style: TextStyle(
-                  color: Colors.blueAccent,
-                  fontWeight: FontWeight.w500,
-                  fontSize: 16.0,
-                ),
+            child:  Text("Profesores",
+              style: TextStyle(
+                color: Colors.blueAccent,
+                fontWeight: FontWeight.w500,
+                fontSize: 16.0,
               ),
+            ),
               onPressed: () {
                 return Navigator.of(context).pushNamed('/profesor');
               }
@@ -98,9 +96,9 @@ class _DepartmentState extends State<Department> {
       ),
     );
   }
-
-
-  // Esta es la lista como tal, es decir, asi se crea
+ 
+ 
+ // Esta es la lista como tal, es decir, asi se crea
   Widget _list() {
     return Expanded(
       child: ListView.separated(
@@ -118,49 +116,49 @@ class _DepartmentState extends State<Department> {
       ),
     );
   }
-
+ 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
 // class Department extends StatefulWidget {
 //   final List<DocumentSnapshot> documents;
 //   final Map<String, String> materias;
 //   //final Map<String, String> prof;
-
-//   Department({Key key, this.documents}):
-
+  
+//   Department({Key key, this.documents}): 
+  
 //     materias = documents.fold({}, (Map<String, String> map, document) {
 //           if (!map.containsKey(document['materia'])) {
 //             map[document['materia']] = '';
@@ -169,11 +167,11 @@ class _DepartmentState extends State<Department> {
 //           return map;
 //         }),
 //   super(key: key);
-
+ 
 //   @override
 //   _DepartmentState createState() => _DepartmentState();
 // }
-
+ 
 // class _DepartmentState extends State<Department> {
 //   var ke;
 //   var key;
@@ -201,14 +199,14 @@ class _DepartmentState extends State<Department> {
 //           color: Colors.blueGrey,
 //         ),
 //       ),
-
+     
 //     );
 //   }
-
+ 
 //   Widget _veamos2() {
 // return _veamos(ke, key);
 //   }
-
+ 
 //   Widget _item(IconData icon, String name, String profe) {
 //     return ListTile(
 //       leading: Icon(icon, size: 30.0,),
@@ -248,8 +246,8 @@ class _DepartmentState extends State<Department> {
 //       ),
 //     );
 //   }
-
-
+ 
+ 
 //   Widget _list() {
 //     return Expanded(
 //       child: ListView.separated(
@@ -259,7 +257,7 @@ class _DepartmentState extends State<Department> {
 //           ke = widget.materias[key];
 //           return _item(FontAwesomeIcons.userCheck, key, ke);
 //         },
-
+ 
 //         separatorBuilder: (BuildContext context, int index) {
 //           return Container(
 //             color: Colors.blueAccent.withOpacity(0.15),
@@ -269,7 +267,7 @@ class _DepartmentState extends State<Department> {
 //       ),
 //     );
 //   }
-
+ 
 // }
 
 
@@ -300,9 +298,9 @@ class _DepartmentState extends State<Department> {
 //   final List<DocumentSnapshot> documents;
 //   final Map<String, String> materias;
 //   //final Map<String, String> prof;
-
-//   Department({Key key, this.documents}):
-
+  
+//   Department({Key key, this.documents}): 
+  
 //     materias = documents.fold({}, (Map<String, String> map, document) {
 //           if (!map.containsKey(document['materia'])) {
 //             map[document['materia']] = '';
@@ -397,4 +395,4 @@ class _DepartmentState extends State<Department> {
 //     );
 //   }
 
-// }}
+// }
