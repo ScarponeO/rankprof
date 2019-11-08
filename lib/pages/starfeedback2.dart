@@ -47,7 +47,7 @@ class _StarFeedback2State extends State<StarFeedback2> {
               new FlatButton(
                   child: new Text("Enviar"),
                   onPressed: () {
-                    Navigator.of(context).pushNamed('/login');
+                    Navigator.of(context).pushNamed('/home');
                   }
               ),
             ],

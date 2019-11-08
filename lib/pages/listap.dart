@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:rankprof/pages/department.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
- 
-class HomePage extends StatefulWidget {
+import 'package:rankprof/pages/logicalp.dart';
+
+class Listap extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() => _HomePageState();
+  State<StatefulWidget> createState() => _ListapState();
 }
- 
-class _HomePageState extends State<HomePage> {
-  int currentPage = 1;
+
+class _ListapState extends State<Listap> {
+  int currentPage2 = 1;
   Stream<QuerySnapshot> _query;
 
   @override
@@ -16,7 +16,7 @@ class _HomePageState extends State<HomePage> {
     super.initState();
 
     _query = Firestore.instance
-        .collection('Departamentos')
+        .collection('Profesores')
         .snapshots();
   }
 
@@ -37,7 +37,7 @@ class _HomePageState extends State<HomePage> {
             stream: _query,
             builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> data) {
               if (data.hasData) {
-                return Department(documents: data.data.documents);
+                return Logicalp(documents: data.data.documents);
               }
               return Center(
                 child: CircularProgressIndicator(),

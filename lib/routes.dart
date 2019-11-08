@@ -8,6 +8,7 @@ import 'package:rankprof/pages/profesor.dart';
 import 'package:rankprof/pages/register.dart';
 import 'package:rankprof/pages/home.dart';
 import 'package:rankprof/pages/starfeedback2.dart';
+import 'package:rankprof/pages/listap.dart';
 
 Map<String, WidgetBuilder> buildAppRoutes() {
   return{
@@ -19,6 +20,7 @@ Map<String, WidgetBuilder> buildAppRoutes() {
     '/department': (BuildContext context) =>  Department(),
     '/maintabs': (BuildContext context) =>  MainTabsPage(),
     '/starfeedback2': (BuildContext context) => StarFeedback2(),
+    '/listap': (BuildContext context) => Listap(),
 
   } ;
 }
