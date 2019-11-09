@@ -1,10 +1,7 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:rankprof/pages/custom_raised_button.dart';
-import 'package:google_sign_in/google_sign_in.dart';
-import 'package:rankprof/pages/department.dart';
+import 'package:rankprof/pages/home.dart';
 import 'package:rankprof/services/auth.dart';
-
 
 class SignInPage extends StatefulWidget {
   SignInPage({@required this.auth});
@@ -16,20 +13,10 @@ class SignInPage extends StatefulWidget {
 }
 
 class _SignInPageState extends State<SignInPage> {
-  @override
-  bool _isLoggedIn;
-
-  final GoogleSignIn _googleSignIn = GoogleSignIn(
-    scopes: ['email'],
-  );
-
-  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
-
   Future<void> _signInWithGoogle() async {
     try {
       await widget.auth.signInWithGoogle();
-    }
-    catch (e) {
+    } catch (e) {
       print(e.toString());
     }
   }
@@ -40,12 +27,6 @@ class _SignInPageState extends State<SignInPage> {
         backgroundColor: Colors.blueAccent[400],
         centerTitle: true,
         elevation: 2.0,
-        title: Text(
-          'RankProf',
-          style: TextStyle(
-            fontSize: 30,
-          ),
-        ),
       ),
       body: Padding(
         padding: EdgeInsets.all(16.0),
@@ -53,7 +34,12 @@ class _SignInPageState extends State<SignInPage> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            SizedBox(height: 200),
+            SizedBox(height: 120),
+            Container(
+              height: 150,
+              child: logo(),
+            ),
+            SizedBox(height: 50),
             Text(
               'Sign In',
               textAlign: TextAlign.center,
@@ -78,7 +64,7 @@ class _SignInPageState extends State<SignInPage> {
                   ),
                   Opacity(
                     opacity: 0,
-                    child: Image.asset('images/google-logo.png'),
+                    child:Image.asset('images/google-logo.png'),
                   ),
                 ],
               ),
@@ -86,13 +72,28 @@ class _SignInPageState extends State<SignInPage> {
               radius: 2,
               onPressed: () {
                 _signInWithGoogle().whenComplete(() {
-                  Navigator.of(context).pushNamed('/home');
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (context) {
+                    return HomePage();
+                  }));
                 });
               },
             ),
           ],
         ),
       ),
+    );
+  }
+
+  Widget logo() {
+    return Container(
+      constraints: BoxConstraints.expand(
+        height: 200,
+      ),
+      child: Image.asset(
+        'images/rankprof-logo.png',
+        fit: BoxFit.contain,
+        ),
     );
   }
 }
