@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:rankprof/pages/custom_raised_button.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:rankprof/pages/department.dart';
 import 'package:rankprof/services/auth.dart';
 
 
@@ -63,6 +64,7 @@ class _SignInPageState extends State<SignInPage> {
             ),
             SizedBox(height: 50.0),
             CustomRaisedButton(
+              height: 50,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
@@ -83,9 +85,10 @@ class _SignInPageState extends State<SignInPage> {
               color: Colors.white,
               radius: 2,
               onPressed: () {
-                _signInWithGoogle();
+                _signInWithGoogle().whenComplete(() {
+                  Navigator.of(context).pushNamed('/home');
+                });
               },
-              height: 50,
             ),
           ],
         ),

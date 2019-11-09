@@ -7,8 +7,6 @@ import 'package:rankprof/theme.dart';
 import 'package:rankprof/pages/sign_in.dart';
 
 
-
-
 void main() => runApp(new TodoApp());
 
 class TodoApp extends StatefulWidget{
