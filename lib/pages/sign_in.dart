@@ -23,13 +23,9 @@ class _SignInPageState extends State<SignInPage> {
 
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.blue[800],
-        centerTitle: true,
-        elevation: 2.0,
-      ),
+      backgroundColor: Colors.blue[800],
       body: Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: EdgeInsets.all(30.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -39,16 +35,7 @@ class _SignInPageState extends State<SignInPage> {
               height: 150,
               child: logo(),
             ),
-            SizedBox(height: 50),
-            Text(
-              'Sign In',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 32,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-            SizedBox(height: 50.0),
+            SizedBox(height: 120),
             CustomRaisedButton(
               height: 50,
               child: Row(
@@ -64,7 +51,7 @@ class _SignInPageState extends State<SignInPage> {
                   ),
                   Opacity(
                     opacity: 0,
-                    child:Image.asset('images/google-logo.png'),
+                    child: Image.asset('images/google-logo.png'),
                   ),
                 ],
               ),
@@ -79,6 +66,7 @@ class _SignInPageState extends State<SignInPage> {
                 });
               },
             ),
+            SizedBox(height: 30),
           ],
         ),
       ),
@@ -93,7 +81,7 @@ class _SignInPageState extends State<SignInPage> {
       child: Image.asset(
         'images/rankprof-logo.png',
         fit: BoxFit.contain,
-        ),
+      ),
     );
   }
 }
