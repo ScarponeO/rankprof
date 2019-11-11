@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:rankprof/pages/listMateria.dart';
  
-class Department extends StatefulWidget {
+ 
+class Prof extends StatefulWidget {
   final List<DocumentSnapshot> documents;
   final Map<String, String> departamentos;
   //final Map<String, String> prof;
   
-  Department({Key key, this.documents}): 
+  Prof({Key key, this.documents}): 
   
     departamentos = documents.fold({}, (Map<String, String> map, document) {
       if (!map.containsKey(document['name'])) {
@@ -20,10 +20,10 @@ class Department extends StatefulWidget {
   super(key: key);
  
   @override
-  _DepartmentState createState() => _DepartmentState();
+  _ProfState createState() => _ProfState();
 }
  
-class _DepartmentState extends State<Department> {
+class _ProfState extends State<Prof> {
   var key;
   @override
  
@@ -50,7 +50,7 @@ class _DepartmentState extends State<Department> {
       child: Padding(
         padding: const EdgeInsets.only(top: 1.0),
         child: Center(
-          child:  Text("Departamentos",
+          child:  Text("Profesores",
             style: TextStyle(
               fontFamily: 'Satisfy',
               color: Colors.white,
@@ -83,42 +83,60 @@ class _DepartmentState extends State<Department> {
           padding: const EdgeInsets.all(8.0),
           child: RaisedButton(
             color: Color(0xff00008b),
-            child:  Text("Materias",
+            child:  Text("Rankear",
               style: TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.w500,
                 fontSize: 16.0,
               ),
             ),
-            onPressed: () => Navigator.push(context,
-            MaterialPageRoute(
-            builder: (_) => ListMateriaPageState(materiapf: name),
-            ),
+              onPressed: () {
+                return Navigator.of(context).pushNamed('/profesor');
+              }
           ),
         ),
       ),
-      ),); 
+    );
   }
  
  
  // Esta es la lista como tal, es decir, asi se crea
   Widget _list() {
     return Expanded(
-      child: ListView.separated(
+      child: ListView.builder(
         itemCount: widget.documents.length,
         itemBuilder: (BuildContext context, int index){
           key = widget.departamentos.keys.elementAt(index);
           return _item(FontAwesomeIcons.chalkboardTeacher, key);
         },
-        separatorBuilder: (BuildContext context, int index) {
-          return Container(
-            color: Color(0xff00008b),
-            height: 1.0,
-          );
-        },
+        // separatorBuilder: (BuildContext context, int index) {
+        //   return Container(
+        //     color: Color(0xff00008b),
+        //     height: 1.0,
+        //   );
+        // },
       ),
     );
   }
+
+
+
+
+//   Widget getList() {
+//   List<String> list = getListItems();
+//   ListView myList = new ListView.builder(
+//     itemCount: list.length,
+//     itemBuilder: (context, index) {
+//     return new ListTile(
+//       title: new Text(list[index]),
+//     );
+//   });
+//   return myList;
+//  }
+
+
+
+
  
 }
  

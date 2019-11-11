@@ -10,20 +10,24 @@ import 'package:rankprof/pages/sign_in.dart';
 import 'package:rankprof/pages/starfeedback2.dart';
 import 'package:rankprof/services/auth.dart';
 import 'package:rankprof/pages/listap.dart';
+import 'package:rankprof/pages/listMateria.dart';
+import 'package:rankprof/pages/listProf.dart';
 
 
 Map<String, WidgetBuilder> buildAppRoutes() {
   return{
+    '/home': (BuildContext context) =>  HomePage(),
     '/login': (BuildContext context) =>  LoginPage(),
     '/register': (BuildContext context) =>  RegisterPage(),
     '/forgotpassword': (BuildContext context) =>  ForgotPasswordPage(),
-    '/home': (BuildContext context) =>  HomePage(),
     '/profesor': (BuildContext context) =>  Profesor(),
     '/department': (BuildContext context) =>  Department(),
     '/maintabs': (BuildContext context) =>  MainTabsPage(),
     '/starfeedback2': (BuildContext context) => StarFeedback2(),
     '/signin': (BuildContext context) => SignInPage(auth: Auth()),
     '/listap': (BuildContext context) => Listap(),
+    '/materia': (BuildContext context) =>  ListMateriaPageState(),
+    '/prof': (BuildContext context) =>  ListProfPage(),
 
   } ;
 }
