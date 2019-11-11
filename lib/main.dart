@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:rankprof/pages/home.dart';
 import 'package:rankprof/pages/profesor.dart';
 import 'package:rankprof/routes.dart';
 import 'package:rankprof/services/auth.dart';

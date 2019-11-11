@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:rankprof/pages/prof.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:rankprof/pages/logicalp.dart';
-
-class Listap extends StatefulWidget {
+ 
+class ListProfPage extends StatefulWidget {
+  // Esto de aca es para recibir la variable que se usa para el query
+  final String profe;
+  ListProfPage({this.profe});
   @override
-  State<StatefulWidget> createState() => _ListapState();
+  State<StatefulWidget> createState() => _ListProfPageState();
 }
-
-class _ListapState extends State<Listap> {
-  int currentPage2 = 1;
+ 
+class _ListProfPageState extends State<ListProfPage> {
   Stream<QuerySnapshot> _query;
 
   @override
@@ -17,6 +19,7 @@ class _ListapState extends State<Listap> {
 
     _query = Firestore.instance
         .collection('Profesores')
+        .where('materia' , isEqualTo: widget.profe)
         .snapshots();
   }
 
@@ -32,12 +35,11 @@ class _ListapState extends State<Listap> {
     return SafeArea(
       child: Column(
         children: <Widget>[
-          // _selector(),
           StreamBuilder<QuerySnapshot>(
             stream: _query,
             builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> data) {
               if (data.hasData) {
-                return Logicalp(documents: data.data.documents);
+                return Prof(documents: data.data.documents);
               }
               return Center(
                 child: CircularProgressIndicator(),

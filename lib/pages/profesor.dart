@@ -2,6 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Profesor extends StatelessWidget {
+  
+  final String idprofe;
+  Profesor({this.idprofe});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -10,9 +14,9 @@ class Profesor extends StatelessWidget {
         leading: IconButton(
             icon: Icon(Icons.arrow_back),
             onPressed: () {
-              // Navigator.pop(context); ----> activar esto cuando arreglen vista de lista de profesores
-              
-            }),
+              Navigator.pop(context); 
+            }
+            ),
         elevation: 2.0,
         backgroundColor: Colors.blue[800],
         centerTitle: true,

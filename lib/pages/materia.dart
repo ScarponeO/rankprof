@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:rankprof/pages/listMateria.dart';
+import 'package:rankprof/pages/listProf.dart';
  
-class Department extends StatefulWidget {
+ 
+class Materia extends StatefulWidget {
   final List<DocumentSnapshot> documents;
   final Map<String, String> departamentos;
-  //final Map<String, String> prof;
   
-  Department({Key key, this.documents}): 
-  
+  Materia({Key key, this.documents}): 
+
+    
     departamentos = documents.fold({}, (Map<String, String> map, document) {
       if (!map.containsKey(document['name'])) {
         map[document['name']] = '';
@@ -20,10 +21,10 @@ class Department extends StatefulWidget {
   super(key: key);
  
   @override
-  _DepartmentState createState() => _DepartmentState();
+  _MateriaState createState() => _MateriaState();
 }
  
-class _DepartmentState extends State<Department> {
+class _MateriaState extends State<Materia> {
   var key;
   @override
  
@@ -50,7 +51,7 @@ class _DepartmentState extends State<Department> {
       child: Padding(
         padding: const EdgeInsets.only(top: 1.0),
         child: Center(
-          child:  Text("Departamentos",
+          child:  Text("Materias",
             style: TextStyle(
               fontFamily: 'Satisfy',
               color: Colors.white,
@@ -83,21 +84,22 @@ class _DepartmentState extends State<Department> {
           padding: const EdgeInsets.all(8.0),
           child: RaisedButton(
             color: Color(0xff00008b),
-            child:  Text("Materias",
+            child:  Text("Profesores",
               style: TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.w500,
                 fontSize: 16.0,
               ),
             ),
-            onPressed: () => Navigator.push(context,
-            MaterialPageRoute(
-            builder: (_) => ListMateriaPageState(materiapf: name),
-            ),
+              onPressed: () => Navigator.push(context,
+              MaterialPageRoute(
+              builder: (_) => ListProfPage(profe: name),
+              ),
           ),
         ),
       ),
-      ),); 
+    ),
+    );
   }
  
  
