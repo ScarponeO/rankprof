@@ -3,7 +3,7 @@ import 'package:rankprof/pages/prof.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
  
 class ListProfPage extends StatefulWidget {
-  // Esto de aca es para recibir la variable que usare para el query
+  // Esto de aca es para recibir la variable que se usa para el query
   final String profe;
   ListProfPage({this.profe});
   @override

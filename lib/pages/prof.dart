@@ -101,41 +101,44 @@ class _ProfState extends State<Prof> {
  
  
  // Esta es la lista como tal, es decir, asi se crea
-  Widget _list() {
+  // Widget _listb() {
+  //   return Expanded(
+  //     child: ListView.builder(
+  //       itemCount: widget.documents.length,
+  //       itemBuilder: (BuildContext context, int index){
+  //         key = widget.departamentos.keys.elementAt(index);
+  //         return _item(FontAwesomeIcons.chalkboardTeacher, key);
+  //       },
+  //       separatorBuilder: (BuildContext context, int index) {
+  //         return Container(
+  //           color: Color(0xff00008b),
+  //           height: 1.0,
+  //         );
+  //       },
+  //     ),
+  //   );
+  // }
+
+
+
+
+   Widget _list() {
     return Expanded(
-      child: ListView.builder(
+      child: ListView.separated(
         itemCount: widget.documents.length,
         itemBuilder: (BuildContext context, int index){
           key = widget.departamentos.keys.elementAt(index);
           return _item(FontAwesomeIcons.chalkboardTeacher, key);
         },
-        // separatorBuilder: (BuildContext context, int index) {
-        //   return Container(
-        //     color: Color(0xff00008b),
-        //     height: 1.0,
-        //   );
-        // },
+        separatorBuilder: (BuildContext context, int index) {
+          return Container(
+            color: Color(0xff00008b),
+            height: 1.0,
+          );
+        },
       ),
     );
   }
-
-
-
-
-//   Widget getList() {
-//   List<String> list = getListItems();
-//   ListView myList = new ListView.builder(
-//     itemCount: list.length,
-//     itemBuilder: (context, index) {
-//     return new ListTile(
-//       title: new Text(list[index]),
-//     );
-//   });
-//   return myList;
-//  }
-
-
-
 
  
 }

@@ -24,7 +24,7 @@ class _SignInPageState extends State<SignInPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blueAccent[400],
+        backgroundColor: Colors.blue[800],
         centerTitle: true,
         elevation: 2.0,
       ),

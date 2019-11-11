@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:rankprof/pages/home.dart';
+import 'package:rankprof/pages/profesor.dart';
 import 'package:rankprof/routes.dart';
 import 'package:rankprof/services/auth.dart';
 import 'package:rankprof/src/providers/push_notificacions_provider.dart';
@@ -33,7 +34,12 @@ class _TodoAppState extends State<TodoApp> {
       navigatorKey.currentState.pushNamed('/home', arguments: data );
     });
   }
-  Widget rootPage = HomePage();  //---> Vista de arranque de la aplicacion
+
+    Widget rootPage = HomePage();  //---> Vista de arranque de la aplicacion en las pruebas de departamentos 
+
+  //  Widget rootPage = Profesor(); 
+  //  Widget rootPage = SignInPage(auth: Auth(),); //---> Vista de arranque de la aplicacion
+
 
   @override
   Widget build(BuildContext context) {
