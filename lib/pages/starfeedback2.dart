@@ -120,7 +120,6 @@ class _StarFeedback2State extends State<StarFeedback2> {
               Navigator.pop(context);
               //
             }),
-        title: Text("RankProf"),
         actions: <Widget>[],
       ),
       body: Container(
