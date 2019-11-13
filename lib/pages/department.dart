@@ -70,16 +70,16 @@ class _DepartmentState extends State<Department> {
         padding: const EdgeInsets.only(top: 1.0),
         child: Row(
           children: <Widget>[
-            CustomRaisedButton(
-              height: 30,
-              color: Colors.blue[800],
-              radius: 2,
-              child: Text('SignOut'),
-              onPressed: () {
-               widget._signOut();
-               Navigator.of(context).pushNamed('/signin');
-              },
-            ),
+            // CustomRaisedButton(
+            //   height: 30,
+            //   color: Colors.blue[800],
+            //   radius: 2,
+            //   child: Text('SignOut'),
+            //   onPressed: () {
+            //    widget._signOut();
+            //    Navigator.of(context).pushNamed('/signin');
+            //   },
+            // ),
             Center(
               child: Text(
                 "DEPARTAMENTOS",
