@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:rankprof/pages/listProf.dart';
  
  
-class Materia extends StatefulWidget {
+class VistaProfssor extends StatefulWidget {
   final List<DocumentSnapshot> documents;
   final Map<String, String> departamentos;
+  //final Map<String, String> prof;
   
-  Materia({Key key, this.documents}): 
-
-    
+  VistaProfssor({Key key, this.documents}): 
+  
     departamentos = documents.fold({}, (Map<String, String> map, document) {
       if (!map.containsKey(document['name'])) {
         map[document['name']] = '';
@@ -21,11 +20,12 @@ class Materia extends StatefulWidget {
   super(key: key);
  
   @override
-  _MateriaState createState() => _MateriaState();
+  _VistaProfssorState createState() => _VistaProfssorState();
 }
  
-class _MateriaState extends State<Materia> {
+class _VistaProfssorState extends State<VistaProfssor> {
   var key;
+  var key2;
   @override
  
   // Aqui se estan "llamando las cosas"
@@ -41,7 +41,7 @@ class _MateriaState extends State<Materia> {
   }
  
  
-// fUTURA barra de busqueda (POR AHORA SOLO LA CUESTION DE ARRIBA)
+  // fUTURA barra de busqueda (POR AHORA SOLO LA CUESTION DE ARRIBA)
   Widget _searchBar() {
     return Container(
       height: 60.0,
@@ -51,7 +51,7 @@ class _MateriaState extends State<Materia> {
       child: Padding(
         padding: const EdgeInsets.only(top: 1.0),
         child: Center(
-          child:  Text("Materias",
+          child:  Text("Profesores",
             style: TextStyle(
               fontFamily: 'Satisfy',
               color: Colors.white,
@@ -65,11 +65,17 @@ class _MateriaState extends State<Materia> {
   }
  
  
-// Forma cada iten de la lista
+  // Forma cada iten de la lista
   Widget _item(IconData icon, String name) {
     return ListTile(
       leading: Icon(icon, size: 30.0,),
       title: Text(name,
+        style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 18.0
+        ),
+      ),
+      subtitle: Text(name,
         style: TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 18.0
@@ -80,30 +86,12 @@ class _MateriaState extends State<Materia> {
           color: Colors.white.withOpacity(0.2),
           borderRadius: BorderRadius.circular(5.0),
         ),
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: RaisedButton(
-            color: Color(0xff00008b),
-            child:  Text("Profesores",
-              style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.w500,
-                fontSize: 16.0,
-              ),
-            ),
-              onPressed: () => Navigator.push(context,
-              MaterialPageRoute(
-              builder: (_) => ListProfPage(profe: name),
-              ),
-            ),
-          ),
-        ),
+        
       ),
     );
   }
  
  
- // Esta es la lista como tal, es decir, asi se crea
   Widget _list() {
     return Expanded(
       child: ListView.separated(
@@ -121,6 +109,7 @@ class _MateriaState extends State<Materia> {
       ),
     );
   }
+
  
 }
  

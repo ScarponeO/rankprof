@@ -69,10 +69,7 @@ class Profesor extends StatelessWidget {
           Padding(
             padding: EdgeInsets.all(30),
             child: Text(
-              'Lorem ipsum dolor sit amet, consectetur '
-              'adipiscing elit. Maecenas venenatis est consectetur '
-              'interdum dictum. Nunc ante lectus, laoreet eget tellus id, '
-              'tincidunt pulvinar mi. Maecenas tincidunt tristique diam, id ',
+              'L',
               textAlign: TextAlign.justify,
               style: TextStyle(
                 color: Colors.black,

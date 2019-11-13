@@ -8,7 +8,6 @@ class HomePage extends StatefulWidget {
 }
  
 class _HomePageState extends State<HomePage> {
-  int currentPage = 1;
   Stream<QuerySnapshot> _query;
 
   @override

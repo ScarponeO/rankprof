@@ -18,9 +18,9 @@ class _ListProfPageState extends State<ListProfPage> {
     super.initState();
 
     _query = Firestore.instance
-        .collection('Profesores')
-        .where('materia' , isEqualTo: widget.profe)
-        .snapshots();
+      .collection('Profesores')
+      .where('materia' , isEqualTo: widget.profe)
+      .snapshots();
   }
 
 

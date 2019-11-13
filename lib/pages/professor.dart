@@ -1,27 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:rankprof/pages/materia.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:rankprof/pages/vistaProfessor.dart';
  
-class ListMateriaPageState extends StatefulWidget {
-  // Esto de aca es para recibir la variable que usare para el query
-  final String materiapf;
-  ListMateriaPageState({this.materiapf});
+class Profes extends StatefulWidget {
+  // Esto de aca es para recibir la variable que se usa para el query
+  final String profe;
+  Profes({this.profe});
   @override
-  State<StatefulWidget> createState() => _ListMateriaPageState();
+  State<StatefulWidget> createState() => _ProfesState();
 }
  
-class _ListMateriaPageState extends State<ListMateriaPageState> {
+class _ProfesState extends State<Profes> {
   Stream<QuerySnapshot> _query;
-  
+
   @override
   void initState() {
     super.initState();
-    // aca traigo las cosas de firebase
-
     _query = Firestore.instance
-        .collection('Materias')
-        .where('dpto' , isEqualTo: widget.materiapf)
-        .snapshots();
+      .collection('Profesores')
+      .where('name' , isEqualTo: widget.profe)
+      .snapshots();
+    
   }
 
 
@@ -32,16 +31,16 @@ class _ListMateriaPageState extends State<ListMateriaPageState> {
     );
   }
 
+
   Widget _body() {
     return SafeArea(
       child: Column(
         children: <Widget>[
-          // _selector(),
           StreamBuilder<QuerySnapshot>(
             stream: _query,
             builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> data) {
               if (data.hasData) {
-                return Materia(documents: data.data.documents);
+                return VistaProfssor(documents: data.data.documents);
               }
               return Center(
                 child: CircularProgressIndicator(),
@@ -52,4 +51,7 @@ class _ListMateriaPageState extends State<ListMateriaPageState> {
       ),
     );
   }
+
+
+
 }

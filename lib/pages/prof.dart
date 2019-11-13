@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:rankprof/pages/professor.dart';
  
  
 class Prof extends StatefulWidget {
@@ -40,7 +41,7 @@ class _ProfState extends State<Prof> {
   }
  
  
-// fUTURA barra de busqueda (POR AHORA SOLO LA CUESTION DE ARRIBA)
+  // fUTURA barra de busqueda (POR AHORA SOLO LA CUESTION DE ARRIBA)
   Widget _searchBar() {
     return Container(
       height: 60.0,
@@ -64,7 +65,7 @@ class _ProfState extends State<Prof> {
   }
  
  
-// Forma cada iten de la lista
+  // Forma cada iten de la lista
   Widget _item(IconData icon, String name) {
     return ListTile(
       leading: Icon(icon, size: 30.0,),
@@ -83,16 +84,18 @@ class _ProfState extends State<Prof> {
           padding: const EdgeInsets.all(8.0),
           child: RaisedButton(
             color: Color(0xff00008b),
-            child:  Text("Rankear",
+            child:  Text("Profesores",
               style: TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.w500,
                 fontSize: 16.0,
               ),
             ),
-              onPressed: () {
-                return Navigator.of(context).pushNamed('/profesor');
-              }
+              onPressed: () => Navigator.push(context,
+              MaterialPageRoute(
+              builder: (_) => Profes(profe: name),
+              ),
+            ),
           ),
         ),
       ),
@@ -100,29 +103,7 @@ class _ProfState extends State<Prof> {
   }
  
  
- // Esta es la lista como tal, es decir, asi se crea
-  // Widget _listb() {
-  //   return Expanded(
-  //     child: ListView.builder(
-  //       itemCount: widget.documents.length,
-  //       itemBuilder: (BuildContext context, int index){
-  //         key = widget.departamentos.keys.elementAt(index);
-  //         return _item(FontAwesomeIcons.chalkboardTeacher, key);
-  //       },
-  //       separatorBuilder: (BuildContext context, int index) {
-  //         return Container(
-  //           color: Color(0xff00008b),
-  //           height: 1.0,
-  //         );
-  //       },
-  //     ),
-  //   );
-  // }
-
-
-
-
-   Widget _list() {
+  Widget _list() {
     return Expanded(
       child: ListView.separated(
         itemCount: widget.documents.length,
