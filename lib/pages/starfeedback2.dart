@@ -2,12 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:rankprof/behaviors/hiddenScrollBehavior.dart';
 
+import 'logicaRankeo.dart';
+
 class StarFeedback2 extends StatefulWidget {
   @override
   _StarFeedback2State createState() => _StarFeedback2State();
 }
 
 class _StarFeedback2State extends State<StarFeedback2> {
+
   void _showDialog() {
     // flutter defined function
     showDialog(
@@ -45,9 +48,13 @@ class _StarFeedback2State extends State<StarFeedback2> {
               ),
               new FlatButton(
                   child: new Text("Enviar"),
-                  onPressed: () {
-                    Navigator.of(context).pushNamed('/home');
-                  }),
+                  onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (_) => LogicaRankeo(aptitud1: sliderValue,
+                                                                                                          aptitud2: sliderValue2,
+                                                                                                          aptitud3: sliderValue3,
+                                                                                                          aptitud4: sliderValue4,
+                                                                                                          aptitud5: sliderValue5,)))
+
+                  ),
             ],
           );
         }
@@ -66,8 +73,8 @@ class _StarFeedback2State extends State<StarFeedback2> {
 
   //VARIABLES PARA LA PRIMERA APTITUD
 
-  IconData myFeedback = FontAwesomeIcons.sadTear;
-  Color myFeedbackColor = Colors.blue[800];
+  IconData myFeedback = FontAwesomeIcons.award;
+  Color myFeedbackColor = Color(0xff00008b);
   var myFeedbackText = "Rankea a tu profesor";
   var instruccion = "Desliza el slider para rankear";
   var sliderValue = 0.0;
@@ -75,8 +82,8 @@ class _StarFeedback2State extends State<StarFeedback2> {
 
   //VARIABLES PARA LA SEGUNDA APTITUD
 
-  IconData myFeedback2 = FontAwesomeIcons.sadTear;
-  Color myFeedbackColor2 = Colors.blue[800];
+  IconData myFeedback2 = FontAwesomeIcons.award;
+  Color myFeedbackColor2 = Color(0xff00008b);
   var myFeedbackText2 = "Rankea a tu profesor";
   var instruccion2 = "Desliza el slider para rankear";
   var sliderValue2 = 0.0;
@@ -84,24 +91,24 @@ class _StarFeedback2State extends State<StarFeedback2> {
 
   //VARIABLES PARA LA TERCERA APTITUD
 
-  IconData myFeedback3 = FontAwesomeIcons.sadTear;
-  Color myFeedbackColor3 = Colors.blue[800];
+  IconData myFeedback3 = FontAwesomeIcons.award;
+  Color myFeedbackColor3 = Color(0xff00008b);
   var myFeedbackText3 = "Rankea a tu profesor";
   var instruccion3 = "Desliza el slider para rankear";
   var sliderValue3 = 0.0;
   double valorAptitud3 = 0.0;
   //VARIABLES PARA LA CUARTA APTITUD
 
-  IconData myFeedback4 = FontAwesomeIcons.sadTear;
-  Color myFeedbackColor4 = Colors.blue[800];
+  IconData myFeedback4 = FontAwesomeIcons.award;
+  Color myFeedbackColor4 = Color(0xff00008b);
   var myFeedbackText4 = "Rankea a tu profesor";
   var instruccion4 = "Desliza el slider para rankear";
   var sliderValue4 = 0.0;
   double valorAptitud4 = 0.0;
   //VARIABLES PARA LA QUINTA APTITUD
 
-  IconData myFeedback5 = FontAwesomeIcons.sadTear;
-  Color myFeedbackColor5 = Colors.blue[800];
+  IconData myFeedback5 = FontAwesomeIcons.award;
+  Color myFeedbackColor5 = Color(0xff00008b);
   var myFeedbackText5 = "Rankea a tu profesor";
   var instruccion5 = "Desliza el slider para rankear";
   var sliderValue5 = 0.0;
@@ -113,7 +120,14 @@ class _StarFeedback2State extends State<StarFeedback2> {
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blue[800],
+        title: const Text('RankProf', style: TextStyle(
+          fontFamily: 'Satisfy',
+          color: Colors.white,
+          fontWeight: FontWeight.w600,
+          fontSize: 25.0,
+        ),
+        ),
+        backgroundColor: Color(0xff00008b),
         leading: IconButton(
             icon: Icon(Icons.arrow_back),
             onPressed: () {
@@ -123,15 +137,15 @@ class _StarFeedback2State extends State<StarFeedback2> {
         actions: <Widget>[],
       ),
       body: Container(
-        color: Colors.orange[700],
+        color: Color(0xff00008b),
         child: ScrollConfiguration(
           behavior: HiddenScrollBehavior(),
           child: ListView(
             children: <Widget>[
               //CONTAINER PARA LA PRIMERA APTITUD
-              SizedBox(height: 40), //------------> Agregue esta caja para que haya mas espacio entre el appbar y el rnking
+              SizedBox(height: 10), //------------> Agregue esta caja para que haya mas espacio entre el appbar y el rnking
               Container(
-                margin: const EdgeInsets.only(top: 15.0, right: 0),
+                margin: const EdgeInsets.only(top: 0.0, right: 0),
                 child: Align(
                   child: Material(
                     color: Colors.white,
@@ -193,7 +207,7 @@ class _StarFeedback2State extends State<StarFeedback2> {
                                       sliderValue = newValue;
                                       if (sliderValue == 0.0) {
                                         myFeedback = FontAwesomeIcons.sadTear;
-                                        myFeedbackColor = Colors.blue[800];
+                                        myFeedbackColor = Color(0xff00008b);
                                         myFeedbackText = "Puntuación: 0";
                                         instruccion =
                                             "Recuerda que debes rankear";
@@ -322,7 +336,7 @@ class _StarFeedback2State extends State<StarFeedback2> {
                                       sliderValue2 = newValue;
                                       if (sliderValue2 == 0.0) {
                                         myFeedback2 = FontAwesomeIcons.sadTear;
-                                        myFeedbackColor2 = Colors.blue[800];
+                                        myFeedbackColor2 = Color(0xff00008b);
                                         myFeedbackText2 = "Puntuación: 0";
                                         instruccion2 =
                                             "Recuerda que debes rankear";
@@ -451,7 +465,7 @@ class _StarFeedback2State extends State<StarFeedback2> {
                                       sliderValue3 = newValue;
                                       if (sliderValue3 == 0.0) {
                                         myFeedback3 = FontAwesomeIcons.sadTear;
-                                        myFeedbackColor3 = Colors.blue[800];
+                                        myFeedbackColor3 = Color(0xff00008b);
                                         myFeedbackText3 = "Puntuación: 0";
                                         instruccion3 =
                                             "Recuerda que debes rankear";
@@ -580,7 +594,7 @@ class _StarFeedback2State extends State<StarFeedback2> {
                                       sliderValue4 = newValue;
                                       if (sliderValue4 == 0.0) {
                                         myFeedback4 = FontAwesomeIcons.sadTear;
-                                        myFeedbackColor4 = Colors.blue[800];
+                                        myFeedbackColor4 = Color(0xff00008b);
                                         myFeedbackText4 = "Puntuación: 0";
                                         instruccion4 =
                                             "Recuerda que debes rankear";
@@ -709,7 +723,7 @@ class _StarFeedback2State extends State<StarFeedback2> {
                                       sliderValue5 = newValue;
                                       if (sliderValue5 == 0.0) {
                                         myFeedback5 = FontAwesomeIcons.sadTear;
-                                        myFeedbackColor5 = Colors.blue[800];
+                                        myFeedbackColor5 = Color(0xff00008b);
                                         myFeedbackText5 = "Puntuación: 0";
                                         instruccion5 =
                                             "Recuerda que debes rankear";
