@@ -36,8 +36,15 @@ class _StarFeedback2State extends State<StarFeedback2> {
           );
         } else {
           return AlertDialog(
-            title: new Text("Seguro que deseas enviar el ranking?"),
-            content: new Text(""),
+            title: new Text("Seguro que deseas enviar el ranking?" + "\n\nPuntuación total = " + puntuacionTotal.toString()),
+            content: new Text("Disponibilidad = " + valorAptitud1.toString()+ "\nExigencia académica = " + valorAptitud2.toString()
+                + "\nInteracción = " + valorAptitud3.toString() + "\nPedagogía = " + valorAptitud4.toString()
+                + "\nResponsabilidad = " + valorAptitud5.toString(),
+            style: TextStyle(
+                fontSize: 15.0,
+                fontFamily: 'Roboto-Regular'
+            ),
+            ),
             actions: <Widget>[
               // usually buttons at the bottom of the dialog
               new FlatButton(
@@ -48,11 +55,11 @@ class _StarFeedback2State extends State<StarFeedback2> {
               ),
               new FlatButton(
                   child: new Text("Enviar"),
-                  onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (_) => LogicaRankeo(aptitud1: sliderValue,
-                                                                                                          aptitud2: sliderValue2,
-                                                                                                          aptitud3: sliderValue3,
-                                                                                                          aptitud4: sliderValue4,
-                                                                                                          aptitud5: sliderValue5,)))
+                  onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (_) => LogicaRankeo(aptitud1: valorAptitud1,
+                                                                                                          aptitud2: valorAptitud2,
+                                                                                                          aptitud3: valorAptitud3,
+                                                                                                          aptitud4: valorAptitud4,
+                                                                                                          aptitud5: valorAptitud5,)))
 
                   ),
             ],

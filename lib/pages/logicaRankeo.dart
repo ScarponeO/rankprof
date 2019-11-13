@@ -1,6 +1,7 @@
 import 'dart:core' as prefix0;
 import 'dart:core';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 
@@ -31,6 +32,17 @@ class _LogicaRankeoState extends State<LogicaRankeo> {
   void imprimir(){
     prefix0.print("Meperdonas");
     print(widget.aptitud1);
+  }
+
+
+  void getData() {
+    var databaseReference;
+    databaseReference
+        .collection("Profesores")
+        .getDocuments()
+        .then((QuerySnapshot snapshot) {
+      snapshot.documents.forEach((f) => print('${f.data}}'));
+    });
   }
 
   @override
