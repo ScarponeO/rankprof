@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:google_sign_in/google_sign_in.dart' as prefix0;
 
 class User{
   User({@required this.uid});
@@ -9,6 +10,7 @@ class User{
 }
 
 abstract class AuthBase{
+  Stream<User> get onAuthStateChanged;
   Future<User> currentUser();
   Future<void> signOut();
   Future<User> signInWithGoogle();
@@ -18,12 +20,18 @@ abstract class AuthBase{
 class Auth implements AuthBase{
 
   final _firebaseAuth = FirebaseAuth.instance;
+  
 
   User _userFromFirebase(FirebaseUser user){
     if (user == null){
       return null;
     }
     return User(uid: user.uid);
+  }
+
+  @override
+  Stream<User> get onAuthStateChanged {
+    return _firebaseAuth.onAuthStateChanged.map(_userFromFirebase);
   }
 
   Future<User> currentUser() async{
@@ -33,6 +41,8 @@ class Auth implements AuthBase{
   }
 
   Future<void> signOut() async{
+    final googleSignIn = GoogleSignIn();
+    await googleSignIn.signOut();
     await _firebaseAuth.signOut();
 
   }

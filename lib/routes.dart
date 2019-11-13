@@ -15,12 +15,12 @@ import 'package:rankprof/pages/listProf.dart';
 
 Map<String, WidgetBuilder> buildAppRoutes() {
   return{
-    '/home': (BuildContext context) =>  HomePage(),
+    '/home': (BuildContext context) =>  HomePage(auth: Auth(),),
     '/login': (BuildContext context) =>  LoginPage(),
     '/register': (BuildContext context) =>  RegisterPage(),
     '/forgotpassword': (BuildContext context) =>  ForgotPasswordPage(),
     '/profesor': (BuildContext context) =>  Profesor(),
-    '/department': (BuildContext context) =>  Department(),
+    '/department': (BuildContext context) =>  Department(auth: Auth()),
     '/maintabs': (BuildContext context) =>  MainTabsPage(),
     '/starfeedback2': (BuildContext context) => StarFeedback2(),
     '/signin': (BuildContext context) => SignInPage(auth: Auth()),
