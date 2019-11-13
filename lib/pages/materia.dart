@@ -104,7 +104,7 @@ class _MateriaState extends State<Materia> {
         itemCount: widget.documents.length,
         itemBuilder: (BuildContext context, int index) {
           key = widget.departamentos.keys.elementAt(index);
-          return _item(FontAwesomeIcons.chalkboardTeacher, key);
+          return _item(FontAwesomeIcons.pencilRuler, key);
         },
         separatorBuilder: (BuildContext context, int index) {
           return Container(
