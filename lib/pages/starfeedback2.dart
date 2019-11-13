@@ -67,7 +67,7 @@ class _StarFeedback2State extends State<StarFeedback2> {
   //VARIABLES PARA LA PRIMERA APTITUD
 
   IconData myFeedback = FontAwesomeIcons.sadTear;
-  Color myFeedbackColor = Colors.blue[800];
+  Color myFeedbackColor = Colors.grey[400];
   var myFeedbackText = "Rankea a tu profesor";
   var instruccion = "Desliza el slider para rankear";
   var sliderValue = 0.0;
@@ -76,7 +76,7 @@ class _StarFeedback2State extends State<StarFeedback2> {
   //VARIABLES PARA LA SEGUNDA APTITUD
 
   IconData myFeedback2 = FontAwesomeIcons.sadTear;
-  Color myFeedbackColor2 = Colors.blue[800];
+  Color myFeedbackColor2 = Colors.grey[400];
   var myFeedbackText2 = "Rankea a tu profesor";
   var instruccion2 = "Desliza el slider para rankear";
   var sliderValue2 = 0.0;
@@ -85,7 +85,7 @@ class _StarFeedback2State extends State<StarFeedback2> {
   //VARIABLES PARA LA TERCERA APTITUD
 
   IconData myFeedback3 = FontAwesomeIcons.sadTear;
-  Color myFeedbackColor3 = Colors.blue[800];
+  Color myFeedbackColor3 = Colors.grey[400];
   var myFeedbackText3 = "Rankea a tu profesor";
   var instruccion3 = "Desliza el slider para rankear";
   var sliderValue3 = 0.0;
@@ -93,7 +93,7 @@ class _StarFeedback2State extends State<StarFeedback2> {
   //VARIABLES PARA LA CUARTA APTITUD
 
   IconData myFeedback4 = FontAwesomeIcons.sadTear;
-  Color myFeedbackColor4 = Colors.blue[800];
+  Color myFeedbackColor4 = Colors.grey[400];
   var myFeedbackText4 = "Rankea a tu profesor";
   var instruccion4 = "Desliza el slider para rankear";
   var sliderValue4 = 0.0;
@@ -101,19 +101,19 @@ class _StarFeedback2State extends State<StarFeedback2> {
   //VARIABLES PARA LA QUINTA APTITUD
 
   IconData myFeedback5 = FontAwesomeIcons.sadTear;
-  Color myFeedbackColor5 = Colors.blue[800];
+  Color myFeedbackColor5 = Colors.grey[400];
   var myFeedbackText5 = "Rankea a tu profesor";
   var instruccion5 = "Desliza el slider para rankear";
   var sliderValue5 = 0.0;
   double valorAptitud5 = 0.0;
 
   double puntuacionTotal = 0.0;
-
+ 
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blue[800],
+        backgroundColor: Colors.blue[900],
         leading: IconButton(
             icon: Icon(Icons.arrow_back),
             onPressed: () {
@@ -123,7 +123,7 @@ class _StarFeedback2State extends State<StarFeedback2> {
         actions: <Widget>[],
       ),
       body: Container(
-        color: Colors.orange[700],
+        color: Colors.blue[800],
         child: ScrollConfiguration(
           behavior: HiddenScrollBehavior(),
           child: ListView(
@@ -780,7 +780,7 @@ class _StarFeedback2State extends State<StarFeedback2> {
                   child: RaisedButton(
                     shape: RoundedRectangleBorder(
                         borderRadius: new BorderRadius.circular(30.0)),
-                    color: Colors.blue[800],
+                    color: Colors.blue[900],
                     child: Text(
                       '           Enviar ranking           ',
                       style:
