@@ -5,7 +5,8 @@ import 'package:rankprof/pages/vistaProfessor.dart';
 class Profes extends StatefulWidget {
   // Esto de aca es para recibir la variable que se usa para el query
   final String profe;
-  Profes({this.profe});
+  final String materia2;
+  Profes({this.profe, this.materia2});
   @override
   State<StatefulWidget> createState() => _ProfesState();
 }
@@ -16,6 +17,7 @@ class _ProfesState extends State<Profes> {
   @override
   void initState() {
     super.initState();
+    
     _query = Firestore.instance
       .collection('Profesores')
       .where('name' , isEqualTo: widget.profe)
@@ -40,7 +42,7 @@ class _ProfesState extends State<Profes> {
             stream: _query,
             builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> data) {
               if (data.hasData) {
-                return VistaProfssor(documents: data.data.documents);
+                return VistaProfssor(documents: data.data.documents , profesor: widget.profe, materia3: widget.materia2);
               }
               return Center(
                 child: CircularProgressIndicator(),
@@ -51,6 +53,7 @@ class _ProfesState extends State<Profes> {
       ),
     );
   }
+  
 
 
 

@@ -47,7 +47,7 @@ class _RegisterPageState extends State<RegisterPage> {
           Navigator.of(context).pushNamed('/home');
           Navigator.of(context).pushReplacementNamed('/home');
         } catch(e){
-          //TODO: Colocar el mensaje de error
+          // 
           _scaffoldKey.currentState.hideCurrentSnackBar();
           _scaffoldKey.currentState.showSnackBar(SnackBar(
             content:  Text(e),

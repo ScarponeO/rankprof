@@ -11,6 +11,7 @@ class Profesor extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+
         leading: IconButton(
             icon: Icon(Icons.arrow_back),
             onPressed: () {
@@ -18,7 +19,7 @@ class Profesor extends StatelessWidget {
             }
             ),
         elevation: 2.0,
-        backgroundColor: Colors.blue[800],
+        backgroundColor: Colors.blue[900],
         centerTitle: true,
       ),
       body: buildBox(context),
@@ -81,7 +82,7 @@ class Profesor extends StatelessWidget {
           Padding(
             padding: EdgeInsets.all(30),
             child: RaisedButton(
-              color: Colors.blue[800],
+              color: Colors.blue[900],
               child: Padding(
                 padding: EdgeInsets.all(10),
                 child: Text(

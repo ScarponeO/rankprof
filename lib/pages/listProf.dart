@@ -39,7 +39,7 @@ class _ListProfPageState extends State<ListProfPage> {
             stream: _query,
             builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> data) {
               if (data.hasData) {
-                return Prof(documents: data.data.documents);
+                return Prof(documents: data.data.documents, materia: widget.profe);
               }
               return Center(
                 child: CircularProgressIndicator(),
