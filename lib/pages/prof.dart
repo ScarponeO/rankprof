@@ -47,6 +47,7 @@ class _ProfState extends State<Prof> {
       child: Padding(
         padding: const EdgeInsets.only(top: 1.0),
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             IconButton(
                 icon: Icon(Icons.arrow_back),
@@ -65,6 +66,13 @@ class _ProfState extends State<Prof> {
                   fontSize: 25.0,
                 ),
               ),
+            ),
+            Opacity(
+              opacity: 0,
+              child: IconButton(
+                  icon: Icon(Icons.arrow_back),
+                  color: Colors.white,
+                  onPressed: () {}),
             ),
           ],
         ),
