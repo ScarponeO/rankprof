@@ -35,7 +35,7 @@ class _TodoAppState extends State<TodoApp> {
     });
   }
 
-    Widget rootPage = HomePage(auth: null,);  //---> Vista de arranque de la aplicacion en las pruebas de departamentos 
+    Widget rootPage = HomePage(auth: null,); 
 
   //  Widget rootPage = Profesor(); 
   //  Widget rootPage = SignInPage(auth: Auth(),); //---> Vista de arranque de la aplicacion

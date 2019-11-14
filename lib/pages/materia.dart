@@ -47,6 +47,7 @@ class _MateriaState extends State<Materia> {
       child: Padding(
         padding: const EdgeInsets.only(top: 1.0),
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             IconButton(
               icon: Icon(Icons.arrow_back),
@@ -64,6 +65,13 @@ class _MateriaState extends State<Materia> {
                   fontSize: 25.0,
                 ),
               ),
+            ),
+            Opacity(
+              opacity: 0,
+              child: IconButton(
+                  icon: Icon(Icons.arrow_back),
+                  color: Colors.white,
+                  onPressed: () {}),
             ),
           ],
         ),

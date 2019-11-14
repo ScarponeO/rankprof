@@ -1,8 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
-import 'package:google_sign_in/google_sign_in.dart';
-// import 'package:google_sign_in/google_sign_in.dart' as prefix0;
+import 'package:google_sign_in/google_sign_in.dart'; import 'package:google_sign_in/google_sign_in.dart' as prefix0;
 
 class User{
   User({@required this.uid});
@@ -47,10 +46,40 @@ class Auth implements AuthBase{
 
   }
 
+  
+
   @override
   Future<User> signInWithGoogle() async{
+
+    String username;
+    String email;
+    String imageUrl;
+
+    
     final GoogleSignIn googleSignIn = GoogleSignIn();
     final GoogleSignInAccount googleAccount = await googleSignIn.signIn();
+     final GoogleSignInAuthentication googleSignInAuthentication =
+      await googleAccount.authentication;
+    final AuthCredential credential = GoogleAuthProvider.getCredential(
+    accessToken: googleSignInAuthentication.accessToken,
+    idToken: googleSignInAuthentication.idToken,);
+    final AuthResult authResult = await _firebaseAuth.signInWithCredential(credential);
+    final FirebaseUser user = authResult.user;
+    await _firebaseAuth.signInWithCredential(credential);
+
+    assert(user.email != null);
+    assert(user.displayName != null);
+    assert(user.photoUrl != null);
+
+    username = user.displayName;
+    email = user.email;
+    imageUrl = user.photoUrl;
+// Only taking the first part of the name
+
+if (username.contains(" ")) {
+   username = username.substring(0, username.indexOf(" "));
+}
+    
     if(googleSignIn != null){
       GoogleSignInAuthentication googleAuth =
         await googleAccount.authentication;
