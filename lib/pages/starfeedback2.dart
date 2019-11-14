@@ -1,6 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:rankprof/behaviors/hiddenScrollBehavior.dart';
+import 'package:rankprof/pages/profesor.dart';
+import 'package:rankprof/pages/profesor2.dart';
 
 import 'logicaRankeo.dart';
 
@@ -10,6 +13,32 @@ class StarFeedback2 extends StatefulWidget {
 }
 
 class _StarFeedback2State extends State<StarFeedback2> {
+  final databaseReference = Firestore.instance ;
+
+  void updateData () {
+    try {
+      databaseReference
+          .collection ( 'Profesores' )
+          .document ( 'AxwpCv7Xz1BvkiiG5gTe' )
+          .updateData ({ 'disponibilidad' : valorAptitud1, 'exigencia' : valorAptitud2, 'interacción' : valorAptitud3, 'pedagogía' :valorAptitud4,
+                          'responsabilidad' : valorAptitud5});
+    } catch (e) {
+      print (e.toString ());
+    }
+  }
+
+
+  void getData () {
+    databaseReference
+        .collection ( "Profesores" )
+        .getDocuments ()
+        .then ((QuerySnapshot snapshot) {
+      snapshot. documents .forEach ((f) => print ( ' ${f. data } }' ));
+    });
+  }
+
+
+
 
   void _showDialog() {
     // flutter defined function
@@ -48,18 +77,14 @@ class _StarFeedback2State extends State<StarFeedback2> {
             actions: <Widget>[
               // usually buttons at the bottom of the dialog
               new FlatButton(
-                child: new Text("Close"),
+                child: new Text("Cerrar"),
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
               ),
               new FlatButton(
                   child: new Text("Enviar"),
-                  onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (_) => LogicaRankeo(aptitud1: valorAptitud1,
-                                                                                                          aptitud2: valorAptitud2,
-                                                                                                          aptitud3: valorAptitud3,
-                                                                                                          aptitud4: valorAptitud4,
-                                                                                                          aptitud5: valorAptitud5,)))
+                  onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (_) => Profesor2(puntotal: puntuacionTotal)))
 
                   ),
             ],
@@ -810,6 +835,8 @@ class _StarFeedback2State extends State<StarFeedback2> {
                     onPressed: () {
                       promedio();
                       _showDialog();
+                      updateData();
+                      getData();
                       print(puntuacionTotal);
                     },
                   ),

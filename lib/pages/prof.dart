@@ -57,6 +57,7 @@ class _ProfState extends State<Prof> {
             Center(
               child: Text(
                 "PROFESORES",
+
                 style: TextStyle(
                   fontFamily: 'Roboto-Regular',
                   color: Colors.white,
