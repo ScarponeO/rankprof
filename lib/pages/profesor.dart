@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Profesor extends StatelessWidget {
-  
   final String idprofe;
   Profesor({this.idprofe});
 
@@ -11,13 +10,11 @@ class Profesor extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-
         leading: IconButton(
             icon: Icon(Icons.arrow_back),
             onPressed: () {
-              Navigator.pop(context); 
-            }
-            ),
+              Navigator.pop(context);
+            }),
         elevation: 2.0,
         backgroundColor: Colors.blue[900],
         centerTitle: true,
@@ -57,7 +54,8 @@ class Profesor extends StatelessWidget {
           SizedBox(height: 40),
           Row(
             mainAxisSize: MainAxisSize.min,
-            mainAxisAlignment: MainAxisAlignment.center, //--------> Cambiar estrellas por el ranking
+            mainAxisAlignment: MainAxisAlignment
+                .center, //--------> Cambiar estrellas por el ranking
             children: [
               Icon(Icons.star, size: 50, color: Colors.yellow[600]),
               Icon(Icons.star, size: 50, color: Colors.yellow[600]),

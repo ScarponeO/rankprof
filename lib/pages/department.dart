@@ -1,13 +1,8 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:rankprof/pages/home.dart';
 import 'package:rankprof/pages/listMateria.dart';
-import 'package:rankprof/pages/login.dart';
-import 'package:rankprof/pages/sign_in.dart';
 import 'package:rankprof/services/auth.dart';
-import 'custom_raised_button.dart';
 
 class Department extends StatefulWidget {
   final List<DocumentSnapshot> documents;
@@ -29,8 +24,7 @@ class Department extends StatefulWidget {
   @override
   _DepartmentState createState() => _DepartmentState();
 
-
- Future<void> _signOut() async {
+  Future<void> _signOut() async {
     try {
       await auth.signOut();
       print('User Signed Out');
@@ -42,11 +36,21 @@ class Department extends StatefulWidget {
 
 class _DepartmentState extends State<Department> {
   var key;
- 
 
   @override
 
-  
+  // Widget build(BuildContext context) {
+  //   return Scaffold(
+  //     backgroundColor: Colors.white,
+  //     appBar: AppBar(
+  //       elevation: 2.0,
+  //       backgroundColor: Colors.blue[900],
+  //       centerTitle: true,
+  //     ),
+  //     body: _list(),
+  //   );
+  // }
+
   // Aqui se estan "llamando las cosas"
   Widget build(BuildContext context) {
     return Expanded(
@@ -61,47 +65,72 @@ class _DepartmentState extends State<Department> {
 
 // fUTURA barra de busqueda (POR AHORA SOLO LA CUESTION DE ARRIBA)
   Widget _searchBar() {
-    return Container(
-      height: 60.0,
-      decoration: BoxDecoration(
-        color: Colors.blue[900],
-      ),
-      child: Padding(
-        padding: const EdgeInsets.only(top: 1.0),
-        child: Row(
-          children: <Widget>[
-            // CustomRaisedButton(
-            //   height: 30,
-            //   color: Colors.blue[800],
-            //   radius: 2,
-            //   child: Text('SignOut'),
-            //   onPressed: () {
-            //    widget._signOut();
-            //    Navigator.of(context).pushNamed('/signin');
-            //   },
-            // ),
-            Center(
-              child: Text(
-                "DEPARTAMENTOS",
-                style: TextStyle(
-                  fontFamily: 'Roboto-Regular',
-                  color: Colors.white,
-                  fontWeight: FontWeight.w600,
-                  fontSize: 25.0,
+    return Column(
+      children: <Widget>[
+        Container(
+          height: 60.0,
+          decoration: BoxDecoration(
+            color: Colors.blue[900],
+          ),
+          child: Padding(
+            padding: const EdgeInsets.only(top: 1.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Opacity(
+                  opacity: 0,
+                  child: IconButton(
+                      icon: Icon(Icons.arrow_back),
+                      color: Colors.white,
+                      onPressed: () {}),
                 ),
-              ),
+                Center(
+                  child: Text(
+                    "DEPARTAMENTOS",
+                    style: TextStyle(
+                      fontFamily: 'Roboto-Regular',
+                      color: Colors.white,
+                      fontWeight: FontWeight.w600,
+                      fontSize: 25.0,
+                    ),
+                  ),
+                ),
+                PopupMenuButton(
+                  color: Colors.white,
+                  itemBuilder: (context) => [
+                    PopupMenuItem(
+                      child: GestureDetector(
+                        onTap: () {
+                          widget._signOut();
+                          Navigator.of(context).pushNamed('/signin');
+                        },
+                        child: Text(
+                          '   SignOut   ',
+                          style: TextStyle(
+                              fontFamily: 'Roboto-Regular',
+                              fontSize: 20,
+                              color: Colors.red,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    ),
+                    PopupMenuItem(
+                      child: Text(
+                        'Alexander Kalen',
+                        style: TextStyle(
+                            fontFamily: 'Roboto-Regular',
+                            fontSize: 20,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
             ),
-            Opacity(
-              opacity: 0,
-              child:   IconButton(  //------------------> Aqui va el logout
-            icon: Icon(Icons.arrow_back),
-            onPressed: () {
-            }
-            ),
-            ),
-          ],
-        ),
-      ),
+          ),
+        )
+      ],
     );
   }
 
