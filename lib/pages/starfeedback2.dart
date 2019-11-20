@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:rankprof/behaviors/hiddenScrollBehavior.dart';
+import 'package:rankprof/pages/profesor2.dart';
+import 'package:rankprof/pages/vistaProfessor.dart';
 
 import 'logicaRankeo.dart';
 
@@ -38,7 +40,7 @@ class _StarFeedback2State extends State<StarFeedback2> {
           return AlertDialog(
             title: new Text("Seguro que deseas enviar el ranking?" + "\n\nPuntuación total = " + puntuacionTotal.toString()),
             content: new Text("Disponibilidad = " + valorAptitud1.toString()+ "\nExigencia académica = " + valorAptitud2.toString()
-                + "\nInteracción = " + valorAptitud3.toString() + "\nPedagogía = " + valorAptitud4.toString()
+                + "\nInteracción = " + valorAptitud3.toString() + "\nPedagogíar = " + valorAptitud4.toString()
                 + "\nResponsabilidad = " + valorAptitud5.toString(),
             style: TextStyle(
                 fontSize: 15.0,
@@ -55,11 +57,7 @@ class _StarFeedback2State extends State<StarFeedback2> {
               ),
               new FlatButton(
                   child: new Text("Enviar"),
-                  onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (_) => LogicaRankeo(aptitud1: valorAptitud1,
-                                                                                                          aptitud2: valorAptitud2,
-                                                                                                          aptitud3: valorAptitud3,
-                                                                                                          aptitud4: valorAptitud4,
-                                                                                                          aptitud5: valorAptitud5,)))
+                onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (_) => Profesor2(puntotal: puntuacionTotal)))
 
                   ),
             ],

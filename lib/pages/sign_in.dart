@@ -36,7 +36,7 @@ class _SignInPageState extends State<SignInPage> {
               children: <Widget>[
                 SizedBox(height: 120),
                 Container(
-                  height: 160,
+                  height: 120,
                   child: logo(),
                 ),
                 SizedBox(height: 120),
@@ -78,7 +78,7 @@ class _SignInPageState extends State<SignInPage> {
             ),
           ),
           Container(
-                  height: 230,
+                  height: 100,
                   child: foto(),
                 ),
         ],

@@ -4,6 +4,60 @@ import 'package:cloud_firestore/cloud_firestore.dart';
  
  
 class VistaProfssor extends StatefulWidget {
+
+
+final double puntotal;
+
+
+
+void funcionIcono()
+{
+
+  if(this.puntotal >=1 && this.puntotal <2)
+  {
+    myFeedback = FontAwesomeIcons.sadTear;
+    myFeedbackColor = Colors.red[700];
+    myFeedbackText = "Puntuación total: 1";
+  } if(this.puntotal >=2 && this.puntotal <3)
+  {
+    myFeedback = FontAwesomeIcons.frown;
+    myFeedbackColor = Colors.amber;
+    myFeedbackText = "Puntuación total: 2";
+  }
+  if(this.puntotal >=3 && this.puntotal <4)
+  {
+    myFeedback = FontAwesomeIcons.check;
+    myFeedback = FontAwesomeIcons.meh;
+    myFeedbackColor = Colors.yellow;
+    myFeedbackText = "Puntuación total: 3";
+  } if(this.puntotal >=4 && this.puntotal < 5)
+  {
+    myFeedback = FontAwesomeIcons.smile;
+    myFeedbackColor =
+        Colors.lightGreenAccent;
+    myFeedbackText = "Puntuación total: 4";
+    print("Esta entrando aqui");
+  } if(this.puntotal >=5 && this.puntotal < 6) {
+    print('estoy imprimiendo esto '+ this.puntotal.toString());
+    myFeedback = FontAwesomeIcons.laugh;
+    myFeedbackColor = Colors.green;
+    myFeedbackText = "Puntuación total: 5";
+
+  }
+}
+
+IconData myFeedback = FontAwesomeIcons.meh;
+Color myFeedbackColor = Color(0xff00008b);
+var myFeedbackText = 'Puntuacion total 0';
+double valortotal1 = 1;
+
+
+
+
+
+
+
+
   final List<DocumentSnapshot> documents;
   final Map<String,String> departamentos;
   final int ranking1;
@@ -15,7 +69,7 @@ class VistaProfssor extends StatefulWidget {
   final int ranking5;
   //final Map<String, String> prof;
   
-  VistaProfssor({Key key, this.documents, this.profesor, this.materia3}): 
+  VistaProfssor({Key key, this.documents, this.profesor, this.materia3, this.puntotal}): 
   
     departamentos = documents.fold({}, (Map<String,String> map, document) {
       if (!map.containsKey(document['R.'])) {
@@ -65,6 +119,7 @@ class _VistaProfssorState extends State<VistaProfssor> {
    Widget _nameProf() {
     return Column(
       children: <Widget>[
+        SizedBox(height: 15.0),
         Text(widget.profesor,
           style: TextStyle(
             fontWeight: FontWeight.bold,
@@ -125,62 +180,6 @@ class _VistaProfssorState extends State<VistaProfssor> {
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
           SizedBox(height: 30),
-          Padding(
-            padding: EdgeInsets.all(10),
-            child:  Text("\Disponibilidad ${widget.ranking1.toString()}",
-              textAlign: TextAlign.justify,
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.all(10),
-            child:  Text("\Exigenciaa ${widget.ranking2.toString()}",
-              textAlign: TextAlign.justify,
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.all(10),
-            child:  Text("\Interacción ${widget.ranking3.toString()}",
-              textAlign: TextAlign.justify,
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.all(10),
-            child:  Text("\Responsabilidad ${widget.ranking4.toString()}",
-              textAlign: TextAlign.justify,
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.all(10),
-            child:  Text("\Pedagogía ${widget.ranking5.toString()}",
-              textAlign: TextAlign.justify,
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ),
-          
           Padding(
             padding: EdgeInsets.all(30),
             child: RaisedButton(

@@ -7,11 +7,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:rankprof/pages/listMateria.dart';
 // import 'package:rankprof/pages/login.dart';
 // import 'package:rankprof/pages/sign_in.dart';
-
-import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:rankprof/pages/listMateria.dart';
 import 'package:rankprof/services/auth.dart';
 
 class Department extends StatefulWidget {
@@ -125,16 +120,7 @@ class _DepartmentState extends State<Department> {
                         ),
                       ),
                     ),
-                    PopupMenuItem(
-                      child: Text(
-                        'Alexander Kalen',
-                        style: TextStyle(
-                            fontFamily: 'Roboto-Regular',
-                            fontSize: 20,
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ),
+                   
                   ],
                 ),
               ],
