@@ -79,7 +79,7 @@ class Profesor2 extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           SizedBox(height: 50),
-          
+
           SizedBox(height: 40),
           Padding(
             padding: const EdgeInsets.all(8.0),
@@ -123,7 +123,7 @@ class Profesor2 extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: EdgeInsets.all(10),
+            padding: EdgeInsets.all(30),
             child: RaisedButton(
               color: Colors.blue[900],
               child: Padding(

@@ -29,10 +29,7 @@ class LogicaRankeo extends StatefulWidget {
 
 class _LogicaRankeoState extends State<LogicaRankeo> {
 
-  void imprimir(){
-    prefix0.print("Meperdonas");
-    print(widget.aptitud1);
-  }
+
 
 
   void getData() {
