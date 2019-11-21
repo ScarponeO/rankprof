@@ -4,9 +4,25 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:rankprof/behaviors/hiddenScrollBehavior.dart';
 import 'package:rankprof/pages/profesor.dart';
 import 'package:rankprof/pages/profesor2.dart';
+import 'package:rankprof/pages/vistaProfessor.dart';
 import 'logicaRankeo.dart';
 
 class StarFeedback2 extends StatefulWidget {
+
+
+  final double valor1;
+  final double valor2;
+  final double valor3;
+  final double valor4;
+  final double valor5;
+  final double totalranking;
+  final String idenviar;
+  final double contt;
+
+  const StarFeedback2({Key key, this.valor1, this.valor2, this.valor3, this.valor4, this.valor5, this.totalranking, this.contt, this.idenviar}) :
+        super(key: key);
+
+
   @override
   _StarFeedback2State createState() => _StarFeedback2State();
 }
@@ -14,27 +30,32 @@ class StarFeedback2 extends StatefulWidget {
 class _StarFeedback2State extends State<StarFeedback2> {
   final databaseReference = Firestore.instance ;
 
-  void updateData () {
+
+
+
+
+
+
+  void updateData() {
+
     try {
       databaseReference
-          .collection ( 'Profesores' )
-          .document ( 'AxwpCv7Xz1BvkiiG5gTe' )
-          .updateData ({ 'disponibilidad' : valorAptitud1, 'exigencia' : valorAptitud2, 'interacción' : valorAptitud3, 'pedagogía' :valorAptitud4,
-                          'responsabilidad' : valorAptitud5});
+          .collection('Profesores')
+          .document(widget.idenviar)
+          .updateData({ 'disponibilidad' : enviar1, 'exigencia' : enviar2, 'interacción' : enviar3, 'pedagogía' :enviar4,
+        'responsabilidad' : enviar5, 'contador' : contador, 'total' : enviartotal});
     } catch (e) {
-      print (e.toString ());
+      print(e.toString());
+
     }
+
+
   }
 
 
-  void getData () {
-    databaseReference
-        .collection ( "Profesores" )
-        .getDocuments ()
-        .then ((QuerySnapshot snapshot) {
-      snapshot. documents .forEach ((f) => print ( ' ${f. data } }' ));
-    });
-  }
+
+
+
 
 
 
@@ -83,7 +104,9 @@ class _StarFeedback2State extends State<StarFeedback2> {
               ),
               new FlatButton(
                   child: new Text("Enviar"),
-                  onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (_) => Profesor2(puntotal: puntuacionTotal)))
+                  onPressed: (){
+                    Navigator.of(context).pushNamed('/home');
+                  },
 
                   ),
             ],
@@ -101,6 +124,34 @@ class _StarFeedback2State extends State<StarFeedback2> {
             valorAptitud5) /
         5;
   }
+
+
+  void logica()
+  {
+    contador = widget.contt+1;
+    enviar1 = (valorAptitud1+widget.valor1)/contador;
+    enviar2 = (valorAptitud2+widget.valor2)/contador;
+    enviar3 = (valorAptitud3+widget.valor3)/contador;
+    enviar4 = (valorAptitud4+widget.valor4)/contador;
+    enviar5 = (valorAptitud5+widget.valor5)/contador;
+
+    enviartotal = (enviar1+enviar2+enviar3+enviar4+enviar5)/5;
+  }
+
+
+
+  //VARIABLES PARA LA LOGICA
+
+  double enviar1 =0;
+  double enviar2 =0;
+  double enviar3 =0;
+  double enviar4 =0;
+  double enviar5 =0;
+  double enviartotal =0;
+  double contador =0;
+
+
+
 
   //VARIABLES PARA LA PRIMERA APTITUD
 
@@ -833,9 +884,9 @@ class _StarFeedback2State extends State<StarFeedback2> {
                     ),
                     onPressed: () {
                       promedio();
+                      logica();
                       _showDialog();
                       updateData();
-                      getData();
                       print(puntuacionTotal);
                     },
                   ),
