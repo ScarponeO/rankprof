@@ -19,7 +19,8 @@ class StarFeedback2 extends StatefulWidget {
   final String idenviar;
   final double contt;
 
-  const StarFeedback2({Key key, this.valor1, this.valor2, this.valor3, this.valor4, this.valor5, this.totalranking, this.contt, this.idenviar}) :
+
+  const StarFeedback2({Key key, this.valor1, this.valor2, this.valor3, this.valor4, this.valor5, this.totalranking, this.contt, this.idenviar,}) :
         super(key: key);
 
 
@@ -43,7 +44,8 @@ class _StarFeedback2State extends State<StarFeedback2> {
           .collection('Profesores')
           .document(widget.idenviar)
           .updateData({ 'disponibilidad' : enviar1, 'exigencia' : enviar2, 'interacción' : enviar3, 'pedagogía' :enviar4,
-        'responsabilidad' : enviar5, 'contador' : contador, 'total' : enviartotal});
+        'responsabilidad' : enviar5, 'contador' : contador, 'total' : enviartotal, 'acudisponibilidad' : enviaracumulador1, 'acuexigencia' : enviaracumulador2,
+        'acuinteracción' : enviaracumulador3, 'acupedagogía' : enviaracumulador4, 'acuresponsabilidad' : enviaracumulador5});
     } catch (e) {
       print(e.toString());
 
@@ -135,6 +137,12 @@ class _StarFeedback2State extends State<StarFeedback2> {
     enviar4 = (valorAptitud4+widget.valor4)/contador;
     enviar5 = (valorAptitud5+widget.valor5)/contador;
 
+    enviaracumulador1 = widget.valor1+valorAptitud1;
+    enviaracumulador2 = widget.valor2+valorAptitud2;
+    enviaracumulador3 = widget.valor3+valorAptitud3;
+    enviaracumulador4 = widget.valor4+valorAptitud4;
+    enviaracumulador5 = widget.valor5+valorAptitud5;
+
     enviartotal = (enviar1+enviar2+enviar3+enviar4+enviar5)/5;
   }
 
@@ -149,6 +157,12 @@ class _StarFeedback2State extends State<StarFeedback2> {
   double enviar5 =0;
   double enviartotal =0;
   double contador =0;
+  double enviaracumulador1;
+  double enviaracumulador2;
+  double enviaracumulador3;
+  double enviaracumulador4;
+  double enviaracumulador5;
+
 
 
 

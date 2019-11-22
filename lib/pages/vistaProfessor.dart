@@ -26,6 +26,11 @@ double valortotal1 = 1;
 
   final List<DocumentSnapshot> documents;
   final Map<String,String> departamentos;
+  final double acu1;
+  final double acu2;
+  final double acu3;
+  final double acu4;
+  final double acu5;
   final double ranking1;
   final String profesor;
   final String materia3;
@@ -36,6 +41,7 @@ double valortotal1 = 1;
   final double total;
   final String id;
   final double cont;
+
   //final Map<String, String> prof;
 
 
@@ -56,10 +62,20 @@ VistaProfssor({Key key, this.documents, this.profesor, this.materia3, this.punto
     .fold(0, (a, b) => a + b),
     ranking3 = documents.map((doc) => doc['interacción'])
     .fold(0, (a, b) => a + b),
-    ranking4 = documents.map((doc) => doc['pedagogía'])
+    ranking4 = documents.map((doc) => doc['responsabilidad'])
     .fold(0, (a, b) => a + b),
-    ranking5 = documents.map((doc) => doc['responsabilidad'])
+    ranking5 = documents.map((doc) => doc['pedagogía'])
     .fold(0, (a, b) => a + b),
+      acu1 = documents.map((doc) => doc['acudisponibilidad'])
+          .fold(0, (a, b) => a + b),
+      acu2 = documents.map((doc) => doc['acuexigencia'])
+          .fold(0, (a, b) => a + b),
+      acu3 = documents.map((doc) => doc['acuinteracción'])
+          .fold(0, (a, b) => a + b),
+      acu4 = documents.map((doc) => doc['acupedagogía'])
+          .fold(0, (a, b) => a + b),
+      acu5 = documents.map((doc) => doc['acuresponsabilidad'])
+          .fold(0, (a, b) => a + b),
     total = documents.map((doc) => doc['total'])
       .fold(0, (a, b) => a + b),
       cont = documents.map((doc) => doc['contador'])
@@ -328,8 +344,8 @@ class _VistaProfssorState extends State<VistaProfssor> {
                   ),
                 ),
               ),
-              onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (_) => StarFeedback2(valor1: widget.ranking1, valor2: widget.ranking2,
-              valor3: widget.ranking3, valor4: widget.ranking4, valor5 : widget.ranking5, idenviar: widget.id, contt: widget.cont,))),
+              onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (_) => StarFeedback2(valor1: widget.acu1, valor2: widget.acu2,
+              valor3: widget.acu3, valor4: widget.acu4, valor5 : widget.acu5, idenviar: widget.id, contt: widget.cont,))),
             ),
           ),
         ],
