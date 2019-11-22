@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:rankprof/pages/starfeedback2.dart';
+import 'package:intl/intl.dart';
  
  
 class VistaProfssor extends StatefulWidget {
@@ -237,7 +238,7 @@ class _VistaProfssorState extends State<VistaProfssor> {
             padding: const EdgeInsets.only(left: 30.0, top: 20.0),
             child: Container(
                 child: Text(
-                  'Disponibilidad: ' +widget.ranking1.toString(), textAlign: TextAlign.left,
+                  'Disponibilidad: ' +widget.ranking1.toStringAsFixed(2), textAlign: TextAlign.left,
                   style: TextStyle(
                       color: Colors.black, fontSize: 20.0),
                 )),
@@ -246,7 +247,7 @@ class _VistaProfssorState extends State<VistaProfssor> {
             padding: const EdgeInsets.only(left: 30.0, top: 20.0),
             child: Container(
                 child: Text(
-                  'Exigencia academica: ' +widget.ranking2.toString(), textAlign: TextAlign.left,
+                  'Exigencia academica: ' +widget.ranking2.toStringAsFixed(2), textAlign: TextAlign.left,
                   style: TextStyle(
                       color: Colors.black, fontSize: 20.0),
                 )),
@@ -255,7 +256,7 @@ class _VistaProfssorState extends State<VistaProfssor> {
             padding: const EdgeInsets.only(left: 30.0, top: 20.0),
             child: Container(
                 child: Text(
-                  'Interaccion: ' +widget.ranking3.toString(), textAlign: TextAlign.left,
+                  'Interaccion: ' +widget.ranking3.toStringAsFixed(2), textAlign: TextAlign.left,
                   style: TextStyle(
                       color: Colors.black, fontSize: 20.0),
                 )),
@@ -265,7 +266,7 @@ class _VistaProfssorState extends State<VistaProfssor> {
             child: Container(
 
                 child: Text(
-                  'Responsabilidad: ' +widget.ranking4.toString(), textAlign: TextAlign.left,
+                  'Responsabilidad: ' +widget.ranking4.toStringAsFixed(2), textAlign: TextAlign.left,
                   style: TextStyle(
                       color: Colors.black, fontSize: 20.0),
                 )),
@@ -274,7 +275,7 @@ class _VistaProfssorState extends State<VistaProfssor> {
             padding: const EdgeInsets.only(left: 30.0, top: 20.0),
             child: Container(
                 child: Text(
-                  'Pedagogia: ' +widget.ranking5.toString(), textAlign: TextAlign.left,
+                  'Pedagogia: ' +widget.ranking5.toStringAsFixed(2), textAlign: TextAlign.left,
                   style: TextStyle(
                       color: Colors.black, fontSize: 20.0),
                 )),
