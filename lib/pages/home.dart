@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:rankprof/pages/department.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:rankprof/services/auth.dart';
- 
+
 class HomePage extends StatefulWidget {
-  final AuthBase auth;
-  const HomePage({@required this.auth}) ;
+  const HomePage();
 
   @override
   State<StatefulWidget> createState() => _HomePageState();
 }
- 
+
 class _HomePageState extends State<HomePage> {
   Stream<QuerySnapshot> _query;
 
@@ -18,11 +18,8 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
 
-    _query = Firestore.instance
-        .collection('Departamentos')
-        .snapshots();
+    _query = Firestore.instance.collection('Departamentos').snapshots();
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +37,7 @@ class _HomePageState extends State<HomePage> {
             stream: _query,
             builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> data) {
               if (data.hasData) {
-                return Department(documents: data.data.documents, auth: Auth(),);
+                return Department(documents: data.data.documents);
               }
               return Center(
                 child: CircularProgressIndicator(),
