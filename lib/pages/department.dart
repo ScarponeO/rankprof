@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:provider/provider.dart';
 import 'package:rankprof/pages/listMateria.dart';
 import 'package:rankprof/services/auth.dart';
 
 class Department extends StatefulWidget {
   final List<DocumentSnapshot> documents;
   final Map<String, String> departamentos;
-  final AuthBase auth;
+
 
   //final Map<String, String> prof;
 
-  Department({Key key, this.documents, @required this.auth})
+  Department({Key key, this.documents})
       : departamentos = documents.fold({}, (Map<String, String> map, document) {
           if (!map.containsKey(document['name'])) {
             map[document['name']] = '';
@@ -24,8 +25,9 @@ class Department extends StatefulWidget {
   @override
   _DepartmentState createState() => _DepartmentState();
 
-  Future<void> _signOut() async {
+  Future<void> _signOut(BuildContext context) async {
     try {
+      final auth = Provider.of<AuthBase>(context);
       await auth.signOut();
       print('User Signed Out');
     } catch (e) {
@@ -53,6 +55,10 @@ class _DepartmentState extends State<Department> {
 
   // Aqui se estan "llamando las cosas"
   Widget build(BuildContext context) {
+
+    final auth = Provider.of<AuthBase>(context);
+    auth.currentUser();
+
     return Expanded(
       child: Column(
         children: <Widget>[
@@ -65,6 +71,7 @@ class _DepartmentState extends State<Department> {
 
 // fUTURA barra de busqueda (POR AHORA SOLO LA CUESTION DE ARRIBA)
   Widget _searchBar() {
+
     return Column(
       children: <Widget>[
         Container(
@@ -101,7 +108,7 @@ class _DepartmentState extends State<Department> {
                     PopupMenuItem(
                       child: GestureDetector(
                         onTap: () {
-                          widget._signOut();
+                          widget._signOut(context);
                           Navigator.of(context).pushNamed('/signin');
                         },
                         child: Text(
@@ -115,13 +122,19 @@ class _DepartmentState extends State<Department> {
                       ),
                     ),
                     PopupMenuItem(
-                      child: Text(
-                        'Alexander Kalen',
-                        style: TextStyle(
-                            fontFamily: 'Roboto-Regular',
-                            fontSize: 20,
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold),
+                      child: GestureDetector(
+                        onTap: () {
+                          widget._signOut(context);
+                          Navigator.of(context).pushNamed('/user');
+                        },
+                        child: Text(
+                          '',
+                          style: TextStyle(
+                              fontFamily: 'Roboto-Regular',
+                              fontSize: 20,
+                              color: Colors.red,
+                              fontWeight: FontWeight.bold),
+                        ),
                       ),
                     ),
                   ],

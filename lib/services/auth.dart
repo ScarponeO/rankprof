@@ -4,8 +4,10 @@ import 'package:flutter/services.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class User{
-  User({@required this.uid});
+  User({@required this.uid, @required this.photoUrl, @required this.displayName} );
   final String uid;
+  final String photoUrl;
+  final String displayName;
 }
 
 abstract class AuthBase{
@@ -13,7 +15,6 @@ abstract class AuthBase{
   Future<User> currentUser();
   Future<void> signOut();
   Future<User> signInWithGoogle();
-
 }
 
 class Auth implements AuthBase{
@@ -23,9 +24,14 @@ class Auth implements AuthBase{
 
   User _userFromFirebase(FirebaseUser user){
     if (user == null){
+      print('Probando Probando 1');
       return null;
     }
-    return User(uid: user.uid);
+    return User(
+        uid: user.uid,
+        displayName: user.displayName,
+        photoUrl: user.photoUrl,
+    );
   }
 
   @override
@@ -46,16 +52,12 @@ class Auth implements AuthBase{
 
   }
 
-  
-
   @override
   Future<User> signInWithGoogle() async{
 
-    String username;
-    String email;
-    String imageUrl;
+    print('Probando Probando 2');
 
-    
+
     final GoogleSignIn googleSignIn = GoogleSignIn();
     final GoogleSignInAccount googleAccount = await googleSignIn.signIn();
      final GoogleSignInAuthentication googleSignInAuthentication =
@@ -71,14 +73,15 @@ class Auth implements AuthBase{
     assert(user.displayName != null);
     assert(user.photoUrl != null);
 
-    username = user.displayName;
-    email = user.email;
-    imageUrl = user.photoUrl;
+    print('PENDIENTE');
+    print(user.email);
+
+    
 // Only taking the first part of the name
 
-if (username.contains(" ")) {
-   username = username.substring(0, username.indexOf(" "));
-}
+// if (user.contains(" ")) {
+//    user = user.substring(0, user.indexOf(" "));
+// }
     
     if(googleSignIn != null){
       GoogleSignInAuthentication googleAuth =
@@ -89,13 +92,14 @@ if (username.contains(" ")) {
           idToken: googleAuth.idToken , 
           accessToken:googleAuth.accessToken)
       );
+      print('ALO ALO ALO PROBANDO');
       return _userFromFirebase(authResult.user);
+
       } else{
          throw PlatformException(
         code: 'ERROR_MISSING_GOOGLE_AUTH_TOKEN',
         message: 'Missing Google Auth Token',
       );
-
       }
     } else{
       throw PlatformException(

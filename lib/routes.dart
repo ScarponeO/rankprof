@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:rankprof/pages/MiUsuario.dart';
 import 'package:rankprof/pages/department.dart';
-import 'package:rankprof/pages/login.dart';
 import 'package:rankprof/pages/mainTabs.dart';
 import 'package:rankprof/pages/profesor.dart';
 import 'package:rankprof/pages/home.dart';
@@ -13,15 +13,15 @@ import 'package:rankprof/pages/listProf.dart';
 
 Map<String, WidgetBuilder> buildAppRoutes() {
   return{
-    '/home': (BuildContext context) =>  HomePage(auth: Auth(),),
-    '/login': (BuildContext context) =>  LoginPage(),
+    '/home': (BuildContext context) =>  HomePage(),
     '/profesor': (BuildContext context) =>  Profesor(),
-    '/department': (BuildContext context) =>  Department(auth: Auth()),
+    '/department': (BuildContext context) =>  Department(),
     '/maintabs': (BuildContext context) =>  MainTabsPage(),
     '/starfeedback2': (BuildContext context) => StarFeedback2(),
-    '/signin': (BuildContext context) => SignInPage(auth: Auth()),
+    '/signin': (BuildContext context) => SignInPage(),
     '/materia': (BuildContext context) =>  ListMateriaPageState(),
     '/prof': (BuildContext context) =>  ListProfPage(),
+    '/user': (BuildContext context) =>  MiUsuario(),
 
   } ;
 }
