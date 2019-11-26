@@ -9,6 +9,8 @@ import 'package:rankprof/pages/listMateria.dart';
 import 'package:rankprof/pages/sign_in.dart';
 import 'package:rankprof/services/auth.dart';
 
+import 'avatar.dart';
+
 class Department extends StatefulWidget {
   final List<DocumentSnapshot> documents;
   final Map<String, String> departamentos;
@@ -45,23 +47,9 @@ class _DepartmentState extends State<Department> {
 
   @override
 
-  // Widget build(BuildContext context) {
-  //   return Scaffold(
-  //     backgroundColor: Colors.white,
-  //     appBar: AppBar(
-  //       elevation: 2.0,
-  //       backgroundColor: Colors.blue[900],
-  //       centerTitle: true,
-  //     ),
-  //     body: _list(),
-  //   );
-  // }
-
-  // Aqui se estan "llamando las cosas"
+ 
   Widget build(BuildContext context) {
 
-    final auth = Provider.of<AuthBase>(context);
-    auth.currentUser();
 
     return Expanded(
       child: Column(
@@ -75,6 +63,8 @@ class _DepartmentState extends State<Department> {
 
 // fUTURA barra de busqueda (POR AHORA SOLO LA CUESTION DE ARRIBA)
   Widget _searchBar() {
+    final user = Provider.of<User>(context); //------------------> Este es el provider que debes usar para acceder a user
+
     return Column(
       children: <Widget>[
         Container(
@@ -87,12 +77,9 @@ class _DepartmentState extends State<Department> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                Opacity(
-                  opacity: 0,
-                  child: IconButton(
-                      icon: Icon(Icons.arrow_back),
-                      color: Colors.white,
-                      onPressed: () {}),
+                Avatar(
+                  photoUrl: user.photoUrl,
+                  radius: 18,
                 ),
                 Center(
                   child: Text(
@@ -131,11 +118,11 @@ class _DepartmentState extends State<Department> {
                           Navigator.of(context).pushNamed('/user');
                         },
                         child: Text(
-                          '',
+                          user.uid, //------------------> Aqui esta llamando al user.uid que es el usuario actual con su uid.
                           style: TextStyle(
                               fontFamily: 'Roboto-Regular',
                               fontSize: 20,
-                              color: Colors.red,
+                              color: Colors.blue[800],
                               fontWeight: FontWeight.bold),
                         ),
                       ),
