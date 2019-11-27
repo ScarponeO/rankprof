@@ -1,20 +1,15 @@
-
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:rankprof/pages/home.dart';
 import 'package:provider/provider.dart';
 import 'package:rankprof/pages/listMateria.dart';
-import 'package:rankprof/pages/sign_in.dart';
+import 'package:rankprof/pages/miusuario.dart';
 import 'package:rankprof/services/auth.dart';
-
 import 'avatar.dart';
 
 class Department extends StatefulWidget {
   final List<DocumentSnapshot> documents;
   final Map<String, String> departamentos;
-
 
   //final Map<String, String> prof;
 
@@ -46,11 +41,7 @@ class _DepartmentState extends State<Department> {
   var key;
 
   @override
-
- 
   Widget build(BuildContext context) {
-
-
     return Expanded(
       child: Column(
         children: <Widget>[
@@ -63,7 +54,8 @@ class _DepartmentState extends State<Department> {
 
 // fUTURA barra de busqueda (POR AHORA SOLO LA CUESTION DE ARRIBA)
   Widget _searchBar() {
-    final user = Provider.of<User>(context); //------------------> Este es el provider que debes usar para acceder a user
+    final user = Provider.of<User>(
+        context); //------------------> Este es el provider que debes usar para acceder a user
 
     return Column(
       children: <Widget>[
@@ -98,6 +90,25 @@ class _DepartmentState extends State<Department> {
                     PopupMenuItem(
                       child: GestureDetector(
                         onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => MiUsuario(),
+                              ));
+                        },
+                        child: Text(
+                          user.displayName, //------------------> Aqui esta llamando al user.uid que es el usuario actual con su uid.
+                          style: TextStyle(
+                              fontFamily: 'Roboto-Regular',
+                              fontSize: 20,
+                              color: Colors.blue[800],
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    ),
+                     PopupMenuItem(
+                      child: GestureDetector(
+                        onTap: () {
                           widget._signOut(context);
                           Navigator.of(context).pushNamed('/signin');
                         },
@@ -107,22 +118,6 @@ class _DepartmentState extends State<Department> {
                               fontFamily: 'Roboto-Regular',
                               fontSize: 20,
                               color: Colors.red,
-                              fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                    ),
-                    PopupMenuItem(
-                      child: GestureDetector(
-                        onTap: () {
-                          widget._signOut(context);
-                          Navigator.of(context).pushNamed('/user');
-                        },
-                        child: Text(
-                          user.uid, //------------------> Aqui esta llamando al user.uid que es el usuario actual con su uid.
-                          style: TextStyle(
-                              fontFamily: 'Roboto-Regular',
-                              fontSize: 20,
-                              color: Colors.blue[800],
                               fontWeight: FontWeight.bold),
                         ),
                       ),

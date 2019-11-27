@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:rankprof/pages/department.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:rankprof/services/auth.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage();

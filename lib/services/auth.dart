@@ -24,7 +24,6 @@ class Auth implements AuthBase{
 
   User _userFromFirebase(FirebaseUser user){
     if (user == null){
-      print('Probando Probando 1');
       return null;
     }
     return User(
@@ -55,9 +54,6 @@ class Auth implements AuthBase{
   @override
   Future<User> signInWithGoogle() async{
 
-    print('Probando Probando 2');
-
-
     final GoogleSignIn googleSignIn = GoogleSignIn();
     final GoogleSignInAccount googleAccount = await googleSignIn.signIn();
      final GoogleSignInAuthentication googleSignInAuthentication =
@@ -72,9 +68,6 @@ class Auth implements AuthBase{
     assert(user.email != null);
     assert(user.displayName != null);
     assert(user.photoUrl != null);
-
-    print('PENDIENTE');
-    print(user.email);
 
     
 // Only taking the first part of the name
@@ -92,7 +85,6 @@ class Auth implements AuthBase{
           idToken: googleAuth.idToken , 
           accessToken:googleAuth.accessToken)
       );
-      print('ALO ALO ALO PROBANDO');
       return _userFromFirebase(authResult.user);
 
       } else{

@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:rankprof/pages/home.dart';
-import 'package:rankprof/pages/profesor.dart';
 import 'package:rankprof/pages/landingPage.dart';
-import 'package:rankprof/pages/profesor.dart';
 import 'package:rankprof/routes.dart';
 import 'package:rankprof/services/auth.dart';
 import 'package:rankprof/src/providers/push_notificacions_provider.dart';
 import 'package:rankprof/theme.dart';
-import 'package:rankprof/pages/sign_in.dart';
 import 'package:provider/provider.dart';
 
 

@@ -10,19 +10,17 @@ class MiUsuario extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-//    final user = Provider.of<User>(context);
-
+    final user = Provider.of<User>(context); //------------------> Est
 
     return Scaffold(
       appBar: AppBar(
         title: Text('Usuario'),
-//        bottom: PreferredSize(
-//          preferredSize: Size.fromHeight(130),
-//          child: _buildUserInfo(user),
-//        ),
+        bottom: PreferredSize(
+          preferredSize: Size.fromHeight(130),
+          child: _buildUserInfo(user),
+        ),
       ),
     );
-
   }
 
   Widget _buildUserInfo(User user) {
