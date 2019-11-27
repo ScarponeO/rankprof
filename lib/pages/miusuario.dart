@@ -6,17 +6,18 @@ import 'avatar.dart';
 
 class MiUsuario extends StatelessWidget {
 
+  final User user; 
+  MiUsuario({Key key, @required this.user}) : super(key: key); 
 
   @override
   Widget build(BuildContext context) {
 
-    final user = Provider.of<User>(context); //------------------> Est
-
     return Scaffold(
       appBar: AppBar(
-        title: Text('Usuario'),
+        title: Text(user.displayName, textAlign: TextAlign.center,),
+        backgroundColor: Colors.blue[800],
         bottom: PreferredSize(
-          preferredSize: Size.fromHeight(130),
+          preferredSize: Size.fromHeight(100),
           child: _buildUserInfo(user),
         ),
       ),
@@ -26,7 +27,7 @@ class MiUsuario extends StatelessWidget {
   Widget _buildUserInfo(User user) {
     return Avatar(
       photoUrl: user.photoUrl,
-      radius: 50,
+      radius: 40,
     );
   }
 }

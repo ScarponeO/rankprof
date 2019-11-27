@@ -93,7 +93,7 @@ class _DepartmentState extends State<Department> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => MiUsuario(),
+                                builder: (context) => MiUsuario(user: user),
                               ));
                         },
                         child: Text(
