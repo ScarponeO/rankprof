@@ -113,7 +113,7 @@ class _DepartmentState extends State<Department> {
                           Navigator.of(context).pushNamed('/signin');
                         },
                         child: Text(
-                          '   SignOut   ',
+                          'SignOut',
                           style: TextStyle(
                             fontSize: 20,
                             color: Colors.black87,

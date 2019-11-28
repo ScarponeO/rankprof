@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:rankprof/pages/starfeedback2.dart';
 
 class Profesor extends StatelessWidget {
 
@@ -159,7 +160,11 @@ class Profesor extends StatelessWidget {
                 ),
               ),
               onPressed: () {
-                Navigator.of(context).pushNamed('/starfeedback2');
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => StarFeedback2(),
+                    ));
               },
             ),
           ),
