@@ -1,12 +1,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:rankprof/pages/custom_raised_button.dart';
 import 'package:rankprof/pages/home.dart';
+import 'package:rankprof/pages/landingPage.dart';
 import 'package:rankprof/services/auth.dart';
 
 class SignInPage extends StatefulWidget {
-  final AuthBase auth;
-  SignInPage({@required this.auth});
 
   @override
   State<StatefulWidget> createState() {
@@ -15,9 +15,11 @@ class SignInPage extends StatefulWidget {
 }
 
 class _SignInPageState extends State<SignInPage> {
+
   Future<void> _signInWithGoogle() async {
     try {
-      await widget.auth.signInWithGoogle();
+      final auth = Provider.of<AuthBase>(context);
+      await auth.signInWithGoogle();
     } catch (e) {
       print(e.toString());
     }
@@ -66,9 +68,7 @@ class _SignInPageState extends State<SignInPage> {
                     _signInWithGoogle().whenComplete(() {
                       Navigator.of(context)
                           .push(MaterialPageRoute(builder: (context) {
-                        return HomePage(
-                          auth: Auth(),
-                        );
+                        return LandingPage();
                       }));
                     });
                   },

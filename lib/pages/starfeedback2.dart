@@ -907,7 +907,7 @@ class _StarFeedback2State extends State<StarFeedback2> {
                         "R.interaccion": sliderValue3/2,
                         "R.pedagogia": sliderValue4/2,
                         "R.responsabilidad": sliderValue5/2,
-                        "name": puntuacionTotal,
+                        "tota": puntuacionTotal,
                       });
                     },
                   ),
