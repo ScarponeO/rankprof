@@ -1,29 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:rankprof/pages/user.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:rankprof/services/auth.dart';
+import 'package:rankprof/pages/vistaprofesor22.dart';
  
-class PerfilPage extends StatefulWidget {
-  final AuthBase auth;
-  final String correo;
-  final String usuario;
-  const PerfilPage({@required this.auth, this.correo, this.usuario}) ;
-
+class Rankeados extends StatefulWidget {
+  // Esto de aca es para recibir la variable que se usa para el query
+ final String profe;
+ final String materia2;
+  Rankeados({this.profe, this.materia2, });
   @override
-  State<StatefulWidget> createState() => _PerfilPageState();
+  State<StatefulWidget> createState() => _RankeadosState();
 }
  
-class _PerfilPageState extends State<PerfilPage> {
+class _RankeadosState extends State<Rankeados> {
   Stream<QuerySnapshot> _query;
 
   @override
   void initState() {
     super.initState();
-
+    
     _query = Firestore.instance
-        .collection('Usuarios')
-        .where('name' , isEqualTo: widget.correo)
-        .snapshots();
+      .collection('Usuarios')
+      .where('name' , isEqualTo: widget.profe)
+      .snapshots();
+    
   }
 
 
@@ -34,16 +33,16 @@ class _PerfilPageState extends State<PerfilPage> {
     );
   }
 
+
   Widget _body() {
     return SafeArea(
       child: Column(
         children: <Widget>[
-          // _selector(),
           StreamBuilder<QuerySnapshot>(
             stream: _query,
             builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> data) {
               if (data.hasData) {
-                return UserPageState(documents: data.data.documents, auth: Auth(), correo2: widget.correo, user2: widget.usuario);
+                return VistaProfssor22(documents: data.data.documents, materia3: widget.materia2, profesor: widget.profe, );
               }
               return Center(
                 child: CircularProgressIndicator(),

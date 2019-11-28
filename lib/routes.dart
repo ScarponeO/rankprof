@@ -9,7 +9,9 @@ import 'package:rankprof/pages/listMateria.dart';
 import 'package:rankprof/pages/listProf.dart';
 import 'package:rankprof/pages/user.dart';
 import 'package:rankprof/pages/perfil.dart';
-import 'package:rankprof/pages/miusuario.dart';
+import 'package:rankprof/pages/rankeadoslogica.dart';
+
+import 'package:rankprof/pages/vistaprofesor22.dart';
 
 Map<String, WidgetBuilder> buildAppRoutes() {
   return{
@@ -21,7 +23,10 @@ Map<String, WidgetBuilder> buildAppRoutes() {
     '/materia': (BuildContext context) =>  ListMateriaPageState(),
     '/prof': (BuildContext context) =>  ListProfPage(),
     '/user': (BuildContext context) =>  UserPageState(auth: Auth()),
-    // '/perfil': (BuildContext context) =>  PerfilPage(auth: Auth()),
+    '/perfil': (BuildContext context) =>  PerfilPage(auth: Auth()),
+    '/usuarioaranking': (BuildContext context) =>  Rankeados(),
+    '/vista2': (BuildContext context) =>  VistaProfssor22(),
+
 
   } ;
 }

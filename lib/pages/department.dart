@@ -97,7 +97,7 @@ class _DepartmentState extends State<Department> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => MiUsuario(user: user),
+                                builder: (context) => PerfilPage(correo: user.email, auth: Auth(), usuario: user.displayName),
                               ));
                         },
                         child: Text(user.displayName, //------------------> Aqui esta llamando al user.uid que es el usuario actual con su uid.
