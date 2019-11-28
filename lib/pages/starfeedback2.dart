@@ -215,7 +215,7 @@ class _StarFeedback2State extends State<StarFeedback2> {
   @override
   Widget build(BuildContext context) {
 
-//    final user = Provider.of<User>(context);
+// final user = Provider.of<User>(context);
 
     return new Scaffold(
       appBar: AppBar(
@@ -925,7 +925,7 @@ class _StarFeedback2State extends State<StarFeedback2> {
                         "R.pedagogia": sliderValue4 / 2,
                         "R.responsabilidad": sliderValue5 / 2,
                         "tota": puntuacionTotal,
-//                        "name": user.email,
+                        // "name": user.email,
                       });
                     },
                   ),
