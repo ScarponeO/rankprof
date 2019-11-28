@@ -13,7 +13,7 @@ class Department extends StatefulWidget {
 
   //final Map<String, String> prof;
 
-  Department({Key key, this.documents})
+  Department({Key key, this.documents, Auth auth})
       : departamentos = documents.fold({}, (Map<String, String> map, document) {
           if (!map.containsKey(document['name'])) {
             map[document['name']] = '';

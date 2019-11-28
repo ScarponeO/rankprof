@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:rankprof/behaviors/hiddenScrollBehavior.dart';
+
 class StarFeedback2 extends StatefulWidget {
 
 
@@ -101,11 +102,14 @@ class _StarFeedback2State extends State<StarFeedback2> {
               ),
               new FlatButton(
                   child: new Text("Enviar"),
-                  onPressed: (){
-                    Navigator.of(context).pushNamed('/home');
-                  },
+                  onPressed: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (_) => StarFeedback2(),
 
                   ),
+                  ),
+              ),
             ],
           );
         }

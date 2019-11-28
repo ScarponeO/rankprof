@@ -49,11 +49,11 @@ class _MateriaState extends State<Materia> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             IconButton(
-              icon: Icon(Icons.arrow_back),
-              color: Colors.white,
-              onPressed: () {
-                Navigator.pop(context);
-              }),
+                icon: Icon(Icons.arrow_back),
+                color: Colors.white,
+                onPressed: () {
+                  Navigator.pop(context);
+                }),
             Center(
               child: Text(
                 "Materias",
@@ -84,11 +84,10 @@ class _MateriaState extends State<Materia> {
     return new GestureDetector(
       onTap: () {
         Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (_) => ListProfPage(profe: name),
-          )
-        );
+            context,
+            MaterialPageRoute(
+              builder: (_) => ListProfPage(profe: name),
+            ));
       },
       child: ListTile(
         trailing: Container(
@@ -99,9 +98,10 @@ class _MateriaState extends State<Materia> {
             color: Colors.blue[900],
           ),
           child: Center(
-            child: Text(name.substring(0,1),
-            style: TextStyle(
-              color: Colors.white,
+            child: Text(
+              name.substring(0, 1),
+              style: TextStyle(
+                color: Colors.white,
               ),
             ),
           ),
@@ -117,7 +117,6 @@ class _MateriaState extends State<Materia> {
       ),
     );
   }
-
 
   // Esta es la lista como tal, es decir, asi se crea
   Widget _list() {
