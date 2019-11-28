@@ -6,9 +6,10 @@ class Prof extends StatefulWidget {
   final List<DocumentSnapshot> documents;
   final Map<String, String> departamentos;
   final String materia;
+  final String usuario4;
   //final Map<String, String> prof;
 
-  Prof({Key key, this.documents, this.materia}): 
+  Prof({Key key, this.documents, this.materia, this.usuario4}): 
     departamentos = documents.fold({}, (Map<String, String> map, document) {
       if (!map.containsKey(document['name'])) {
         map[document['name']] = '';
@@ -87,7 +88,7 @@ Widget _item(String name) {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (_) => Profes(profe: name, materia2: widget.materia),
+            builder: (_) => Profes(profe: name, materia2: widget.materia, usuario5: widget.usuario4),
           )
         );
       },

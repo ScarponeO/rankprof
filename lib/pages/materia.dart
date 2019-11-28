@@ -8,8 +8,10 @@ class Materia extends StatefulWidget {
   final List<DocumentSnapshot> documents;
   final Map<String, String> departamentos;
   final User user;
+  
+  final String usuario2;
 
-  Materia({Key key, this.documents, this.user})
+  Materia({Key key, this.documents, this.user, this.usuario2})
       : departamentos = documents.fold({}, (Map<String, String> map, document) {
           if (!map.containsKey(document['name'])) {
             map[document['name']] = '';
@@ -89,7 +91,7 @@ class _MateriaState extends State<Materia> {
         Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (_) => ListProfPage(profe: name),
+              builder: (_) => ListProfPage(profe: name, usuario3: widget.usuario2 ),
             ));
       },
       child: ListTile(

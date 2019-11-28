@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:provider/provider.dart';
 import 'package:rankprof/pages/starfeedback2.dart';
+import 'package:intl/intl.dart';
 import 'package:rankprof/services/auth.dart';
 
 class VistaProfssor extends StatefulWidget {
   final double puntotal;
-
+  final String usuarioserio;
   IconData myFeedback = FontAwesomeIcons.meh;
   Color myFeedbackColor = Color(0xff00008b);
   var myFeedbackText = 'Puntuacion total 0';
@@ -33,7 +35,7 @@ class VistaProfssor extends StatefulWidget {
   //final Map<String, String> prof;
 
   VistaProfssor(
-      {Key key, this.documents, this.profesor, this.materia3, this.puntotal})
+      {Key key, this.documents, this.profesor, this.materia3, this.puntotal, this.usuarioserio})
       : departamentos = documents.fold({}, (Map<String, String> map, document) {
           if (!map.containsKey(document['R.'])) {
             map[document['name']] = '';
@@ -78,6 +80,8 @@ class VistaProfssor extends StatefulWidget {
 }
 
 class _VistaProfssorState extends State<VistaProfssor> {
+  double hola = 3;
+
   void funcionIcono() {
     if (widget.total >= 1 && widget.total < 2) {
       myFeedback = FontAwesomeIcons.sadTear;
@@ -120,14 +124,18 @@ class _VistaProfssorState extends State<VistaProfssor> {
 
   // Aqui se estan "llamando las cosas"
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Column(
-        children: <Widget>[
-          _searchBar(),
-          _nameProf(),
-          _informacion(),
-          _desc(),
-        ],
+    return Provider<User>(
+      builder: (context) =>
+          User(uid: null, email: null, displayName: null, photoUrl: null),
+      child: Expanded(
+        child: Column(
+          children: <Widget>[
+            _searchBar(),
+            _nameProf(),
+            _informacion(),
+            _desc(),
+          ],
+        ),
       ),
     );
   }
@@ -303,6 +311,7 @@ class _VistaProfssorState extends State<VistaProfssor> {
                             valor5: widget.acu5,
                             idenviar: widget.id,
                             contt: widget.cont,
+                            superusuario: widget.usuarioserio,
                           ))),
             ),
           ),

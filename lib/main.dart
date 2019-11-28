@@ -34,8 +34,13 @@ class _TodoAppState extends State<TodoApp> {
 
   @override
   Widget build(BuildContext context) {
-    return Provider<AuthBase>(
-      builder: (context) => Auth(),
+    return MultiProvider(
+      providers: [
+        Provider<AuthBase>(builder: (context) => Auth(),),
+        Provider<User>(builder: (context) => User(displayName: null, email: null, photoUrl: null, uid: null)),
+      ],
+
+       
       child: MaterialApp(
       debugShowCheckedModeBanner: false,
       navigatorKey: navigatorKey,
@@ -45,5 +50,7 @@ class _TodoAppState extends State<TodoApp> {
       theme: buildAppTheme(),
     ),
     );
+    
+    
   }
 }

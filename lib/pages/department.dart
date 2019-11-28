@@ -132,13 +132,15 @@ class _DepartmentState extends State<Department> {
   }
 
 // Forma cada iten de la lista
-  Widget _item(String name) {
+  Widget _item(String name, ) {
+    final user = Provider.of<User>(
+        context); 
     return new GestureDetector(
       onTap: () {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => ListMateriaPageState(materiapf: name ),
+            builder: (context) => ListMateriaPageState(materiapf: name, usuario1: user.email ),
           )
         );
       },
