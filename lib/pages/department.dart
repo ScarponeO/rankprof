@@ -69,9 +69,12 @@ class _DepartmentState extends State<Department> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                Avatar(
+                Opacity(
+                  opacity: 0,
+                  child: Avatar(
                   photoUrl: user.photoUrl,
                   radius: 18,
+                ),
                 ),
                 Center(
                   child: Text(
