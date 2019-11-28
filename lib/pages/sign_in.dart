@@ -7,7 +7,6 @@ import 'package:rankprof/pages/landingPage.dart';
 import 'package:rankprof/services/auth.dart';
 
 class SignInPage extends StatefulWidget {
-
   @override
   State<StatefulWidget> createState() {
     return _SignInPageState();
@@ -15,7 +14,6 @@ class SignInPage extends StatefulWidget {
 }
 
 class _SignInPageState extends State<SignInPage> {
-
   Future<void> _signInWithGoogle() async {
     try {
       final auth = Provider.of<AuthBase>(context);
@@ -26,61 +24,67 @@ class _SignInPageState extends State<SignInPage> {
   }
 
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.blue[900],
-      body: Column(
+    return Container(
+      decoration: BoxDecoration(color: Colors.blue[900]),
+      child: Column(
         children: <Widget>[
-          Padding(
-            padding: EdgeInsets.all(30.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: <Widget>[
-                SizedBox(height: 120),
-                Container(
-                  height: 120,
-                  child: logo(),
-                ),
-                SizedBox(height: 120),
-                CustomRaisedButton(
-                  height: 50,
-                  width: 30,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Image.asset('images/google-logo.png'),
-                      Text(
-                        'Sign In with Google',
-                        style: TextStyle(
-                          color: Colors.blue[900],
-                          fontSize: 20,
-                        ),
-                      ),
-                      Opacity(
-                        opacity: 0,
-                        child: Image.asset('images/google-logo.png'),
-                      ),
-                    ],
+          
+             Padding(
+              padding: EdgeInsets.all(30.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: <Widget>[
+                  SizedBox(height: 120),
+                  Container(
+                    height: 120,
+                    child: logo(),
                   ),
-                  color: Colors.blue[200],
-                  radius: 2,
-                  onPressed: () {
-                    _signInWithGoogle().whenComplete(() {
-                      Navigator.of(context)
-                          .push(MaterialPageRoute(builder: (context) {
-                        return LandingPage();
-                      }));
-                    });
-                  },
-                ),
-                SizedBox(height: 30),
-              ],
+                  SizedBox(height: 120),
+                  CustomRaisedButton(
+                    height: 50,
+                    width: 30,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Image.asset('images/google-logo.png'),
+                        Text(
+                          'Sign In with Google',
+                          style: TextStyle(
+                            color: Colors.blue[900],
+                            fontSize: 20,
+                          ),
+                        ),
+                        Opacity(
+                          opacity: 0,
+                          child: Image.asset('images/google-logo.png'),
+                        ),
+                      ],
+                    ),
+                    color: Colors.blue[200],
+                    radius: 2,
+                    onPressed: () {
+                      _signInWithGoogle().whenComplete(() {
+                        Navigator.of(context)
+                            .push(MaterialPageRoute(builder: (context) {
+                          return LandingPage();
+                        }));
+                      });
+                    },
+                  ),
+                  SizedBox(height: 30),
+                ],
+              ),
             ),
-          ),
+      
+          
           Container(
-                  height: 100,
-                  child: foto(),
-                ),
+            child: Align(
+                    alignment: FractionalOffset.bottomCenter,
+                    child: foto(),
+                  ),
+          ),
+          
         ],
       ),
     );
@@ -98,7 +102,6 @@ class _SignInPageState extends State<SignInPage> {
     );
   }
 
-
   Widget foto() {
     return Container(
       constraints: BoxConstraints.expand(
@@ -111,4 +114,3 @@ class _SignInPageState extends State<SignInPage> {
     );
   }
 }
-
