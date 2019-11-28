@@ -4,10 +4,11 @@ import 'package:flutter/services.dart';
 import 'package:google_sign_in/google_sign_in.dart'; import 'package:google_sign_in/google_sign_in.dart' as prefix0;
 
 class User{
-  User({@required this.uid, @required this.photoUrl, @required this.displayName} );
+  User({@required this.uid, @required this.photoUrl, @required this.displayName, @required this.email} );
   final String uid;
   final String photoUrl;
   final String displayName;
+  final String email;
 }
 
 abstract class AuthBase{
@@ -30,6 +31,7 @@ class Auth implements AuthBase{
         uid: user.uid,
         displayName: user.displayName,
         photoUrl: user.photoUrl,
+        email: user.email,
     );
   }
 
@@ -68,6 +70,7 @@ class Auth implements AuthBase{
     assert(user.email != null);
     assert(user.displayName != null);
     assert(user.photoUrl != null);
+    assert(user.email != null);
 
     
 // Only taking the first part of the name

@@ -96,8 +96,7 @@ class _DepartmentState extends State<Department> {
                                 builder: (context) => MiUsuario(user: user),
                               ));
                         },
-                        child: Text(
-                          user.displayName, //------------------> Aqui esta llamando al user.uid que es el usuario actual con su uid.
+                        child: Text(user.displayName, //------------------> Aqui esta llamando al user.uid que es el usuario actual con su uid.
                           style: TextStyle(
                               fontFamily: 'Roboto-Regular',
                               fontSize: 20,
@@ -113,27 +112,7 @@ class _DepartmentState extends State<Department> {
                           Navigator.of(context).pushNamed('/signin');
                         },
                         child: Text(
-                          '   SignOut   ',
-                          style: TextStyle(
-                            fontSize: 20,
-                            color: Colors.black87,
-                            fontWeight: FontWeight.bold
-                          ),
-                        ),
-                      ),
-                    ),
-                   PopupMenuItem(
-                      child: GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => PerfilPage(auth: Auth(),),
-          )
-        );
-                        },
-                        child: Text(
-                          '  Perfil   ',
+                          'SignOut',
                           style: TextStyle(
                             fontSize: 20,
                             color: Colors.black87,
@@ -159,7 +138,7 @@ class _DepartmentState extends State<Department> {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => ListMateriaPageState(materiapf: name),
+            builder: (context) => ListMateriaPageState(materiapf: name ),
           )
         );
       },

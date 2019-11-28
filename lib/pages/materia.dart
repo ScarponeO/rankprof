@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:rankprof/pages/listProf.dart';
+import 'package:rankprof/services/auth.dart';
+
 
 class Materia extends StatefulWidget {
   final List<DocumentSnapshot> documents;
   final Map<String, String> departamentos;
+  final User user;
 
-  Materia({Key key, this.documents})
+  Materia({Key key, this.documents, this.user})
       : departamentos = documents.fold({}, (Map<String, String> map, document) {
           if (!map.containsKey(document['name'])) {
             map[document['name']] = '';

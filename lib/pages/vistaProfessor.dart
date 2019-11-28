@@ -78,7 +78,6 @@ class VistaProfssor extends StatefulWidget {
 }
 
 class _VistaProfssorState extends State<VistaProfssor> {
-
   void funcionIcono() {
     if (widget.total >= 1 && widget.total < 2) {
       myFeedback = FontAwesomeIcons.sadTear;

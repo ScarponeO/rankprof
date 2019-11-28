@@ -1,11 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
 import 'package:rankprof/behaviors/hiddenScrollBehavior.dart';
+import 'package:rankprof/services/auth.dart';
+
+import 'landingPage.dart';
 
 class StarFeedback2 extends StatefulWidget {
-
-
   final double valor1;
   final double valor2;
   final double valor3;
@@ -15,48 +17,48 @@ class StarFeedback2 extends StatefulWidget {
   final String idenviar;
   final double contt;
 
-
-  const StarFeedback2({Key key, this.valor1, this.valor2, this.valor3, this.valor4, this.valor5, this.totalranking, this.contt, this.idenviar,}) :
-        super(key: key);
-
+  const StarFeedback2({
+    Key key,
+    this.valor1,
+    this.valor2,
+    this.valor3,
+    this.valor4,
+    this.valor5,
+    this.totalranking,
+    this.contt,
+    this.idenviar,
+  }) : super(key: key);
 
   @override
   _StarFeedback2State createState() => _StarFeedback2State();
 }
 
 class _StarFeedback2State extends State<StarFeedback2> {
-  final databaseReference = Firestore.instance ;
-
-
-
-
-
-
+  final databaseReference = Firestore.instance;
 
   void updateData() {
-
     try {
       databaseReference
           .collection('Profesores')
           .document(widget.idenviar)
-          .updateData({ 'disponibilidad' : enviar1, 'exigencia' : enviar2, 'interacción' : enviar3, 'pedagogía' :enviar4,
-        'responsabilidad' : enviar5, 'contador' : contador, 'total' : enviartotal, 'acudisponibilidad' : enviaracumulador1, 'acuexigencia' : enviaracumulador2,
-        'acuinteracción' : enviaracumulador3, 'acupedagogía' : enviaracumulador4, 'acuresponsabilidad' : enviaracumulador5});
+          .updateData({
+        'disponibilidad': enviar1,
+        'exigencia': enviar2,
+        'interacción': enviar3,
+        'pedagogía': enviar4,
+        'responsabilidad': enviar5,
+        'contador': contador,
+        'total': enviartotal,
+        'acudisponibilidad': enviaracumulador1,
+        'acuexigencia': enviaracumulador2,
+        'acuinteracción': enviaracumulador3,
+        'acupedagogía': enviaracumulador4,
+        'acuresponsabilidad': enviaracumulador5
+      });
     } catch (e) {
       print(e.toString());
-
     }
-
-
   }
-
-
-
-
-
-
-
-
 
   void _showDialog() {
     // flutter defined function
@@ -83,14 +85,21 @@ class _StarFeedback2State extends State<StarFeedback2> {
           );
         } else {
           return AlertDialog(
-            title: new Text("Seguro que deseas enviar el ranking?" + "\n\nPuntuación total = " + puntuacionTotal.toString()),
-            content: new Text("Disponibilidad = " + valorAptitud1.toString()+ "\nExigencia académica = " + valorAptitud2.toString()
-                + "\nInteracción = " + valorAptitud3.toString() + "\nPedagogíar = " + valorAptitud4.toString()
-                + "\nResponsabilidad = " + valorAptitud5.toString(),
-            style: TextStyle(
-                fontSize: 15.0,
-                fontFamily: 'Roboto-Regular'
-            ),
+            title: new Text("Seguro que deseas enviar el ranking?" +
+                "\n\nPuntuación total = " +
+                puntuacionTotal.toString()),
+            content: new Text(
+              "Disponibilidad = " +
+                  valorAptitud1.toString() +
+                  "\nExigencia académica = " +
+                  valorAptitud2.toString() +
+                  "\nInteracción = " +
+                  valorAptitud3.toString() +
+                  "\nPedagogíar = " +
+                  valorAptitud4.toString() +
+                  "\nResponsabilidad = " +
+                  valorAptitud5.toString(),
+              style: TextStyle(fontSize: 15.0, fontFamily: 'Roboto-Regular'),
             ),
             actions: <Widget>[
               // usually buttons at the bottom of the dialog
@@ -101,14 +110,14 @@ class _StarFeedback2State extends State<StarFeedback2> {
                 },
               ),
               new FlatButton(
-                  child: new Text("Enviar"),
-                  onPressed: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (_) => StarFeedback2(),
-
-                  ),
-                  ),
+                child: new Text("Enviar"),
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => LandingPage(),
+                      ));
+                },
               ),
             ],
           );
@@ -126,45 +135,37 @@ class _StarFeedback2State extends State<StarFeedback2> {
         5;
   }
 
+  void logica() {
+    contador = widget.contt + 1;
+    enviar1 = (valorAptitud1 + widget.valor1) / contador;
+    enviar2 = (valorAptitud2 + widget.valor2) / contador;
+    enviar3 = (valorAptitud3 + widget.valor3) / contador;
+    enviar4 = (valorAptitud4 + widget.valor4) / contador;
+    enviar5 = (valorAptitud5 + widget.valor5) / contador;
 
-  void logica()
-  {
-    contador = widget.contt+1;
-    enviar1 = (valorAptitud1+widget.valor1)/contador;
-    enviar2 = (valorAptitud2+widget.valor2)/contador;
-    enviar3 = (valorAptitud3+widget.valor3)/contador;
-    enviar4 = (valorAptitud4+widget.valor4)/contador;
-    enviar5 = (valorAptitud5+widget.valor5)/contador;
+    enviaracumulador1 = widget.valor1 + valorAptitud1;
+    enviaracumulador2 = widget.valor2 + valorAptitud2;
+    enviaracumulador3 = widget.valor3 + valorAptitud3;
+    enviaracumulador4 = widget.valor4 + valorAptitud4;
+    enviaracumulador5 = widget.valor5 + valorAptitud5;
 
-    enviaracumulador1 = widget.valor1+valorAptitud1;
-    enviaracumulador2 = widget.valor2+valorAptitud2;
-    enviaracumulador3 = widget.valor3+valorAptitud3;
-    enviaracumulador4 = widget.valor4+valorAptitud4;
-    enviaracumulador5 = widget.valor5+valorAptitud5;
-
-    enviartotal = (enviar1+enviar2+enviar3+enviar4+enviar5)/5;
+    enviartotal = (enviar1 + enviar2 + enviar3 + enviar4 + enviar5) / 5;
   }
-
-
 
   //VARIABLES PARA LA LOGICA
 
-  double enviar1 =0;
-  double enviar2 =0;
-  double enviar3 =0;
-  double enviar4 =0;
-  double enviar5 =0;
-  double enviartotal =0;
-  double contador =0;
+  double enviar1 = 0;
+  double enviar2 = 0;
+  double enviar3 = 0;
+  double enviar4 = 0;
+  double enviar5 = 0;
+  double enviartotal = 0;
+  double contador = 0;
   double enviaracumulador1;
   double enviaracumulador2;
   double enviaracumulador3;
   double enviaracumulador4;
   double enviaracumulador5;
-
-
-
-
 
   //VARIABLES PARA LA PRIMERA APTITUD
 
@@ -213,14 +214,18 @@ class _StarFeedback2State extends State<StarFeedback2> {
 
   @override
   Widget build(BuildContext context) {
+//    final user = Provider.of<User>(context);
+
     return new Scaffold(
       appBar: AppBar(
-        title: const Text('RankProf', style: TextStyle(
-          fontFamily: 'Satisfy',
-          color: Colors.white,
-          fontWeight: FontWeight.w600,
-          fontSize: 25.0,
-        ),
+        title: const Text(
+          'RankProf',
+          style: TextStyle(
+            fontFamily: 'Satisfy',
+            color: Colors.white,
+            fontWeight: FontWeight.w600,
+            fontSize: 25.0,
+          ),
         ),
         backgroundColor: Color(0xff00008b),
         leading: IconButton(
@@ -238,7 +243,9 @@ class _StarFeedback2State extends State<StarFeedback2> {
           child: ListView(
             children: <Widget>[
               //CONTAINER PARA LA PRIMERA APTITUD
-              SizedBox(height: 10), //------------> Agregue esta caja para que haya mas espacio entre el appbar y el rnking
+              SizedBox(
+                  height:
+                      10), //------------> Agregue esta caja para que haya mas espacio entre el appbar y el rnking
               Container(
                 margin: const EdgeInsets.only(top: 0.0, right: 0),
                 child: Align(
@@ -257,7 +264,10 @@ class _StarFeedback2State extends State<StarFeedback2> {
                                   child: Text(
                                 "DISPONIBILIDAD",
                                 style: TextStyle(
-                                    color: Colors.black, fontSize: 20.0, fontWeight: FontWeight.bold, fontFamily: 'Roboto-Bold'),
+                                    color: Colors.black,
+                                    fontSize: 20.0,
+                                    fontWeight: FontWeight.bold,
+                                    fontFamily: 'Roboto-Bold'),
                               )),
                             ),
                             Padding(
@@ -267,7 +277,9 @@ class _StarFeedback2State extends State<StarFeedback2> {
                                   'El profesor ofrece horas de consulta o tiempo dirigido para resolver dudas.',
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
-                                      color: Colors.black, fontSize: 16.0, fontFamily: 'Roboto')),
+                                      color: Colors.black,
+                                      fontSize: 16.0,
+                                      fontFamily: 'Roboto')),
                             ),
                             Padding(
                               padding: const EdgeInsets.all(8.0),
@@ -902,16 +914,17 @@ class _StarFeedback2State extends State<StarFeedback2> {
                       updateData();
                       print(puntuacionTotal);
                       Firestore.instance
-                      .collection('Usuarios')
-                      .document()
-                      .setData({
+                          .collection('Usuarios')
+                          .document()
+                          .setData({
                         "Id": widget.idenviar,
-                        "R.disponibilidad": sliderValue/2,
-                        "R.exigencia": sliderValue2/2,
-                        "R.interaccion": sliderValue3/2,
-                        "R.pedagogia": sliderValue4/2,
-                        "R.responsabilidad": sliderValue5/2,
+                        "R.disponibilidad": sliderValue / 2,
+                        "R.exigencia": sliderValue2 / 2,
+                        "R.interaccion": sliderValue3 / 2,
+                        "R.pedagogia": sliderValue4 / 2,
+                        "R.responsabilidad": sliderValue5 / 2,
                         "tota": puntuacionTotal,
+                        // "name": user.email,
                       });
                     },
                   ),
