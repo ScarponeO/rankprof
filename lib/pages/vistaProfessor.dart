@@ -8,7 +8,7 @@ import 'package:rankprof/services/auth.dart';
 
 class VistaProfssor extends StatefulWidget {
   final double puntotal;
-
+  final String usuarioserio;
   IconData myFeedback = FontAwesomeIcons.meh;
   Color myFeedbackColor = Color(0xff00008b);
   var myFeedbackText = 'Puntuacion total 0';
@@ -35,7 +35,7 @@ class VistaProfssor extends StatefulWidget {
   //final Map<String, String> prof;
 
   VistaProfssor(
-      {Key key, this.documents, this.profesor, this.materia3, this.puntotal})
+      {Key key, this.documents, this.profesor, this.materia3, this.puntotal, this.usuarioserio})
       : departamentos = documents.fold({}, (Map<String, String> map, document) {
           if (!map.containsKey(document['R.'])) {
             map[document['name']] = '';
@@ -311,6 +311,7 @@ class _VistaProfssorState extends State<VistaProfssor> {
                             valor5: widget.acu5,
                             idenviar: widget.id,
                             contt: widget.cont,
+                            superusuario: widget.usuarioserio,
                           ))),
             ),
           ),

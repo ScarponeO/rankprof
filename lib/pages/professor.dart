@@ -6,7 +6,8 @@ class Profes extends StatefulWidget {
   // Esto de aca es para recibir la variable que se usa para el query
   final String profe;
   final String materia2;
-  Profes({this.profe, this.materia2});
+  final String usuario5;
+  Profes({this.profe, this.materia2, this.usuario5});
   @override
   State<StatefulWidget> createState() => _ProfesState();
 }
@@ -42,7 +43,7 @@ class _ProfesState extends State<Profes> {
             stream: _query,
             builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> data) {
               if (data.hasData) {
-                return VistaProfssor(documents: data.data.documents , profesor: widget.profe, materia3: widget.materia2);
+                return VistaProfssor(documents: data.data.documents , profesor: widget.profe, materia3: widget.materia2, usuarioserio: widget.usuario5);
               }
               return Center(
                 child: CircularProgressIndicator(),

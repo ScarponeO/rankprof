@@ -5,7 +5,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class ListProfPage extends StatefulWidget {
   // Esto de aca es para recibir la variable que se usa para el query
   final String profe;
-  ListProfPage({this.profe});
+  final String usuario3;
+  ListProfPage({this.profe, this.usuario3});
   @override
   State<StatefulWidget> createState() => _ListProfPageState();
 }
@@ -39,7 +40,7 @@ class _ListProfPageState extends State<ListProfPage> {
             stream: _query,
             builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> data) {
               if (data.hasData) {
-                return Prof(documents: data.data.documents, materia: widget.profe);
+                return Prof(documents: data.data.documents, materia: widget.profe, usuario4: widget.usuario3);
               }
               return Center(
                 child: CircularProgressIndicator(),

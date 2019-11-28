@@ -4,7 +4,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:rankprof/pages/starfeedback2.dart';
 
 class Profesor extends StatelessWidget {
-
   final double puntotal;
 
   Profesor({this.puntotal}) : super();
@@ -54,21 +53,17 @@ class Profesor extends StatelessWidget {
   var myFeedbackText = 'Puntuacion total 0';
   double valortotal1 = 1;
 
-
-
   @override
   Widget build(BuildContext context) {
-      //funcionIcono();
+    //funcionIcono();
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-
         leading: IconButton(
             icon: Icon(Icons.arrow_back),
             onPressed: () {
-              Navigator.pop(context); 
-            }
-            ),
+              Navigator.pop(context);
+            }),
         elevation: 2.0,
         backgroundColor: Colors.blue[900],
         centerTitle: true,
@@ -105,38 +100,34 @@ class Profesor extends StatelessWidget {
             ),
           ),
           SizedBox(height: 40),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Center(
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Container(
-                        child: Icon(
-                          myFeedback,
-                          color: myFeedbackColor,
-                          size: 80.0,
-                        )
-                    ),
-                  ),
-                ),
-              ),
-
           Padding(
-
+            padding: const EdgeInsets.all(8.0),
+            child: Center(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                    child: Icon(
+                  myFeedback,
+                  color: myFeedbackColor,
+                  size: 80.0,
+                )),
+              ),
+            ),
+          ),
+          Padding(
             padding: const EdgeInsets.all(8.0),
             child: Container(
                 child: Text(
-                  myFeedbackText, textAlign: TextAlign.center,
-                  style: TextStyle(
-                      color: Colors.black, fontSize: 22.0),
-                )),
+              myFeedbackText,
+              textAlign: TextAlign.center,
+              style: TextStyle(color: Colors.black, fontSize: 22.0),
+            )),
           ),
-
-
           SizedBox(height: 30),
           Padding(
             padding: EdgeInsets.all(30),
-            child: Text( '',
+            child: Text(
+              '',
               textAlign: TextAlign.justify,
               style: TextStyle(
                 color: Colors.black,

@@ -8,8 +8,10 @@ class Materia extends StatefulWidget {
   final List<DocumentSnapshot> documents;
   final Map<String, String> departamentos;
   final User user;
+  
+  final String usuario2;
 
-  Materia({Key key, this.documents, this.user})
+  Materia({Key key, this.documents, this.user, this.usuario2})
       : departamentos = documents.fold({}, (Map<String, String> map, document) {
           if (!map.containsKey(document['name'])) {
             map[document['name']] = '';
@@ -52,11 +54,11 @@ class _MateriaState extends State<Materia> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             IconButton(
-              icon: Icon(Icons.arrow_back),
-              color: Colors.white,
-              onPressed: () {
-                Navigator.pop(context);
-              }),
+                icon: Icon(Icons.arrow_back),
+                color: Colors.white,
+                onPressed: () {
+                  Navigator.pop(context);
+                }),
             Center(
               child: Text(
                 "Materias",
@@ -87,11 +89,10 @@ class _MateriaState extends State<Materia> {
     return new GestureDetector(
       onTap: () {
         Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (_) => ListProfPage(profe: name),
-          )
-        );
+            context,
+            MaterialPageRoute(
+              builder: (_) => ListProfPage(profe: name, usuario3: widget.usuario2 ),
+            ));
       },
       child: ListTile(
         trailing: Container(
@@ -102,9 +103,10 @@ class _MateriaState extends State<Materia> {
             color: Colors.blue[900],
           ),
           child: Center(
-            child: Text(name.substring(0,1),
-            style: TextStyle(
-              color: Colors.white,
+            child: Text(
+              name.substring(0, 1),
+              style: TextStyle(
+                color: Colors.white,
               ),
             ),
           ),
@@ -120,7 +122,6 @@ class _MateriaState extends State<Materia> {
       ),
     );
   }
-
 
   // Esta es la lista como tal, es decir, asi se crea
   Widget _list() {

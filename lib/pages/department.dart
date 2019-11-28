@@ -13,7 +13,7 @@ class Department extends StatefulWidget {
 
   //final Map<String, String> prof;
 
-  Department({Key key, this.documents})
+  Department({Key key, this.documents, Auth auth})
       : departamentos = documents.fold({}, (Map<String, String> map, document) {
           if (!map.containsKey(document['name'])) {
             map[document['name']] = '';
@@ -99,8 +99,7 @@ class _DepartmentState extends State<Department> {
                                 builder: (context) => MiUsuario(user: user),
                               ));
                         },
-                        child: Text(
-                          'Perfil', //------------------> Aqui esta llamando al user.uid que es el usuario actual con su uid.
+                        child: Text(user.displayName, //------------------> Aqui esta llamando al user.uid que es el usuario actual con su uid.
                           style: TextStyle(
                               fontFamily: 'Roboto-Regular',
                               fontSize: 20,
@@ -136,13 +135,15 @@ class _DepartmentState extends State<Department> {
   }
 
 // Forma cada iten de la lista
-  Widget _item(String name) {
+  Widget _item(String name, ) {
+    final user = Provider.of<User>(
+        context); 
     return new GestureDetector(
       onTap: () {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => ListMateriaPageState(materiapf: name),
+            builder: (context) => ListMateriaPageState(materiapf: name, usuario1: user.email ),
           )
         );
       },

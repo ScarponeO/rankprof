@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:rankprof/pages/department.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:rankprof/services/auth.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage();
+  const HomePage({Auth auth});
 
   @override
   State<StatefulWidget> createState() => _HomePageState();
