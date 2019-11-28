@@ -17,6 +17,8 @@ class StarFeedback2 extends StatefulWidget {
   final String idenviar;
   final double contt;
   final String superusuario;
+  final String materiaa;
+  final String profesor;
 
   const StarFeedback2({
     Key key,
@@ -27,7 +29,7 @@ class StarFeedback2 extends StatefulWidget {
     this.valor5,
     this.totalranking,
     this.contt,
-    this.idenviar, this.superusuario,
+    this.idenviar, this.superusuario, this.materiaa, this.profesor,
   }) : super(key: key);
 
   @override
@@ -926,7 +928,9 @@ class _StarFeedback2State extends State<StarFeedback2> {
                         "R.pedagogia": sliderValue4 / 2,
                         "R.responsabilidad": sliderValue5 / 2,
                         "tota": puntuacionTotal,
-                         "name":widget.superusuario,
+                        "name":widget.superusuario,
+                        "materia": widget.materiaa,
+                        "profesor": widget.profesor,
                       });
                     },
                   ),

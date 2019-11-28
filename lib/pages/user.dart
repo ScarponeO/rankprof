@@ -1,20 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:rankprof/services/auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:rankprof/services/auth.dart';
+import 'avatar.dart';
 const backgroundColor = Color(0xff5E37DB);
  
 class UserPageState extends StatefulWidget {
   final AuthBase auth;
   final List<DocumentSnapshot> documents;
   final Map<String, String> departamentos;
+  final String user1;
+  final String userfoto;
 
-  UserPageState({Key key, this.documents, @required this.auth}):
+  UserPageState({Key key, this.documents, @required this.auth, this.user1, this.userfoto}):
        departamentos = documents.fold({}, (Map<String, String> map, document) {
-          if (!map.containsKey(document['Id'])) {
-            map[document['Id']] = '';
+          if (!map.containsKey(document['name'])) {
+            map[document['name']] = '';
           }
-          map[document['Id']] = document[''];
+          map[document['name']] = document[''];
           return map;
         }),
   super(key: key);
@@ -39,13 +41,32 @@ class _UserPageState extends State<UserPageState> {
     return Expanded(
       child: Column(
         children: <Widget>[
-          _searchBar(),
+          _build(),
           _list(),
         ],
       ),
     );
   }
+  Widget _build() {
 
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.user1, textAlign: TextAlign.center,),
+        backgroundColor: Colors.blue[800],
+        bottom: PreferredSize(
+          preferredSize: Size.fromHeight(100),
+          child: _buildUserInfo(widget.userfoto),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildUserInfo(String user) {
+    return Avatar(
+      photoUrl: user,
+      radius: 40,
+    );
+  }
 // fUTURA barra de busqueda (POR AHORA SOLO LA CUESTION DE ARRIBA)
   Widget _searchBar() {
     return Column(
@@ -106,65 +127,7 @@ class _UserPageState extends State<UserPageState> {
     );
   }
 
-//  Widget _item(String item) {
 
-//     return GestureDetector(
-//       onTap: () {
-//         Navigator.of(context).pushNamed('/home');
-//       },
-//       child: Padding(
-//         padding: EdgeInsets.symmetric(vertical: 8.0),
-//         child: IntrinsicHeight(
-//           child: Row(
-//             crossAxisAlignment: CrossAxisAlignment.start,
-//             children: <Widget>[
-//               Expanded(
-//                 child: Column(
-//                   crossAxisAlignment: CrossAxisAlignment.start,
-//                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//                   children: <Widget>[
-//                     Row(
-//                       children: <Widget>[
-//                         Container(
-//                           width: 42.0,
-//                           height: 42.0,
-//                           decoration: BoxDecoration(
-//                             borderRadius: BorderRadius.circular(21.0),
-//                             color: Colors.green,
-//                           ),
-//                           child: Center(
-//                             child: Text(item.substring(0,1),
-//                               style: TextStyle(
-//                                 color: Colors.white,
-//                               ),
-//                             ),
-//                           ),
-//                         ),
-//                         SizedBox(width: 8.0),
-                        
-//                       ],
-//                     ),
-//                     Text(item,
-//                       style: TextStyle(
-//                         color: Colors.black,
-//                         fontSize: 16.0,
-//                       ),
-//                     ),
-//                     Text(item,
-//                       style: TextStyle(
-//                         color: Colors.orange,
-//                       ),
-//                     )
-//                   ],
-//                 ),
-//               ),
-//               SizedBox(width: 16.0),
-//             ],
-//           ),
-//         ),
-//       ),
-//     );
-//   }
 
   
 

@@ -17,7 +17,7 @@ class MiUsuario extends StatelessWidget {
         title: Text(user.displayName, textAlign: TextAlign.center,),
         backgroundColor: Colors.blue[800],
         bottom: PreferredSize(
-          preferredSize: Size.fromHeight(100),
+          preferredSize: Size.fromHeight(70),
           child: _buildUserInfo(user),
         ),
       ),

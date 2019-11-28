@@ -312,6 +312,8 @@ class _VistaProfssorState extends State<VistaProfssor> {
                             idenviar: widget.id,
                             contt: widget.cont,
                             superusuario: widget.usuarioserio,
+                            profesor: widget.profesor,
+                            materiaa: widget.materia3,
                           ))),
             ),
           ),
