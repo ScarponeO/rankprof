@@ -15,7 +15,7 @@ class MiUsuario extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(user.displayName, textAlign: TextAlign.center,),
-        backgroundColor: Colors.blue[800],
+        backgroundColor: Colors.blue[900],
         bottom: PreferredSize(
           preferredSize: Size.fromHeight(100),
           child: _buildUserInfo(user),

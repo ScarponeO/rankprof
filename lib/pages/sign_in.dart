@@ -24,12 +24,12 @@ class _SignInPageState extends State<SignInPage> {
   }
 
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.blue[900],
-      body: Column(
+    return Container(
+      decoration: BoxDecoration(color: Colors.blue[900]),
+      child: Column(
         children: <Widget>[
-          Container(
-            child: Padding(
+          
+             Padding(
               padding: EdgeInsets.all(30.0),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -76,11 +76,15 @@ class _SignInPageState extends State<SignInPage> {
                 ],
               ),
             ),
+      
+          
+          Container(
+            child: Align(
+                    alignment: FractionalOffset.bottomCenter,
+                    child: foto(),
+                  ),
           ),
-          Align(
-            alignment: FractionalOffset.bottomCenter,
-            child: foto(),
-          ),
+          
         ],
       ),
     );

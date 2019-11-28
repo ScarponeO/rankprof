@@ -88,6 +88,7 @@ class _DepartmentState extends State<Department> {
                   ),
                 ),
                 PopupMenuButton(
+                  icon: Icon(Icons.perm_identity, color: Colors.white, size: 30,) ,
                   color: Colors.white,
                   itemBuilder: (context) => [
                     PopupMenuItem(

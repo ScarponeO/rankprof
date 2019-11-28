@@ -248,7 +248,7 @@ class _VistaProfssorState extends State<VistaProfssor> {
   // fUTURA barra de busqueda (POR AHORA SOLO LA CUESTION DE ARRIBA)
   Widget _searchBar() {
     return Container(
-      height: 50.0,
+      height: 60.0,
       decoration: BoxDecoration(
         color: Colors.blue[900],
       ),
@@ -262,17 +262,7 @@ class _VistaProfssorState extends State<VistaProfssor> {
                 onPressed: () {
                   Navigator.pop(context);
                 }),
-            Center(
-              child: Text(
-                "Rank Prof",
-                style: TextStyle(
-                  fontFamily: 'Roboto-Regular',
-                  color: Colors.white,
-                  fontWeight: FontWeight.w600,
-                  fontSize: 25.0,
-                ),
-              ),
-            ),
+           
           ],
         ),
       ),
@@ -285,7 +275,7 @@ class _VistaProfssorState extends State<VistaProfssor> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
-          SizedBox(height: 30),
+          SizedBox(height: 20),
           Padding(
             padding: EdgeInsets.only(left: 30.0, top: 10.0, right: 30.0),
             child: RaisedButton(
