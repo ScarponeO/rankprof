@@ -86,6 +86,19 @@ class _SignInPageState extends State<SignInPage> {
     );
   }
 
+  Widget logo() {
+    return Container(
+      constraints: BoxConstraints.expand(
+        height: 250,
+      ),
+      child: Image.asset(
+        'images/rankprof-logo.png',
+        fit: BoxFit.fitHeight,
+      ),
+    );
+  }
+
+
   Widget foto() {
     return Container(
       constraints: BoxConstraints.expand(
@@ -99,14 +112,3 @@ class _SignInPageState extends State<SignInPage> {
   }
 }
 
-Widget logo() {
-  return Container(
-    constraints: BoxConstraints.expand(
-      height: 250,
-    ),
-    child: Image.asset(
-      'images/rankprof-logo.png',
-      fit: BoxFit.fitHeight,
-    ),
-  );
-}
