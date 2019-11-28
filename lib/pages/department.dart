@@ -97,7 +97,7 @@ class _DepartmentState extends State<Department> {
                               ));
                         },
                         child: Text(
-                          user.displayName, //------------------> Aqui esta llamando al user.uid que es el usuario actual con su uid.
+                          'Perfil', //------------------> Aqui esta llamando al user.uid que es el usuario actual con su uid.
                           style: TextStyle(
                               fontFamily: 'Roboto-Regular',
                               fontSize: 20,
@@ -114,26 +114,6 @@ class _DepartmentState extends State<Department> {
                         },
                         child: Text(
                           'SignOut',
-                          style: TextStyle(
-                            fontSize: 20,
-                            color: Colors.black87,
-                            fontWeight: FontWeight.bold
-                          ),
-                        ),
-                      ),
-                    ),
-                   PopupMenuItem(
-                      child: GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => PerfilPage(auth: Auth(),),
-          )
-        );
-                        },
-                        child: Text(
-                          '  Perfil   ',
                           style: TextStyle(
                             fontSize: 20,
                             color: Colors.black87,
