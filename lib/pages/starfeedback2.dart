@@ -2,11 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:rankprof/behaviors/hiddenScrollBehavior.dart';
-import 'package:rankprof/pages/profesor.dart';
-import 'package:rankprof/pages/profesor2.dart';
-import 'package:rankprof/pages/vistaProfessor.dart';
-import 'logicaRankeo.dart';
-
 class StarFeedback2 extends StatefulWidget {
 
 
@@ -902,6 +897,18 @@ class _StarFeedback2State extends State<StarFeedback2> {
                       _showDialog();
                       updateData();
                       print(puntuacionTotal);
+                      Firestore.instance
+                      .collection('Usuarios')
+                      .document()
+                      .setData({
+                        "Id": widget.idenviar,
+                        "R.disponibilidad": sliderValue/2,
+                        "R.exigencia": sliderValue2/2,
+                        "R.interaccion": sliderValue3/2,
+                        "R.pedagogia": sliderValue4/2,
+                        "R.responsabilidad": sliderValue5/2,
+                        "name": puntuacionTotal,
+                      });
                     },
                   ),
                 )),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:rankprof/pages/listProf.dart';
 
@@ -80,29 +79,45 @@ class _MateriaState extends State<Materia> {
   }
 
 // Forma cada iten de la lista
-  Widget _item(IconData icon, String name) {
+
+  Widget _item(String name) {
     return new GestureDetector(
       onTap: () {
-        Navigator.push(context,
+        Navigator.push(
+          context,
           MaterialPageRoute(
             builder: (_) => ListProfPage(profe: name),
-          ),
+          )
         );
       },
       child: ListTile(
-        leading: Icon(
-          icon,
-          size: 30.0,
+        trailing: Container(
+          width: 42.0,
+          height: 42.0,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(25.0),
+            color: Colors.blue[900],
+          ),
+          child: Center(
+            child: Text(name.substring(0,1),
+            style: TextStyle(
+              color: Colors.white,
+              ),
+            ),
+          ),
         ),
-        title: Text( name,
+        title: Text(
+          name,
           style: TextStyle(
+            color: Colors.black,
+            fontSize: 20.0,
             fontWeight: FontWeight.bold,
-            fontSize: 23.0,
-            fontFamily: 'Roboto-Regular'),
+          ),
         ),
       ),
     );
   }
+
 
   // Esta es la lista como tal, es decir, asi se crea
   Widget _list() {
@@ -111,11 +126,11 @@ class _MateriaState extends State<Materia> {
         itemCount: widget.documents.length,
         itemBuilder: (BuildContext context, int index) {
           key = widget.departamentos.keys.elementAt(index);
-          return _item(FontAwesomeIcons.pencilRuler, key);
+          return _item(key);
         },
         separatorBuilder: (BuildContext context, int index) {
           return Container(
-            color: Colors.grey[600],
+            color: Colors.blueAccent,
             height: 1.0,
           );
         },
