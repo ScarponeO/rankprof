@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:rankprof/pages/professor.dart';
 
@@ -58,7 +57,7 @@ class _ProfState extends State<Prof> {
                 }),
             Center(
               child: Text(
-                "PROFESORES",
+                "Profesores",
                 style: TextStyle(
                   fontFamily: 'Roboto-Regular',
                   color: Colors.white,
@@ -81,30 +80,44 @@ class _ProfState extends State<Prof> {
   }
 
 // Forma cada iten de la lista
-  Widget _item(IconData icon, String name) {
+
+Widget _item(String name) {
     return new GestureDetector(
       onTap: () {
-        Navigator.push(context,
+        Navigator.push(
+          context,
           MaterialPageRoute(
             builder: (_) => Profes(profe: name, materia2: widget.materia),
-          ),
+          )
         );
       },
       child: ListTile(
-        leading: Icon(
-          icon,
-          size: 30.0,
+        trailing: Container(
+          width: 42.0,
+          height: 42.0,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(25.0),
+            color: Colors.blue[900],
+          ),
+          child: Center(
+            child: Text(name.substring(0,1),
+            style: TextStyle(
+              color: Colors.white,
+              ),
+            ),
+          ),
         ),
-        title: Text( name,
+        title: Text(
+          name,
           style: TextStyle(
+            color: Colors.black,
+            fontSize: 20.0,
             fontWeight: FontWeight.bold,
-            fontSize: 23.0,
-            fontFamily: 'Roboto-Regular'),
+          ),
         ),
       ),
     );
   }
-
   // Esta es la lista como tal, es decir, asi se crea
   Widget _list() {
     return Expanded(
@@ -112,11 +125,11 @@ class _ProfState extends State<Prof> {
         itemCount: widget.documents.length,
         itemBuilder: (BuildContext context, int index) {
           key = widget.departamentos.keys.elementAt(index);
-          return _item(FontAwesomeIcons.chalkboardTeacher, key);
+          return _item(key);
         },
         separatorBuilder: (BuildContext context, int index) {
           return Container(
-            color: Colors.grey[600],
+            color: Colors.blueAccent,
             height: 1.0,
           );
         },
@@ -130,126 +143,3 @@ class _ProfState extends State<Prof> {
 
 
 
-
-
-
-
-
- 
-//   // fUTURA barra de busqueda (POR AHORA SOLO LA CUESTION DE ARRIBA)
-//   Widget _searchBar() {
-//     return Container(
-//       height: 60.0,
-//       decoration: BoxDecoration(
-//         color: Colors.blue[900],
-//       ),
-//       child: Padding(
-//         padding: const EdgeInsets.only(top: 1.0),
-//         child: Row(
-//           children: <Widget>[
-//             IconButton(
-//                 icon: Icon(Icons.arrow_back),
-//                 color: Colors.white,
-//                 onPressed: () {
-//                   Navigator.pop(context);
-//                 }),
-//             Center(
-//               child: Text(
-//                 "PROFESORES",
-//                 style: TextStyle(
-//                   fontFamily: 'Roboto-Regular',
-//                   color: Colors.white,
-//                   fontWeight: FontWeight.w600,
-//                   fontSize: 25.0,
-//                 ),
-//               ),
-//             ),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-
-// // Forma cada iten de la lista
-//   Widget _item(IconData icon, String name) {
-//     return new GestureDetector(
-//       onTap: () {
-//         return Navigator.of(context).pushNamed('/profesor');
-//       },
-//       child: ListTile(
-//         leading: Icon(
-//           icon,
-//           size: 30.0,
-//         ),
-// <<<<<<< HEAD
-//       ),
-//       trailing: Container(
-//         decoration: BoxDecoration(
-//           color: Colors.white.withOpacity(0.2),
-//           borderRadius: BorderRadius.circular(5.0),
-//         ),
-//         child: Padding(
-//           padding: const EdgeInsets.all(8.0),
-//           child: RaisedButton(
-//             color: Color(0xff00008b),
-//             child:  Text("Profesores",
-//               style: TextStyle(
-//                 color: Colors.white,
-//                 fontWeight: FontWeight.w500,
-//                 fontSize: 16.0,
-//               ),
-//             ),
-//               onPressed: () => Navigator.push(context,
-//               MaterialPageRoute(
-//               builder: (_) => Profes(profe: name),
-//               ),
-//             ),
-//           ),
-// =======
-//         title: Text(
-//           name,
-//           style: TextStyle(
-//               fontWeight: FontWeight.bold,
-//               fontSize: 23.0,
-//               fontFamily: 'Roboto-Regular'),
-// >>>>>>> a6e625777ac8c07090e26e04014852ce8d7ab198
-//         ),
-//       ),
-//     );
-//   }
-
-//   // Esta es la lista como tal, es decir, asi se crea
-//   // Widget _listb() {
-//   //   return Expanded(
-//   //     child: ListView.builder(
-//   //       itemCount: widget.documents.length,
-//   //       itemBuilder: (BuildContext context, int index){
-//   //         key = widget.departamentos.keys.elementAt(index);
-//   //         return _item(FontAwesomeIcons.chalkboardTeacher, key);
-//   //       },
-//   //       separatorBuilder: (BuildContext context, int index) {
-//   //         return Container(
-//   //           color: Color(0xff00008b),
-//   //           height: 1.0,
-//   //         );
-//   //       },
-//   //     ),
-//   //   );
-//   // }
-//   Widget _list() {
-//     return Expanded(
-//       child: ListView.separated(
-//         itemCount: widget.documents.length,
-//         itemBuilder: (BuildContext context, int index) {
-//           key = widget.departamentos.keys.elementAt(index);
-//           return _item(FontAwesomeIcons.chalkboardTeacher, key);
-//         },
-//         separatorBuilder: (BuildContext context, int index) {
-//           return Container(
-//             color: Colors.grey[600],
-//             height: 1.0,
-//           );
-//         },
-//       ),
-//     );
-//   }
